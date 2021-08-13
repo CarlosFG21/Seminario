@@ -99,7 +99,7 @@
 
                         <div class="card-body">
                             <br>
-                            <form name="" id="" method="POST" action=""> 
+                            <form name="formExpediente" id="" method="POST" action="../controlador/BDExpediente.php"> 
                                 
                             <label for="marca" id="dpi_1">DPI</label>
                             <label for="marca" id="nombre_1">Nombre</label>
@@ -123,10 +123,10 @@
                                <label for="marca" id="municipio_1">Municipio</label>
                                <label for="marca" id="direccion_1">Dirección</label>
                                <div class="lasd">
-                               <select class="controls2" name="select">
+                               <select class="controls2" name="select_departamento">
                                <option value="value1">Zacapa</option>
                                </select>
-                               <select class="controls2" name="select">
+                               <select class="controls2" name="select_municipio">
                                <option value="value1">San Diego</option>
                                </select>
                                <input class="controls2" type="text" name="direccion" id="direccion" placeholder="Ingrese su direccion">    
@@ -136,7 +136,7 @@
                                <div class="lasd">
                                <input class="controls2" type="text" name="expediente" id="extediente" placeholder="Correlativo">
                                </div>
-                               <button class="button" id="registrar">Registrar</button>
+                               <button class="button" name="registrarExpediente" id="registrarExpediente">Registrar</button>
                                <button class="butto2" name="actualizar" id="actualizar">Actualizar</button>
                                <button class="butto3" id="cancelar">Cancelar</button>
                             </div>
@@ -153,12 +153,36 @@
 <thead>
 <tr>
 <td>ID</td>
+<td>Correlativo</td>
 <td>Nombre</td>
 <td>Apellido</td>
-<td>Permiso</td>
-<td>Fuenciones</td>
+<td>Nacimiento</td>
+<td>Teléfono</td>
+<td>Funciones</td>
 </tr>
 </thead>
+
+<?php
+        include('../controlador/conexion.php');
+        $sql = "SELECT id_expediente, correlativo_exp, nombre, apellido, fecha_nacimiento, telefono FROM expediente";
+        $ejecutar = mysqli_query($conexion, $sql);
+        echo '<tbody>';
+        while($fila = mysqli_fetch_array($ejecutar)){
+            echo '<tr>';
+            echo '<td>"'.$fila[0].'"</td>';
+            echo '<td>"'.$fila[1].'"</td>';
+            echo '<td>"'.$fila[2].'"</td>';
+            echo '<td>"'.$fila[3].'"</td>';
+            echo '<td>"'.$fila[4].'"</td>';
+            echo '<td>"'.$fila[5].'"</td>';
+            echo '<td><button type="button" onclick="Buscar_expediente('.$fila[1].')" class="btn">Editar</button> 
+             <button type="button" onclick="Eliminar('.$fila[1].')" class="btn">Eliminar</button></td>';
+           
+            echo '</tr>';
+        }
+        ?>
+
+
 </tbody>
 </table>
     </div>

@@ -124,7 +124,7 @@
 <td>Nombre</td>
 <td>Apellido</td>
 <td>Permiso</td>
-<td>Fuenciones</td>
+<td>Funciones</td>
 </tr>
 </thead>
         <?php
