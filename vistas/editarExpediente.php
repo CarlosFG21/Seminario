@@ -1,3 +1,18 @@
+<?php
+    include('../controlador/conexion.php');
+    $expediente = null;
+    $sql = "SELECT * FROM expediente where id_expediente = " . $_GET['id'];
+    $ejecutar = mysqli_query($conexion, $sql);
+    while($fila = mysqli_fetch_row($ejecutar)){
+        $expediente = $fila;
+        break;
+    }
+
+    if ( $expediente == null){
+        header('Location: expediente.php');
+    }
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -6,22 +21,12 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1">
-    <title>Admin</title>
+    <title>Editar expediente</title>
     <link rel="stylesheet" href="https://maxst.icons8.com/vue-static/landings/line-awesome/line-awesome/1.3.0/css/line-awesome.min.css">
     <link rel="stylesheet" href="../css/index_1.css">
     <link rel="stylesheet" href="../css/expediente.css">
     <style>
-        .boton-editar{
-            color: #FFF;
-            background-color: blue;
-            padding: 5px;
-        }
-
-        .boton-eliminar{
-            color: #FFF;
-            background-color: red;
-            padding: 5px;
-        }
+       
     </style>
 </head>
 
@@ -41,7 +46,7 @@
                     <span>Tablero</span></a>
                 </li>
                 <li>
-                    <a href="" class="active"><span class="las la-folder-open"></span>
+                    <a href="expediente.php" class="active"><span class="las la-folder-open"></span>
                     <span>Expedientes</span></a>
                 </li>
                 <li>
@@ -117,18 +122,19 @@
                             <label for="marca" id="nombre_1">Nombre</label>
                             <label for="marca" id="apellido_1">Apellido</label>
                                 <div class="lasd">
-                                <input class="controls" type="number" name="dpi" id="dpi" placeholder="Ingrese su DPI">
-                                <input class="controls" type="text" name="nombre" id="nombre" placeholder="Ingrese su nombre">
-                                <input class="controls" type="text" name="apellido" id="nombre" placeholder="Ingrese su apellido">
+
+                                <input class="controls" type="number" name="dpi" id="dpi" placeholder="Ingrese su DPI" value="<?= $expediente[1] ?>">
+                                <input class="controls" type="text" name="nombre" id="nombre" placeholder="Ingrese su nombre" value="<?= $expediente[2] ?>">
+                                <input class="controls" type="text" name="apellido" id="apellido" placeholder="Ingrese su apellido"  value="<?= $expediente[3] ?>">
                                </div>
                                <br>
                                <label for="marca" id="fecha_1">Fecha de nacimiento</label>
                                <label for="marca" id="telefono_1">Telefono</label>
                                <label for="marca" id="correo_1">Correo</label>
                                <div class="lasd">
-                               <input class="controls2" type="date" name="fecha" id="fecha">
-                               <input class="controls" type="tel" name="telefono" id="telefono" placeholder="Ingrese su telefono">
-                               <input class="controls" type="email" name="correo" id="correo" placeholder="Ingrese su correo">
+                               <input class="controls2" type="date" name="fecha" id="fecha" value = "<?= $expediente[4]?>">
+                               <input class="controls" type="tel" name="telefono" id="telefono" placeholder="Ingrese su telefono"  value = "<?= $expediente[5]?>">
+                               <input class="controls" type="email" name="correo" id="correo" placeholder="Ingrese su correo" value = "<?= $expediente[6]?>">
                                </div>
                                <br>
                                <label for="marca" id="departamento_1">Departamento</label>
@@ -141,73 +147,23 @@
                                <select class="controls2" name="select_municipio">
                                <option value="value1">San Diego</option>
                                </select>
-                               <input class="controls2" type="text" name="direccion" id="direccion" placeholder="Ingrese su direccion">    
+                               <input class="controls2" type="text" name="direccion" id="direccion" placeholder="Ingrese su direccion" value = "<?= $expediente[7]?>">    
                                </div>
                                <br>
                                <label for="marca" id="departamento_1">No. Expediente</label>
                                <div class="lasd">
-                               <input class="controls2" type="text" name="expediente" id="extediente" placeholder="Correlativo">
+                               <input class="controls2" type="text" name="correlativo_exp" id="extediente" placeholder="Correlativo" value="<?= $expediente[1] ?>">
                                </div>
-                               <button class="button" name="registrarExpediente" id="registrarExpediente">Registrar</button>
+                               <input type="hidden" name="id_expediente" value="<?= $expediente[0] ?>">
                                <button class="butto2" name="actualizar" id="actualizar">Actualizar</button>
-                               <button class="butto3" id="cancelar">Cancelar</button>
+                               <a class="butto3" href="expediente.php" name="" id="">Cancelar</a>
+                               <button class="butto3" name="eliminarExpediente" id="eliminarExpediente">Eliminar</button>
                             </div>
                         </div>
                     </div>
                 </div>
                 <br>
-                <div class="recent-grid">
-                <div class="projects">
-                    <div class="card">
-        <div class="card-body">
-                            <div class="table-responsive">
-<table width="100%">
-<thead>
-<tr>
-<td>ID</td>
-<td>Correlativo</td>
-<td>Nombre</td>
-<td>Apellido</td>
-<td>Nacimiento</td>
-<td>Teléfono</td>
-<td>Funciones</td>
-</tr>
-</thead>
-
-<?php
-        include('../controlador/conexion.php');
-        $sql = "SELECT id_expediente, correlativo_exp, nombre, apellido, fecha_nacimiento, telefono FROM expediente where estado=1";
-        $ejecutar = mysqli_query($conexion, $sql);
-        echo '<tbody>';
-        while($fila = mysqli_fetch_array($ejecutar)){
-            echo '<tr>';
-            echo '<td>"'.$fila[0].'"</td>';
-            echo '<td>"'.$fila[1].'"</td>';
-            echo '<td>"'.$fila[2].'"</td>';
-            echo '<td>"'.$fila[3].'"</td>';
-            echo '<td>"'.$fila[4].'"</td>';
-            echo '<td>"'.$fila[5].'"</td>';
-            
-            echo "<td><a href='editarExpediente.php?id=$fila[0]' class='boton-editar'>Editar</a>
-            <a href='eliminarExpediente.php?id=$fila[0]' class='boton-eliminar'>Eliminar</a></td>";
-
-
-            echo '</tr>';
-        }
-        ?>
-
-
-</tbody>
-</table>
-    </div>
-    </div>
-    </div>
-    </div>
-    </div>
-        </div>
-
-    </main>
-
+            </div>
+        </main>
     </body>
-
 </html>

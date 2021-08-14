@@ -1,3 +1,18 @@
+<?php
+    include('../controlador/conexion.php');
+    $expediente = null;
+    $sql = "SELECT * FROM usuario where id_usuario = " . $_GET['id'];
+    $ejecutar = mysqli_query($conexion, $sql);
+    while($fila = mysqli_fetch_row($ejecutar)){
+        $usuario = $fila;
+        break;
+    }
+
+    if ( $usuario == null){
+        header('Location: usuario.php');
+    }
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -10,19 +25,6 @@
     <link rel="stylesheet" href="https://maxst.icons8.com/vue-static/landings/line-awesome/line-awesome/1.3.0/css/line-awesome.min.css">
     <link rel="stylesheet" href="../css/index_1.css">
     <link rel="stylesheet" href="../css/usuario.css">
-    <style>
-        .boton-editar{
-            color: #FFF;
-            background-color: blue;
-            padding: 5px;
-        }
-
-        .boton-eliminar{
-            color: #FFF;
-            background-color: red;
-            padding: 5px;
-        }
-    </style>
     
 </head>
 
@@ -100,9 +102,9 @@
                             <label for="marca" id="nickname_1">Usuario</label>
                             </div>
                                 <div class="lasd">
-                                <input class="controls" type="text" name="nombre" id="dpi" placeholder="Ingrese su nombre">
-                                <input class="controls" type="text" name="apellido" id="apellido" placeholder="Ingrese su apellido">
-                                <input class="controls" type="text" name="nickname" id="nickname" placeholder="Ingrese un usuario">
+                                <input class="controls" type="text" name="nombre" id="nombre" placeholder="Ingrese su nombre" value="<?= $usuario[1] ?>">
+                                <input class="controls" type="text" name="apellido" id="apellido" placeholder="Ingrese su apellido" value="<?= $usuario[2] ?>">
+                                <input class="controls" type="text" name="nickname" id="nickname" placeholder="Ingrese un usuario" value="<?= $usuario[3] ?>">
                                </div>
                                <br>
                                <div class="plas">
@@ -113,58 +115,19 @@
                                <option value="administrador">Administrado</option>
                                <option value="usuario">Usuario</option>
                                </select>
-                               <input class="controls" type="paswword" name="contrasena" id="contrasena" placeholder="Ingrese su contraseña">
+                               
+                             
+                               <input class="controls" type="paswword" name="contrasena" id="contrasena" placeholder="Ingrese su contraseña" value="<?= $contrasena_h = password_hash($usuario[5], PASSWORD_BCRYPT); ?>">
                                </div>
                                <br>
-                               <button class="button" name="registrar" id="registrar">Registrar</button>
+                               <input type="hidden" name="id_usuario" value="<?= $usuario[0] ?>">
                                <button class="butto1" name="actualizar" id="actualizar" disabled>Actualizar</button>
                                <button class="butto3" name="cancelar" id="cancelar">Cancelar</button>
                             </div>
                         </div>
                     </div>
                 </div>
-                <br>
-
-                <div class="recent-grid">
-                <div class="projects">
-                    <div class="card">
-        <div class="card-body">
-                            <div class="table-responsive">
-<table width="100%">
-<thead>
-<tr>
-<td>ID</td>
-<td>Nombre</td>
-<td>Apellido</td>
-<td>Permiso</td>
-<td>Funciones</td>
-</tr>
-</thead>
-        <?php
-        include('../controlador/conexion.php');
-        $sql = "SELECT * FROM usuario";
-        $ejecutar = mysqli_query($conexion, $sql);
-        echo '<tbody>';
-        while($fila = mysqli_fetch_array($ejecutar)){
-            echo '<tr>';
-            echo '<td>"'.$fila[0].'"</td>';
-            echo '<td>"'.$fila[1].'"</td>';
-            echo '<td>"'.$fila[2].'"</td>';
-            echo '<td>"'.$fila[4].'"</td>';
-            echo "<td><a href='editarUsuario.php?id=$fila[0]' class='boton-editar'>Editar</a><a href='eliminarUsuario.php?id=$fila[0]' class='boton-eliminar'>Eliminar</a></td>";
-
-
-            echo '</tr>';
-        }
-        ?>
-    </tbody>
-</table>
-    </div>
-    </div>
-    </div>
-    </div>
-    </div>
-        </div>
+                       
         
     </main>
 

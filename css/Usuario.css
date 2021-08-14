@@ -136,3 +136,43 @@ ul.navega li {
     left: 269px;
     overflow-x: auto;
 }
+
+
+.button {
+    background-color: #1f8fc3;
+    position: relative;
+    border: none;
+    color: white;
+    padding: 20px 3px;
+    font-size: 16px;
+    width: 20%;
+    padding: 2px;
+    overflow-x: auto;
+    left: 290px;
+}
+
+.butto2 {
+    background-color: #008000;
+    position: relative;
+    border: none;
+    color: white;
+    padding: 3px 3px;
+    font-size: 16px;
+    width: 20%;
+    padding: 2px;
+    overflow-x: auto;
+    left: 320px;
+}
+
+.butto3 {
+    background-color: #FF0000;
+    position: relative;
+    border: none;
+    color: white;
+    padding: 3px 3px;
+    font-size: 16px;
+    width: 20%;
+    padding: 2px;
+    overflow-x: auto;
+    left: 340px;
+}

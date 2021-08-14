@@ -49,6 +49,8 @@ if (isset($_REQUEST['actualizar'])) {
 }
 
 
+
+
 //para buscar el usuario
 if (isset($_POST['buscaru'])) {
     session_start();
