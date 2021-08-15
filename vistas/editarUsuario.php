@@ -121,8 +121,9 @@
                                </div>
                                <br>
                                <input type="hidden" name="id_usuario" value="<?= $usuario[0] ?>">
-                               <button class="butto1" name="actualizar" id="actualizar" disabled>Actualizar</button>
+                               <button class="butto1" name="actualizar" id="actualizar" >Actualizar</button>
                                <button class="butto3" name="cancelar" id="cancelar">Cancelar</button>
+                               <button class="butto3" name="eliminarUsuario" id="eliminarUsuario">Eliminar</button>
                             </div>
                         </div>
                     </div>

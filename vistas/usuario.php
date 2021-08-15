@@ -142,7 +142,7 @@
 </thead>
         <?php
         include('../controlador/conexion.php');
-        $sql = "SELECT * FROM usuario";
+        $sql = "SELECT * FROM usuario where estado=1";
         $ejecutar = mysqli_query($conexion, $sql);
         echo '<tbody>';
         while($fila = mysqli_fetch_array($ejecutar)){

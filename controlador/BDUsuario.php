@@ -37,7 +37,7 @@ if (isset($_REQUEST['actualizar'])) {
     $contrasena = $_POST['contrasena'];
     $contrasena_h = password_hash($contrasena, PASSWORD_BCRYPT);
 
-    $sql = "UPDATE usuario SET nombre='$nombre', apellido='$apellido', nickname='$nickname', permiso='$permiso', contrasena='$contrasena_h' WHERE id_usuario='$id'";
+    $sql = "UPDATE usuario SET nombre='$nombre', apellido='$apellido', nickname='$nickname', permiso='$permiso' WHERE id_usuario='$id'";
     
     if ($conexion->query($sql) === true) {            
         header("Location: ../vistas/usuario.php");
@@ -126,5 +126,19 @@ if (isset($_POST['eliminaru'])) {
     echo "<script>alert('Registro eliminado');</script>";
     header('Location: ../vistas/usuario.php');
 }
+
+if (isset($_POST['eliminarUsuario'])) {
+
+    include ('conexion.php');
+    
+    $id = $_REQUEST['id_usuario'];
+    $sql ="UPDATE usuario SET estado=0 where id_usuario=" . $id;
+    mysqli_query($conexion,$sql);
+
+    echo "<script>alert('Registro eliminado');</script>";
+    header('Location: ../vistas/usuario.php');
+}
+
+
 
 ?>
