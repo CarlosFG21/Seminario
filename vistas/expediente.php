@@ -124,7 +124,7 @@
                                     </thead>
                                     <tbody>
                                         <tr>
-                                            <td>Buprenorfina</td>
+                                            <td>Buprenor</td>
                                             <td>Tableta sublingual</td>
                                             <td>
                                                 <span class="status green"></span> Bueno

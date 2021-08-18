@@ -76,8 +76,8 @@
             <div class="user-wrapper">
                 <img src="../img/Avatar.png" width="40px" height="40px" alt="">
                 <div>
-                    <h4>Administrador</h4>
-                    <small>Carlos Franco</small>
+                    <h4>Usuario</h4>
+                    <small>Carlos Franco2</small>
                 </div>
             </div>
         </header>
