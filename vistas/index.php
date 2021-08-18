@@ -32,7 +32,8 @@
                 </li>
                 <li>
                     <a href=""><span class="las la-medkit"></span>
-                    <span>Medicamentos</span></a>
+                    <span>Medicamentos</span>
+                </a>
                 </li>
                 <li>
                     <a href=""><span class="las la-clipboard"></span>
