@@ -100,111 +100,58 @@
         </div-->
 
         <main>
+        
         <div class="recent-grid">
                 <div class="projects">
                     <div class="card">
                         <div class="card-header">
-                            <h3>Datos personales</h3>
-
-                            
+                            <h3>Expedientes</h3>
+                            <div class="encabezado">
+                            <input type="text" name="" id="" placeholder="Buscar" class="input__text">
+                            <a type="submit" href="expediente_ingresar.php" name="" id="" class="boton">Ingresar nuevo expediente</a>
+                            </div> 
                         </div>
-
+                        
                         <div class="card-body">
-                            <br>
-                            <form name="formExpediente" id="" method="POST" action="../controlador/BDExpediente.php"> 
-                                
-                            <label for="marca" id="dpi_1">DPI</label>
-                            <label for="marca" id="nombre_1">Nombre</label>
-                            <label for="marca" id="apellido_1">Apellido</label>
-                                <div class="lasd">
-                                <input class="controls" type="number" name="dpi" id="dpi" placeholder="Ingrese su DPI">
-                                <input class="controls" type="text" name="nombre" id="nombre" placeholder="Ingrese su nombre">
-                                <input class="controls" type="text" name="apellido" id="nombre" placeholder="Ingrese su apellido">
-                               </div>
-                               <br>
-                               <label for="marca" id="fecha_1">Fecha de nacimiento</label>
-                               <label for="marca" id="telefono_1">Telefono</label>
-                               <label for="marca" id="correo_1">Correo</label>
-                               <div class="lasd">
-                               <input class="controls2" type="date" name="fecha" id="fecha">
-                               <input class="controls" type="tel" name="telefono" id="telefono" placeholder="Ingrese su telefono">
-                               <input class="controls" type="email" name="correo" id="correo" placeholder="Ingrese su correo">
-                               </div>
-                               <br>
-                               <label for="marca" id="departamento_1">Departamento</label>
-                               <label for="marca" id="municipio_1">Municipio</label>
-                               <label for="marca" id="direccion_1">Dirección</label>
-                               <div class="lasd">
-                               <select class="controls2" name="select_departamento">
-                               <option value="value1">Zacapa</option>
-                               </select>
-                               <select class="controls2" name="select_municipio">
-                               <option value="value1">San Diego</option>
-                               </select>
-                               <input class="controls2" type="text" name="direccion" id="direccion" placeholder="Ingrese su direccion">    
-                               </div>
-                               <br>
-                               <label for="marca" id="departamento_1">No. Expediente</label>
-                               <div class="lasd">
-                               <input class="controls2" type="text" name="expediente" id="extediente" placeholder="Correlativo">
-                               </div>
-                               <button class="button" name="registrarExpediente" id="registrarExpediente">Registrar</button>
-                               <button class="butto2" name="actualizar" id="actualizar">Actualizar</button>
-                               <button class="butto3" id="cancelar">Cancelar</button>
+                            <div class="table-responsive">
+                                <table width="100%">
+                                    <thead>
+                                        <tr>
+                                            <td>Nombre</td>
+                                            <td>Descripcion</td>
+                                            <td>Estado</td>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr>
+                                            <td>Buprenor</td>
+                                            <td>Tableta sublingual</td>
+                                            <td>
+                                                <span class="status green"></span> Bueno
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td>Tramadol</td>
+                                            <td>Solución inyectable</td>
+                                            <td>
+                                                <span class="status red"></span> Vencido
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td>Oxicodona</td>
+                                            <td>Tableta de liberación</td>
+                                            <td>
+                                                <span class="status yellow"></span> Por Vencer
+                                            </td>
+                                        </tr>
+                                        </tr>
+                                    </tbody>
+                                </table>
                             </div>
                         </div>
+
                     </div>
                 </div>
-                <br>
-                <div class="recent-grid">
-                <div class="projects">
-                    <div class="card">
-        <div class="card-body">
-                            <div class="table-responsive">
-<table width="100%">
-<thead>
-<tr>
-<td>ID</td>
-<td>Correlativo</td>
-<td>Nombre</td>
-<td>Apellido</td>
-<td>Nacimiento</td>
-<td>Teléfono</td>
-<td>Funciones</td>
-</tr>
-</thead>
-
-<?php
-        include('../controlador/conexion.php');
-        $sql = "SELECT id_expediente, correlativo_exp, nombre, apellido, fecha_nacimiento, telefono FROM expediente where estado=1";
-        $ejecutar = mysqli_query($conexion, $sql);
-        echo '<tbody>';
-        while($fila = mysqli_fetch_array($ejecutar)){
-            echo '<tr>';
-            echo '<td>"'.$fila[0].'"</td>';
-            echo '<td>"'.$fila[1].'"</td>';
-            echo '<td>"'.$fila[2].'"</td>';
-            echo '<td>"'.$fila[3].'"</td>';
-            echo '<td>"'.$fila[4].'"</td>';
-            echo '<td>"'.$fila[5].'"</td>';
-            
-            echo "<td><a href='editarExpediente.php?id=$fila[0]' class='boton-editar'>Editar</a>
-            <a href='eliminarExpediente.php?id=$fila[0]' class='boton-eliminar'>Eliminar</a></td>";
-
-
-            echo '</tr>';
-        }
-        ?>
-
-
-</tbody>
-</table>
-    </div>
-    </div>
-    </div>
-    </div>
-    </div>
-        </div>
 
     </main>
 
