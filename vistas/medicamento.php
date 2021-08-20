@@ -9,7 +9,7 @@
     <title>Admin</title>
     <link rel="stylesheet" href="https://maxst.icons8.com/vue-static/landings/line-awesome/line-awesome/1.3.0/css/line-awesome.min.css">
     <link rel="stylesheet" href="../css/index_1.css">
-    <link rel="stylesheet" href="../css/expediente.css">
+    <link rel="stylesheet" href="../css/medicamento.css">
     <style>
         .boton-editar{
             color: #FFF;
@@ -41,11 +41,11 @@
                     <span>Tablero</span></a>
                 </li>
                 <li>
-                    <a href="" class="active"><span class="las la-folder-open"></span>
+                    <a href="expediente.php" class=""><span class="las la-folder-open"></span>
                     <span>Expedientes</span></a>
                 </li>
                 <li>
-                    <a href="medicamento.php"><span class="las la-medkit"></span>
+                    <a href="" class="active"><span class="las la-medkit"></span>
                     <span>Medicamentos</span></a>
                 </li>
                 <li>
@@ -105,10 +105,10 @@
                 <div class="projects">
                     <div class="card">
                         <div class="card-header">
-                            <h3>Expedientes</h3>
+                            <h3>Medicamento</h3>
                             <div class="encabezado">
                             <input type="text" name="" id="" placeholder="Buscar" class="input__text">
-                            <a type="submit" href="expediente_ingresar.php" name="" id="" class="boton">Ingresar nuevo expediente</a>
+                            <a type="submit" href="medicamento_ingresar.php" name="" id="" class="boton">Ingresar nuevo medicamento</a>
                             </div> 
                         </div>
                         

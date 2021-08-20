@@ -45,7 +45,7 @@
                     <span>Busqueda de expedientes</span></a>
                 </li>
                 <li>
-                    <a href="usuario.php"><span class="las la-users"></span>
+                    <a href=""><span class="las la-users"></span>
                     <span>Usuarios</span></a>
                 </li>
             </ul>
@@ -74,7 +74,7 @@
         <div class="projects">
             <div class="card">
                 <div class="card-header">
-                <h3>Datos personales</h3>   
+                <h3>Datos del expediente</h3>   
                 </div>
 
             <div class="card-body">
@@ -131,7 +131,7 @@
         <br>
         <div class="btn__group">
 				<a href="expediente.php" class="btn btn__danger">Regresar</a>
-				<input type="submit" name="editar" value="Guardar" class="btn btn__primary">
+				<input type="submit" name="guardar" value="Guardar" class="btn btn__primary">
 			</div>
             </form>
             </div>
