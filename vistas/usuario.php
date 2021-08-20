@@ -46,7 +46,7 @@
                     <span>Expedientes</span></a>
                 </li>
                 <li>
-                    <a href=""><span class="las la-medkit"></span>
+                    <a href="medicamento.php"><span class="las la-medkit"></span>
                     <span>Medicamentos</span></a>
                 </li>
                 <li>

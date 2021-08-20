@@ -9,7 +9,7 @@
     <title>Admin</title>
     <link rel="stylesheet" href="https://maxst.icons8.com/vue-static/landings/line-awesome/line-awesome/1.3.0/css/line-awesome.min.css">
     <link rel="stylesheet" href="../css/index_1.css">
-    <link rel="stylesheet" href="../css/expediente_ingreso.css">
+    <link rel="stylesheet" href="../css/medicamento_ingreso.css">
     
 </head>
 
@@ -29,11 +29,11 @@
                     <span>Tablero</span></a>
                 </li>
                 <li>
-                    <a href="" class="active"><span class="las la-folder-open"></span>
+                    <a href="" class=""><span class="las la-folder-open"></span>
                     <span>Expedientes</span></a>
                 </li>
                 <li>
-                    <a href=""><span class="las la-medkit"></span>
+                    <a href="" class="active"><span class="las la-medkit"></span>
                     <span>Medicamentos</span></a>
                 </li>
                 <li>
@@ -45,7 +45,7 @@
                     <span>Busqueda de expedientes</span></a>
                 </li>
                 <li>
-                    <a href="usuario.php"><span class="las la-users"></span>
+                    <a href=""><span class="las la-users"></span>
                     <span>Usuarios</span></a>
                 </li>
             </ul>
@@ -74,55 +74,49 @@
         <div class="projects">
             <div class="card">
                 <div class="card-header">
-                <h3>Datos del expediente</h3>   
+                <h3>Datos del medicamento</h3>   
                 </div>
 
             <div class="card-body">
             <br>
             <form name="" id="" method="POST" action=""> 
             <p>
-            <label for="">DPI</label>
-            <input type="text" class="input__text" placeholder="Ingrese su dpi">
+            <label for="">Nombre del medicamento</label>
+            <input type="text" class="input__text" placeholder="Ingrese el nombre del medicamento">
             </p>
            <p>
-           <label for="">Nombre</label>
-           <input type="text" class="input__text" placeholder="Ingresa su nombre">
+           <label for="">Descripcion del medicamento</label>
+           <input type="text" class="input__text" placeholder="Ingresa una descripción del medicamento">
            </p>
            <p>
-           <label for="">Apellido</label>
-           <input type="text" class="input__text" placeholder="Ingreso su apellido">
+           <label for="">Fecha de vencimiento</label>
+           <input type="date" class="input__text">
            </p>
         <p>
-          <label for="">Fecha de nacimiento</label>
+          <label for="">Numero de lote</label>
+          <input type="text" class="input__text" placeholder="Ingrese el numero de lote">
+        </p>
+        <p>
+          <label for="">Presentación</label>
+          <select class="input__text" name="select">
+          <option value="value1">Buena</option>
+          <option value="value1">Mala</option>
+          </select>
+        </p>
+        <p>
+          <label for="">Concentración</label>
+          <select class="input__text" name="select">
+          <option value="value1">Buena</option>
+          <option value="value1">Mala</option>
+          </select>
+        </p>
+        <p>
+          <label for="">Fecha de ingreso</label>
           <input type="date" class="input__text">
         </p>
         <p>
-          <label for="">Telefono</label>
-          <input type="tel" class="input__text" placeholder="Ingrese su número">
-        </p>
-        <p>
-          <label for="">Correo</label>
-          <input type="email" class="input__text" placeholder="Ingrese su correo">
-        </p>
-        <p>
-          <label for="">Departamento</label>
-          <select class="input__text" name="select">
-          <option value="value1">Zacapa</option>
-          </select>
-        </p>
-        <p>
-          <label for="">Municipio</label>
-          <select class="input__text" name="select">
-          <option value="value1">San Diego</option>
-          </select>
-        </p>
-        <p>
-          <label for="">Dirección</label>
-          <input type="text" class="input__text" placeholder="Ingrese su direccion">
-        </p>
-        <p>
-          <label for="">No. Expediente</label>
-          <input type="text" class="input__text" placeholder="1001">
+          <label for="">Stock</label>
+          <input type="text" class="input__text" placeholder="Ingrese el stock">
         </p>
         <p>
         </p>    
@@ -130,8 +124,8 @@
         </p>
         <br>
         <div class="btn__group">
-				<a href="expediente.php" class="btn btn__danger">Regresar</a>
-				<input type="submit" name="editar" value="Editar" class="btn btn__primary">
+				<a href="medicamento.php" class="btn btn__danger">Regresar</a>
+				<input type="submit" name="guardar" value="Guardar" class="btn btn__primary">
 			</div>
             </form>
             </div>

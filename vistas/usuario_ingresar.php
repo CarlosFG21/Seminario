@@ -74,7 +74,7 @@
         <div class="projects">
             <div class="card">
                 <div class="card-header">
-                <h3>Datos personales</h3>   
+                <h3>Datos del usuario</h3>   
                 </div>
 
             <div class="card-body">
