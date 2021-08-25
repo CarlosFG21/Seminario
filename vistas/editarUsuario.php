@@ -1,3 +1,20 @@
+<?php
+    include('../controlador/conexion.php');
+    $expediente = null;
+    $sql = "SELECT * FROM usuario where id_usuario = " . $_GET['id'];
+    $ejecutar = mysqli_query($conexion, $sql);
+    while($fila = mysqli_fetch_row($ejecutar)){
+        $usuario = $fila;
+        break;
+    }
+
+    if ( $usuario == null){
+        header('Location: usuario.php');
+    }
+?>
+
+
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -79,29 +96,29 @@
 
             <div class="card-body">
             <br>
-            <form name="" id="" method="POST" action=""> 
+            <form name="" id="" method="POST" action="../controlador/BDUsuario.php"> 
            <p>
            <label for="">Nombre</label>
-           <input type="text" class="input__text" placeholder="Ingresa su nombre">
+           <input name="txtNombre" type="text" class="input__text" placeholder="Ingresa su nombre" value="<?= $usuario[1] ?>">
            </p>
            <p>
            <label for="">Apellido</label>
-           <input type="text" class="input__text" placeholder="Ingreso su apellido">
+           <input name="txtApellido" type="text" class="input__text" placeholder="Ingreso su apellido" value="<?= $usuario[2] ?>">
            </p>
            <p>
            <label for="">Usuario</label>
-           <input type="text" class="input__text" placeholder="Ingreso un usuario">
+           <input name="txtUsuario" type="text" class="input__text" placeholder="Ingreso un usuario" value="<?= $usuario[3] ?>">
            </p>
            <p>
            <label for="">Permiso</label>
-           <select class="input__text" name="select">
-          <option value="value1">Administrador</option>
-          <option value="value1">Usuario</option>
+           <select name="cbPermiso" class="input__text" >
+          <option value="Administrador">Administrador</option>
+          <option value="Usuario">Usuario</option>
           </select>
            </p>
            <p>
            <label for="">Contraseña</label>
-           <input type="password" class="input__text" placeholder="Ingrese su contraseña">
+           <input name="txtContrasena" type="password" class="input__text" placeholder="Ingrese su contraseña" value="<?= $usuario[5] ?>">
            </p>
         <p>
         </p>    
@@ -109,8 +126,10 @@
         </p>
         <br>
         <div class="btn__group">
+
+        <input type="hidden" name="txtId_usuario" value="<?= $usuario[0] ?>">
 				<a href="usuario.php" class="btn btn__danger">Regresar</a>
-				<input type="submit" name="editar" value="Editar" class="btn btn__primary">
+				<input type="submit" name="actualizar" value="Editar" class="btn btn__primary">
 			</div>
             </form>
             </div>

@@ -79,29 +79,29 @@
 
             <div class="card-body">
             <br>
-            <form name="" id="" method="POST" action=""> 
+            <form name="" id="" method="POST" action="../controlador/BDUsuario.php"> 
            <p>
            <label for="">Nombre</label>
-           <input type="text" class="input__text" placeholder="Ingresa su nombre">
+           <input name="txtNombre"type="text" class="input__text" placeholder="Ingrese su nombre">
            </p>
            <p>
            <label for="">Apellido</label>
-           <input type="text" class="input__text" placeholder="Ingreso su apellido">
+           <input name="txtApellido" type="text" class="input__text" placeholder="Ingrese su apellido">
            </p>
            <p>
            <label for="">Usuario</label>
-           <input type="text" class="input__text" placeholder="Ingreso un usuario">
+           <input name="txtUsuario" type="text" class="input__text" placeholder="Ingrese un usuario">
            </p>
            <p>
            <label for="">Permiso</label>
-           <select class="input__text" name="select">
-          <option value="value1">Administrador</option>
-          <option value="value1">Usuario</option>
+           <select name="cbPermiso"  class="input__text" >
+          <option value="Administrador">Administrador</option>
+          <option value="Usuario">Usuario</option>
           </select>
            </p>
            <p>
            <label for="">Contraseña</label>
-           <input type="password" class="input__text" placeholder="Ingrese su contraseña">
+           <input name="txtContrasena" type="password" class="input__text" placeholder="Ingrese su contraseña">
            </p>
         <p>
         </p>    
@@ -110,7 +110,7 @@
         <br>
         <div class="btn__group">
 				<a href="usuario.php" class="btn btn__danger">Regresar</a>
-				<input type="submit" name="editar" value="Guardar" class="btn btn__primary">
+				<input type="submit" name="registrar" value="Guardar" class="btn btn__primary">
 			</div>
             </form>
             </div>

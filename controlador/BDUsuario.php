@@ -2,13 +2,13 @@
 
 if (isset($_REQUEST['registrar'])) {
     include('conexion.php');
-    $nombre = $_POST['nombre'];
-    $apellido = $_POST['apellido'];
-    $nickname = $_POST['nickname'];
-    $permiso = $_POST['permiso'];
-    $contrasena = $_POST['contrasena'];
+    $nombre = $_POST['txtNombre'];
+    $apellido = $_POST['txtApellido'];
+    $nickname = $_POST['txtUsuario'];
+    $permiso = $_POST['cbPermiso'];
+    $contrasena = $_POST['txtContrasena'];
     $contrasena_h = password_hash($contrasena, PASSWORD_BCRYPT);
-    if (isset($_POST['nombre']) && isset($_POST['apellido'])) {
+    if (isset($_POST['txtNombre']) && isset($_POST['txtApellido'])) {
 
         $sql = "INSERT INTO usuario (nombre, apellido, nickname, permiso, contrasena) VALUES ('$nombre', '$apellido', '$nickname', '$permiso', '$contrasena_h')";
         if ($conexion->query($sql) === true) {            
@@ -29,12 +29,12 @@ if (isset($_REQUEST['actualizar'])) {
 
     include('conexion.php');
 
-    $id = $_REQUEST['id_usuario'];
-    $nombre = $_POST['nombre'];
-    $apellido = $_POST['apellido'];
-    $nickname = $_POST['nickname'];
-    $permiso = $_POST['permiso'];
-    $contrasena = $_POST['contrasena'];
+    $id = $_REQUEST['txtId_usuario'];
+    $nombre = $_POST['txtNombre'];
+    $apellido = $_POST['txtApellido'];
+    $nickname = $_POST['txtUsuario'];
+    $permiso = $_POST['cbPermiso'];
+    $contrasena = $_POST['txtContrasena'];
     $contrasena_h = password_hash($contrasena, PASSWORD_BCRYPT);
 
     $sql = "UPDATE usuario SET nombre='$nombre', apellido='$apellido', nickname='$nickname', permiso='$permiso' WHERE id_usuario='$id'";
@@ -115,18 +115,6 @@ function callJson($c1,$id){
 }
 
 
-if (isset($_POST['eliminaru'])) {
-
-    include ('conexion.php');
-    
-    $id = $_REQUEST['id'];
-    $sql ="delete from usuario where id_usuario=" . $id;
-    mysqli_query($conexion,$sql);
-
-    echo "<script>alert('Registro eliminado');</script>";
-    header('Location: ../vistas/usuario.php');
-}
-
 if (isset($_POST['eliminarUsuario'])) {
 
     include ('conexion.php');
@@ -138,7 +126,6 @@ if (isset($_POST['eliminarUsuario'])) {
     echo "<script>alert('Registro eliminado');</script>";
     header('Location: ../vistas/usuario.php');
 }
-
 
 
 ?>
