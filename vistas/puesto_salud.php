@@ -9,7 +9,7 @@
     <title>Admin</title>
     <link rel="stylesheet" href="https://maxst.icons8.com/vue-static/landings/line-awesome/line-awesome/1.3.0/css/line-awesome.min.css">
     <link rel="stylesheet" href="../css/index.css">
-    <link rel="stylesheet" href="../css/proveedor.css">
+    <link rel="stylesheet" href="../css/puesto_salud.css">
     <style>
         .boton-editar{
             color: #FFF;
@@ -55,12 +55,12 @@
                 </a>
                 </li>
                 <li>
-                    <a href="puesto_salud.php"><span class="las la-clinic-medical"></span>
+                    <a href="" class="active"><span class="las la-clinic-medical"></span>
                     <span>Puesto de salud</span>
                 </a>
                 </li>
                 <li>
-                    <a href="" class="active"><span class="las la-user-md"></span>
+                    <a href="proveedor.php"><span class="las la-user-md"></span>
                     <span>Proveedor</span>
                 </a>
                 </li>
@@ -103,10 +103,10 @@
         <div class="projects">
             <div class="card">
                 <div class="card-header">
-                    <h3>Proveedores</h3>
+                    <h3>Puesto de salud</h3>
                     <div class="encabezado">
                     <input type="text" name="" id="" placeholder="Buscar" class="input__text">
-                    <a type="submit" href="proveedor_ingresar.php" name="" id="" class="boton">Ingresar nuevo proveedor</a>
+                    <a type="submit" href="puesto_ingresar.php" name="" id="" class="boton">Ingresar nuevo puesto de salud</a>
                     </div> 
                 </div>
                 

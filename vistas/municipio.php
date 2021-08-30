@@ -9,7 +9,7 @@
     <title>Admin</title>
     <link rel="stylesheet" href="https://maxst.icons8.com/vue-static/landings/line-awesome/line-awesome/1.3.0/css/line-awesome.min.css">
     <link rel="stylesheet" href="../css/index.css">
-    <link rel="stylesheet" href="../css/proveedor.css">
+    <link rel="stylesheet" href="../css/municipio.css">
     <style>
         .boton-editar{
             color: #FFF;
@@ -50,7 +50,7 @@
                     <span>Medicamentos</span></a>
                 </li>
                 <li>
-                    <a href="municipio.php" ><span class="las la-map"></span>
+                    <a href="" class="active"><span class="las la-map"></span>
                     <span>Municipio</span>
                 </a>
                 </li>
@@ -60,7 +60,7 @@
                 </a>
                 </li>
                 <li>
-                    <a href="" class="active"><span class="las la-user-md"></span>
+                    <a href="proveedor.php"><span class="las la-user-md"></span>
                     <span>Proveedor</span>
                 </a>
                 </li>
@@ -103,10 +103,10 @@
         <div class="projects">
             <div class="card">
                 <div class="card-header">
-                    <h3>Proveedores</h3>
+                    <h3>Municipios, Departamentos</h3>
                     <div class="encabezado">
                     <input type="text" name="" id="" placeholder="Buscar" class="input__text">
-                    <a type="submit" href="proveedor_ingresar.php" name="" id="" class="boton">Ingresar nuevo proveedor</a>
+                    <a type="submit" href="municipio_ingresar.php" name="" id="" class="boton">Ingresar nuevo municipio</a>
                     </div> 
                 </div>
                 
