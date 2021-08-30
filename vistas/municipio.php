@@ -9,7 +9,7 @@
     <title>Admin</title>
     <link rel="stylesheet" href="https://maxst.icons8.com/vue-static/landings/line-awesome/line-awesome/1.3.0/css/line-awesome.min.css">
     <link rel="stylesheet" href="../css/index.css">
-    <link rel="stylesheet" href="../css/usuarios.css">
+    <link rel="stylesheet" href="../css/municipio.css">
     <style>
         .boton-editar{
             color: #FFF;
@@ -50,7 +50,7 @@
                     <span>Medicamentos</span></a>
                 </li>
                 <li>
-                    <a href="municipio.php"><span class="las la-map"></span>
+                    <a href="" class="active"><span class="las la-map"></span>
                     <span>Municipio</span>
                 </a>
                 </li>
@@ -73,7 +73,7 @@
                     <span>Busqueda de expedientes</span></a>
                 </li>
                 <li>
-                    <a href="" class="active"><span class="las la-users"></span>
+                    <a href="usuario.php" ><span class="las la-users"></span>
                     <span>Usuarios</span></a>
                 </li>
             </ul>
@@ -103,10 +103,10 @@
         <div class="projects">
             <div class="card">
                 <div class="card-header">
-                    <h3>Usuarios</h3>
+                    <h3>Municipios, Departamentos</h3>
                     <div class="encabezado">
                     <input type="text" name="" id="" placeholder="Buscar" class="input__text">
-                    <a type="submit" href="usuario_ingresar.php" name="" id="" class="boton">Ingresar nuevo usuario</a>
+                    <a type="submit" href="municipio_ingresar.php" name="" id="" class="boton">Ingresar nuevo municipio</a>
                     </div> 
                 </div>
                 

@@ -1,0 +1,38 @@
+.input__text {
+    width: 90%;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    box-shadow: 0 1px 1px rgba(0, 0, 0, 0.075) inset;
+    color: #848688;
+    display: block;
+    font-size: 14px;
+    margin-bottom: 15px;
+    padding: 10px 15px;
+    max-width: 30%;
+    margin-right: 10px;
+    outline: medium none;
+}
+
+.boton {
+    background: #1f8fc3;
+    color: #fff;
+    width: 90%;
+    border-radius: 10px;
+    border: 1px solid var(--main-color);
+    font-size: 12px;
+    margin-bottom: 15px;
+    padding: 10px 15px;
+    max-width: 30%;
+    margin-right: 10px;
+    outline: medium none;
+}
+
+.encabezado {
+    width: 100%;
+    display: flex;
+    justify-content: flex-end;
+}
+
+·classo {
+    pad: -moz-element();
+}
