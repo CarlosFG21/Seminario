@@ -94,14 +94,14 @@
 
             <div class="card-body">
             <br>
-            <form name="" id="" method="POST" action=""> 
+            <form name="" id="" method="POST" action="../controlador/BDProveedor.php"> 
            <p>
            <label for="">Nombre</label>
-           <input type="text" class="input__text" placeholder="Ingrese un nombre">
+           <input name="txtnombre" type="text" class="input__text" placeholder="Ingrese un nombre">
            </p>
            <p>
            <label for="">Dirección</label>
-           <input type="text" class="input__text" placeholder="Ingrese una dirección">
+           <input name="txtdireccion" type="text" class="input__text" placeholder="Ingrese una dirección">
            </p>
         <p>
         </p>    
@@ -110,7 +110,7 @@
         <br>
         <div class="btn__group">
 				<a href="proveedor.php" class="btn btn__danger">Regresar</a>
-				<input type="submit" name="editar" value="Guardar" class="btn btn__primary">
+				<input type="submit" name="registrar" value="Guardar" class="btn btn__primary">
 			</div>
             </form>
             </div>
