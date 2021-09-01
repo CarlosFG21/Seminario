@@ -1,3 +1,18 @@
+<?php
+    include('../controlador/conexion.php');
+    $expediente = null;
+    $sql = "SELECT * FROM proveedor where id_proveedor = " . $_GET['id'];
+    $ejecutar = mysqli_query($conexion, $sql);
+    while($fila = mysqli_fetch_row($ejecutar)){
+        $proveedor = $fila;
+        break;
+    }
+
+    if ( $proveedor == null){
+        header('Location: proveedor.php');
+    }
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -94,14 +109,14 @@
 
             <div class="card-body">
             <br>
-            <form name="" id="" method="POST" action=""> 
+            <form name="" id="" method="POST" action="../controlador/BDProveedor.php"> 
            <p>
            <label for="">Nombre</label>
-           <input type="text" class="input__text" placeholder="Ingrese un nombre">
+           <input name="txtnombre" type="text" class="input__text" placeholder="Ingrese un nombre" value="<?=$proveedor[1]?>">
            </p>
            <p>
            <label for="">Dirección</label>
-           <input type="text" class="input__text" placeholder="Ingrese una dirección">
+           <input name="txtdireccion" type="text" class="input__text" placeholder="Ingrese una dirección" value="<?=$proveedor[2]?>">
            </p>
         <p>
         </p>    
@@ -109,8 +124,9 @@
         </p>
         <br>
         <div class="btn__group">
+        <input type="hidden" name="txtid_proveedor" value="<?= $proveedor[0] ?>">
 				<a href="proveedor.php" class="btn btn__danger">Regresar</a>
-				<input type="submit" name="editar" value="Editar" class="btn btn__primary">
+				<input type="submit" name="actualizar" value="Editar" class="btn btn__primary">
 			</div>
             </form>
             </div>
