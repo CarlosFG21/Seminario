@@ -54,11 +54,7 @@
                     <span>Municipio</span>
                 </a>
                 </li>
-                <li>
-                    <a href="puesto_salud.php"><span class="las la-clinic-medical"></span>
-                    <span>Puesto de salud</span>
-                </a>
-                </li>
+                
                 <li>
                     <a href="proveedor.php"><span class="las la-user-md"></span>
                     <span>Proveedor</span>

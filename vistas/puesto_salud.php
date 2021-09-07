@@ -69,10 +69,6 @@
                     <span>Reportes</span></a>
                 </li>
                 <li>
-                    <a href=""><span class="las la-search"></span>
-                    <span>Busqueda de expedientes</span></a>
-                </li>
-                <li>
                     <a href="usuario.php" ><span class="las la-users"></span>
                     <span>Usuarios</span></a>
                 </li>
@@ -115,34 +111,30 @@
                         <table width="100%">
                             <thead>
                                 <tr>
+                                    <td>ID</td>
                                     <td>Nombre</td>
-                                    <td>Descripcion</td>
-                                    <td>Estado</td>
+                                    <td>Dirección</td>
+                                    <td>Funciones</td>
                                 </tr>
                             </thead>
-                            <tbody>
-                                <tr>
-                                    <td>Buprenorfina</td>
-                                    <td>Tableta sublingual</td>
-                                    <td>
-                                        <span class="status green"></span> Bueno
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <td>Tramadol</td>
-                                    <td>Solución inyectable</td>
-                                    <td>
-                                        <span class="status red"></span> Vencido
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <td>Oxicodona</td>
-                                    <td>Tableta de liberación</td>
-                                    <td>
-                                        <span class="status yellow"></span> Por Vencer
-                                    </td>
-                                </tr>
-                                </tr>
+                           <?php
+                           include('../controlador/conexion.php');
+                           $sql = "SELECT * FROM extencion_centro where estado=1";
+                           $ejecutar = mysqli_query($conexion,$sql);
+                           echo '</tbody>';
+                           while($fila=mysqli_fetch_array($ejecutar)){
+                               echo '<tr>';
+                               echo '<td>'.$fila[0].'</td>';
+                               echo '<td>'.$fila[1].'</td>';
+                               echo '<td>'.$fila[2].'</td>';
+                               echo "<td><a href='editarPuesto.php?id=$fila[0]' class='boton-editar'>Editar</a>
+                               <a href='../controlador/BDUsuario.php/eliminarPuesto.php?id=$fila[0]' class='boton-eliminar'>Eliminar</a></td>";
+                   
+
+                               echo '</tr>';
+
+                           }
+                           ?>   
                             </tbody>
                         </table>
                     </div>

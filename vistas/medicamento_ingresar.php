@@ -55,10 +55,7 @@
                     <a href=""><span class="las la-clipboard"></span>
                     <span>Reportes</span></a>
                 </li>
-                <li>
-                    <a href=""><span class="las la-search"></span>
-                    <span>Busqueda de expedientes</span></a>
-                </li>
+                
                 <li>
                     <a href=""><span class="las la-users"></span>
                     <span>Usuarios</span></a>
