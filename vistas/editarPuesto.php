@@ -1,3 +1,17 @@
+<?php
+    include('../controlador/conexion.php');
+    $expediente = null;
+    $sql = "SELECT * FROM extencion_centro where id_extencion_cen = " . $_GET['id'];
+    $ejecutar = mysqli_query($conexion, $sql);
+    while($fila = mysqli_fetch_row($ejecutar)){
+        $puesto = $fila;
+        break;
+    }
+
+    if ( $puesto == null){
+        header('Location: puesto_salud.php');
+    }
+?>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -56,10 +70,6 @@
                     <span>Reportes</span></a>
                 </li>
                 <li>
-                    <a href=""><span class="las la-search"></span>
-                    <span>Busqueda de expedientes</span></a>
-                </li>
-                <li>
                     <a href=""><span class="las la-users"></span>
                     <span>Usuarios</span></a>
                 </li>
@@ -94,14 +104,14 @@
 
             <div class="card-body">
             <br>
-            <form name="" id="" method="POST" action=""> 
+            <form name="" id="" method="POST" action="../controlador/BDPuesto.php"> 
            <p>
            <label for="">Nombre</label>
-           <input type="text" class="input__text" placeholder="Ingrese un nombre">
+           <input name="txtnombre" type="text" class="input__text" placeholder="Ingrese un nombre" value="<?= $puesto[1]?>">
            </p>
            <p>
            <label for="">Dirección</label>
-           <input type="text" class="input__text" placeholder="Ingrese una dirección">
+           <input name="txtdireccion" type="text" class="input__text" placeholder="Ingrese una dirección" value="<?= $puesto[2]?>">
            </p>
         <p>
         </p>    
@@ -109,8 +119,9 @@
         </p>
         <br>
         <div class="btn__group">
+        <input type="hidden" name="txtid_puesto" value="<?= $puesto[0] ?>">
 				<a href="puesto_salud.php" class="btn btn__danger">Regresar</a>
-				<input type="submit" name="editar" value="Editar" class="btn btn__primary">
+				<input type="submit" name="actualizar" value="Editar" class="btn btn__primary">
 			</div>
             </form>
             </div>

@@ -56,10 +56,6 @@
                     <span>Reportes</span></a>
                 </li>
                 <li>
-                    <a href=""><span class="las la-search"></span>
-                    <span>Busqueda de expedientes</span></a>
-                </li>
-                <li>
                     <a href="usuario.php"><span class="las la-users"></span>
                     <span>Usuarios</span></a>
                 </li>
