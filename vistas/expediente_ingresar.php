@@ -1,3 +1,12 @@
+<?php
+  require('../controlador/conexion.php');
+
+  $sql = "select id_departamento, nombre FROM departamento ORDER BY nombre ASC";
+  $ejecutar = mysqli_query($conexion, $sql);
+
+?>
+
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -10,7 +19,30 @@
     <link rel="stylesheet" href="https://maxst.icons8.com/vue-static/landings/line-awesome/line-awesome/1.3.0/css/line-awesome.min.css">
     <link rel="stylesheet" href="../css/index.css">
     <link rel="stylesheet" href="../css/expediente_ingreso.css">
+
+    <script scr="../js/jquery-3.6.0.min.js"></script>
+
+    <script language="javascript">
     
+       $(document).ready(function(){
+            $("#cbDepartamento").change(function (){
+
+                $("cbDepartamento option:selected").each(function(){
+                    id_departamento = $(this).val();
+                    $.post("../controlador/getMunicipio.php", { id_departamento: id_departamento
+                    }, function(data){
+                        $("#cbMunicipio").html(data);
+                
+                    });
+                });
+
+            });
+        });
+
+
+    </script>
+
+   
 </head>
 
 <body>
@@ -91,6 +123,8 @@
 
             <div class="card-body">
             <br>
+
+
             <form name="" id="" method="POST" action=""> 
             <p>
             <label for="">DPI</label>
@@ -118,14 +152,30 @@
         </p>
         <p>
           <label for="">Departamento</label>
-          <select class="input__text" name="select">
-          <option value="value1">Zacapa</option>
+          <select class="input__text" name="cbDepartamento" id="cbDepartamento">
+          <option value="value1">Seleccione</option>
+
+          <?php
+          while($row = mysqli_fetch_array($ejecutar)){
+
+          
+
+          ?>
+            <option value="<?php echo $row[0]; ?>"><?php echo $row[1]; ?></option>
+          <?php }  ?>
+
+          
+
+
+
+
+
           </select>
         </p>
         <p>
           <label for="">Municipio</label>
-          <select class="input__text" name="select">
-          <option value="value1">San Diego</option>
+          <select class="input__text" name="cbMunicipio" id="cbMunicipio">
+          <option value="value1">Seleccione</option>
           </select>
         </p>
         <p>
