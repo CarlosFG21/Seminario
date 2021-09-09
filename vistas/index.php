@@ -36,8 +36,8 @@
                 </a>
                 </li>
                 <li>
-                    <a href="municipio.php"><span class="las la-map"></span>
-                    <span>Municipio</span>
+                    <a href="ubicacion.php"><span class="las la-map"></span>
+                    <span>Ubicación</span>
                 </a>
                 </li>
                 <li>
