@@ -1,3 +1,32 @@
+<?php
+    include('../controlador/conexion.php');
+    $expediente = null;
+    $sql = "SELECT * FROM expediente where id_expediente = " . $_GET['id'];
+    $ejecutar = mysqli_query($conexion, $sql);
+    while($fila = mysqli_fetch_row($ejecutar)){
+        $expediente = $fila;
+        break;
+    }
+
+    if ( $expediente == null){
+        header('Location: expediente.php');
+    }
+?>
+
+<?php
+//departamento
+  require('../controlador/conexion.php');
+
+  $sql = "select id_departamento, nombre FROM departamento ORDER BY nombre ASC";
+  $ejecutarD = mysqli_query($conexion, $sql);
+
+  //cargar ultimo ID de expediente
+
+
+?>
+
+
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -90,59 +119,85 @@
 
             <div class="card-body">
             <br>
-            <form name="" id="" method="POST" action=""> 
+            <form name="" id="" method="POST" action="../controlador/BDExpediente.php"> 
             <p>
             <label for="">DPI</label>
-            <input type="text" class="input__text" placeholder="Ingrese su dpi">
+            <input name="txtDpi" value="<?= $expediente[1] ?>" type="number" class="input__text" placeholder="Ingrese su dpi" required>
             </p>
            <p>
            <label for="">Nombre</label>
-           <input type="text" class="input__text" placeholder="Ingresa su nombre">
+           <input name="txtNombres" value="<?= $expediente[3] ?>" type="text" class="input__text" placeholder="Ingresa su nombre" required>
            </p>
            <p>
            <label for="">Apellido</label>
-           <input type="text" class="input__text" placeholder="Ingreso su apellido">
+           <input name="txtApellidos" value="<?= $expediente[4] ?>" type="text" class="input__text" placeholder="Ingreso su apellido" required>
            </p>
         <p>
           <label for="">Fecha de nacimiento</label>
-          <input type="date" class="input__text">
+          <input name="txtFecha" value="<?= $expediente[5] ?>" type="date" class="input__text" required>
         </p>
         <p>
           <label for="">Telefono</label>
-          <input type="tel" class="input__text" placeholder="Ingrese su número">
+          <input name="txtTelefono" value="<?= $expediente[6] ?>" type="tel" class="input__text" placeholder="Ingrese su número">
         </p>
         <p>
           <label for="">Correo</label>
-          <input type="email" class="input__text" placeholder="Ingrese su correo">
+          <input name="txtEmail" value="<?= $expediente[7] ?>" type="email" class="input__text" placeholder="Ingrese su correo">
         </p>
         <p>
           <label for="">Departamento</label>
-          <select class="input__text" name="select">
-          <option value="value1">Zacapa</option>
+          <select name="cbDepartamento" class="input__text" name="select">
+          
+         <?php
+
+        while($row = mysqli_fetch_array($ejecutarD)){
+
+        ?>
+        <option value="<?php echo $row[0]; ?>"><?php echo $row[1]; ?></option>
+        <?php }  ?>
+
+
           </select>
         </p>
         <p>
           <label for="">Municipio</label>
-          <select class="input__text" name="select">
-          <option value="value1">San Diego</option>
+          <select name="cbMunicipio" class="input__text" name="select">
+
+          <?php
+
+            require('../controlador/conexion.php');
+
+             $sql = "select id_municipio, nombre FROM municipio ORDER BY nombre ASC";
+             $ejecutarM = mysqli_query($conexion, $sql);
+
+             while($rowM = mysqli_fetch_array($ejecutarM)){
+
+  
+
+             ?>
+             <option value="<?php echo $rowM[0]; ?>"><?php echo $rowM[1]; ?></option>
+             <?php }  ?>
+     
           </select>
         </p>
         <p>
           <label for="">Dirección</label>
-          <input type="text" class="input__text" placeholder="Ingrese su direccion">
+          <input name="txtDireccion" value="<?= $expediente[8] ?>" type="text" class="input__text" placeholder="Ingrese su direccion">
         </p>
         <p>
           <label for="">No. Expediente</label>
-          <input type="text" class="input__text" placeholder="1001">
+          <input name="txtCorrelativo" value="<?= $expediente[2] ?>" type="number" class="input__text" placeholder="Numero Correlativo">
         </p>
         <p>
         </p>    
         <p>
         </p>
         <br>
+
+        <input type="hidden" name="txtIdExpediente" value="<?= $expediente[0] ?>">
         <div class="btn__group">
 				<a href="expediente.php" class="btn btn__danger">Regresar</a>
-				<input type="submit" name="editar" value="Editar" class="btn btn__primary">
+				<input type="submit" name="actualizarExpediente" value="Editar" class="btn btn__primary">
 			</div>
             </form>
             </div>

@@ -2,26 +2,26 @@
 session_start();
 if (isset($_REQUEST['registrarExpediente'])) {
     include('conexion.php');
-    $dpi = $_POST['dpi'];
-    $nombre = $_POST['nombre'];
-    $apellido = $_POST['apellido'];
-    $fecha = $_POST['fecha'];
-    $telefono = $_POST['telefono'];
-    $correo = $_POST['correo'];
+    $dpi = $_POST['txtDpi'];
+    $nombre = $_POST['txtNombres'];
+    $apellido = $_POST['txtApellidos'];
+    $fecha = $_POST['txtFecha'];
+    $telefono = $_POST['txtTelefono'];
+    $correo = $_POST['txtEmail'];
 
-    $municipio = $_POST['select_municipio'];
-    $departamento = $_POST['select_departamento'];
-    $direccion = $_POST['direccion'];
+    $municipio = $_POST['cbMunicipio'];
+    $departamento = $_POST['cbDepartamento'];
+    $direccion = $_POST['txtDireccion'];
 
-    $expediente = $_POST['expediente'];
+    $expediente = $_POST['txtExpediente'];
 
     //para que funcione el crud para mientras
     $id_user = $_SESSION['id_usuario'];
-    $id_municipio = 1;
+    
 
 
         $sql = "INSERT INTO expediente (correlativo_exp, nombre, apellido, fecha_nacimiento, telefono, correo, direccion, id_municipio, id_usuario)
-         VALUES ('$expediente', '$nombre', '$apellido', '$fecha', '$telefono', '$correo', '$direccion', '$id_municipio', '$id_user')";
+         VALUES ('$expediente', '$nombre', '$apellido', '$fecha', '$telefono', '$correo', '$direccion', '$municipio', '$id_user')";
         if ($conexion->query($sql) === true) {            
             header("Location: ../vistas/expediente.php");
             echo "Datos insertados...";
@@ -33,35 +33,35 @@ if (isset($_REQUEST['registrarExpediente'])) {
 }
 
 
-if (isset($_REQUEST['actualizar'])) {
+if (isset($_REQUEST['actualizarExpediente'])) {
 
     include('conexion.php');
 
-    $id = $_REQUEST['id_expediente'];
-     $dpi = $_POST['dpi'];
-    $nombre = $_POST['nombre'];
-    $apellido = $_POST['apellido'];
-    $fecha = $_POST['fecha'];
+    $id = $_REQUEST['txtIdExpediente'];
+     $dpi = $_POST['txtDpi'];
+    $nombre = $_POST['txtNombres'];
+    $apellido = $_POST['txtApellidos'];
+    $fecha = $_POST['txtFecha'];
     
-    $telefono = $_POST['telefono'];
-    $correo = $_POST['correo'];
+    $telefono = $_POST['txtTelefono'];
+    $correo = $_POST['txtEmail'];
 
-    $municipio = $_POST['select_municipio'];
-    $departamento = $_POST['select_departamento'];
-    $direccion = $_POST['direccion'];
+    $municipio = $_POST['cbMunicipio'];
+   // $departamento = $_POST['cbDepartamento'];
+    $direccion = $_POST['txtDireccion'];
 
-    $expediente = $_POST['correlativo_exp'];
+    $expediente = $_POST['txtCorrelativo'];
 
     //para que funcione el crud para mientras
     $id_user = $_SESSION['id_usuario'];
-    $id_municipio = 1;
+    
 
+    $sql = "UPDATE expediente SET correlativo_exp='$expediente', dpi='$dpi', nombre='$nombre', apellido='$apellido', fecha_nacimiento='$fecha', correo='$correo', direccion='$direccion', id_municipio='$municipio', id_usuario='$id_user' WHERE id_expediente='$id'";
     
-    $sql = "UPDATE expediente SET correlativo_exp='$expediente', nombre='$nombre', apellido='$apellido', fecha_nacimiento='$fecha', correo='$correo', direccion='$direccion', id_municipio='$id_municipio', id_usuario='$id_user' WHERE id_expediente='$id'";
-    
-    if ($conexion->query($sql) === true) {            
+    if ($conexion->query($sql) === true) { 
+        echo "<script>alert('Registro actualizado exitosamente'); window.history.go(-1);</script>";            
         header("Location: ../vistas/expediente.php");
-        echo "Datos Actualizados...";
+        
     } else{
         die("Error algo salio mal: " . $conexion->error);
     }

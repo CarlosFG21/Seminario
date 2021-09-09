@@ -1,46 +1,70 @@
 <?php
+//departamento
   require('../controlador/conexion.php');
 
   $sql = "select id_departamento, nombre FROM departamento ORDER BY nombre ASC";
   $ejecutar = mysqli_query($conexion, $sql);
 
+  //cargar ultimo ID de expediente
+
+
 ?>
+
+<?php 
+include('../controlador/conexion.php');
+$expediente = null;
+$sql2 = "SELECT MAX(correlativo_exp) max_correlativo_exp FROM expediente";
+$ejecutar2 = mysqli_query($conexion, $sql2);
+while($fila = mysqli_fetch_row($ejecutar2)){
+    $expediente = $fila;
+    
+    break;
+}
+
+
+if ( $expediente == null){
+    $expediente = 1000;
+}
+$expediente[0] = $expediente[0] + 1;
+
+?>
+
+
+
 
 
 <!DOCTYPE html>
 <html lang="en">
 
 <head>
+    
     <title>Centro de Salud</title>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1">
     <title>Admin</title>
+
+    
+    <script src="//ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
     <link rel="stylesheet" href="https://maxst.icons8.com/vue-static/landings/line-awesome/line-awesome/1.3.0/css/line-awesome.min.css">
     <link rel="stylesheet" href="../css/index.css">
     <link rel="stylesheet" href="../css/expediente_ingreso.css">
 
-    <script scr="../js/jquery-3.6.0.min.js"></script>
+  
 
     <script language="javascript">
-    
-       $(document).ready(function(){
-            $("#cbDepartamento").change(function (){
+			$(document).ready(function(){
+				$("#cbDepartamento").change(function () { 		
+					$("#cbDepartamento option:selected").each(function () {
+						id_departamento = $(this).val();
+						$.post("../controlador/getMunicipio.php", { id_departamento: id_departamento }, function(data){
+							$("#cbMunicipio").html(data);
+						});            
+					});
+				})
+			});
+		</script>
 
-                $("cbDepartamento option:selected").each(function(){
-                    id_departamento = $(this).val();
-                    $.post("../controlador/getMunicipio.php", { id_departamento: id_departamento
-                    }, function(data){
-                        $("#cbMunicipio").html(data);
-                
-                    });
-                });
-
-            });
-        });
-
-
-    </script>
 
    
 </head>
@@ -125,34 +149,34 @@
             <br>
 
 
-            <form name="" id="" method="POST" action=""> 
+            <form name="" id="" method="POST" action="../controlador/BDExpediente.php"> 
             <p>
             <label for="">DPI</label>
-            <input type="text" class="input__text" placeholder="Ingrese su dpi">
+            <input name="txtDpi" type="number" class="input__text" placeholder="Ingrese Documento Personal de Identificación">
             </p>
            <p>
-           <label for="">Nombre</label>
-           <input type="text" class="input__text" placeholder="Ingresa su nombre">
+           <label for="">Nombres</label>
+           <input name="txtNombres" type="text" class="input__text" placeholder="Ingrese los nombres" required>
            </p>
            <p>
-           <label for="">Apellido</label>
-           <input type="text" class="input__text" placeholder="Ingreso su apellido">
+           <label for="">Apellidos</label>
+           <input name="txtApellidos" type="text" class="input__text" placeholder="Ingrese los apellidos" required>
            </p>
         <p>
           <label for="">Fecha de nacimiento</label>
-          <input type="date" class="input__text">
+          <input name="txtFecha" type="date" class="input__text" required>
         </p>
         <p>
           <label for="">Telefono</label>
-          <input type="tel" class="input__text" placeholder="Ingrese su número">
+          <input name="txtTelefono" type="tel" class="input__text" placeholder="Ingrese número de teléfono">
         </p>
         <p>
           <label for="">Correo</label>
-          <input type="email" class="input__text" placeholder="Ingrese su correo">
+          <input name="txtEmail" type="email" class="input__text" placeholder="Ingrese correo">
         </p>
         <p>
           <label for="">Departamento</label>
-          <select class="input__text" name="cbDepartamento" id="cbDepartamento">
+          <select class="input__text" name="cbDepartamento" id="cbDepartamento" required>
           <option value="value1">Seleccione</option>
 
           <?php
@@ -166,25 +190,21 @@
 
           
 
-
-
-
-
           </select>
         </p>
         <p>
           <label for="">Municipio</label>
-          <select class="input__text" name="cbMunicipio" id="cbMunicipio">
+          <select class="input__text" name="cbMunicipio" id="cbMunicipio" required>
           <option value="value1">Seleccione</option>
           </select>
         </p>
         <p>
           <label for="">Dirección</label>
-          <input type="text" class="input__text" placeholder="Ingrese su direccion">
+          <input name="txtDireccion" type="text" class="input__text" placeholder="Ingrese direccion">
         </p>
         <p>
           <label for="">No. Expediente</label>
-          <input type="text" class="input__text" placeholder="1001">
+          <input name="txtExpediente" value = "<?= $expediente[0] ?>" type="number" class="input__text" placeholder="Correlativo de expediente" required>
         </p>
         <p>
         </p>    
@@ -193,7 +213,7 @@
         <br>
         <div class="btn__group">
 				<a href="expediente.php" class="btn btn__danger">Regresar</a>
-				<input type="submit" name="guardar" value="Guardar" class="btn btn__primary">
+				<input type="submit" name="registrarExpediente" value="Guardar" class="btn btn__primary">
 			</div>
             </form>
             </div>

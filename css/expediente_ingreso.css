@@ -171,3 +171,27 @@ form .btn {
 ·classo {
     pad: -moz-element();
 }
+
+
+
+
+
+input[required] + label:after {
+	content: '*';
+	color: red;
+  }
+  div {
+	  display: flex;
+	  text-align: center;
+	  align-items: flex-start;
+  }
+  div input {
+    width: 100px;
+    height: 20px;
+	order: 2;
+  }
+  div label {
+    width: 100px;
+    height: 20px;
+	order: 1;
+  }
