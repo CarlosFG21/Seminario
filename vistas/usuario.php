@@ -50,11 +50,15 @@
                     <span>Medicamentos</span></a>
                 </li>
                 <li>
-                    <a href="municipio.php"><span class="las la-map"></span>
-                    <span>Municipio</span>
+                    <a href="ubicacion.php"><span class="las la-map"></span>
+                    <span>Ubicación</span>
                 </a>
                 </li>
-                
+                <li>
+                    <a href="puesto_salud.php"><span class="las la-clinic-medical"></span>
+                    <span>Puesto de salud</span>
+                </a>
+                </li>            
                 <li>
                     <a href="proveedor.php"><span class="las la-user-md"></span>
                     <span>Proveedor</span>
@@ -63,10 +67,6 @@
                 <li>
                     <a href=""><span class="las la-clipboard"></span>
                     <span>Reportes</span></a>
-                </li>
-                <li>
-                    <a href=""><span class="las la-search"></span>
-                    <span>Busqueda de expedientes</span></a>
                 </li>
                 <li>
                     <a href="" class="active"><span class="las la-users"></span>

@@ -38,7 +38,7 @@
                 </li>
                 <li>
                     <a href="municipio.php" class="active"><span class="las la-map"></span>
-                    <span>Municipio</span>
+                    <span>Ubicación</span>
                 </a>
                 </li>
                 <li>

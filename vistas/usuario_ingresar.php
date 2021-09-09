@@ -9,7 +9,7 @@
     <title>Admin</title>
     <link rel="stylesheet" href="https://maxst.icons8.com/vue-static/landings/line-awesome/line-awesome/1.3.0/css/line-awesome.min.css">
     <link rel="stylesheet" href="../css/index.css">
-    <link rel="stylesheet" href="../css/expediente_ingreso.css">
+    <link rel="stylesheet" href="../css/usuario_ingreso.css">
     
 </head>
 
@@ -37,8 +37,8 @@
                     <span>Medicamentos</span></a>
                 </li>
                 <li>
-                    <a href="municipio.php"><span class="las la-map"></span>
-                    <span>Municipio</span>
+                    <a href="ubicacion.php"><span class="las la-map"></span>
+                    <span>Ubicación</span>
                 </a>
                 </li>
                 <li>

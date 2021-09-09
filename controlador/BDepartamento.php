@@ -1,5 +1,9 @@
 <?php
 
+$nombre = "";
+$id = 0;
+$edit_state = false;
+
 if(isset($_REQUEST['registrar'])){
 include('conexion.php');
 $nombre = $_POST['txtdepartamento'];
@@ -22,9 +26,8 @@ if(isset($_POST['txtdepartamento'])){
 
 if(isset($_REQUEST['actualizar'])){
     include('conexion.php');
-    $id= $_POST['txtid_departamento'];
     $nombre = $_POST['txtdepartamento'];
-
+    $id = $_POST['txtid_departamento'];
     $sql = "UPDATE departamento SET nombre='$nombre' where id_departamento='$id'";
     if($conexion->query($sql)==true){
         header("Location: ../vistas/departamento.php");
@@ -32,7 +35,6 @@ if(isset($_REQUEST['actualizar'])){
     }else{
         die("Error algo salio mal: " . $conexion->error);
     }
-    
-}
+ }
 
 ?>
