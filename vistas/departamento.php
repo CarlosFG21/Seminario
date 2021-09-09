@@ -1,16 +1,16 @@
-<?php
-    include('../controlador/conexion.php');
-    $expediente = null;
-    $sql = "SELECT * FROM departamento where id_departamento = " . $_GET['id'];
-    $ejecutar = mysqli_query($conexion, $sql);
-    while($fila = mysqli_fetch_row($ejecutar)){
-        $puesto = $fila;
-        break;
-    }
+<?php 
+include('../controlador/conexion.php');
+include('../controlador/BDepartamento.php');
+if(isset($_GET['id'])){
+ $id = $_GET['id'];
+ $edit_state = true;
+ $sql = mysqli_query($conexion,"SELECT * FROM departamento WHERE id_departamento=$id");
+ $rec = mysqli_fetch_array($sql);
+ $nombre = $rec['nombre'];
+ $id = $rec['id_departamento'];
 
-    if ( $puesto == null){
-        header('Location: departamento.php');
-    }
+}
+
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -125,7 +125,7 @@
            </p>
            <p>
            <label for="">Departamento</label>
-           <input name="txtdepartamento" type="text" class="input__text" placeholder="Ingrese un departamento" value="<?= $puesto[1]?>">
+           <input name="txtdepartamento" type="text" class="input__text" placeholder="Ingrese un departamento" value="<?php echo $nombre;?>">
            </p>     
         <p>
         </p>    
@@ -133,9 +133,12 @@
         </p>
         <br>
         <div class="btn__group">
-        <input type="hidden" name="txtid_departamento" value="<?= $puesto[0] ?>">
+        <input type="hidden" name="txtid_departamento" value="<?php echo $id;?>">
+        <?php if ($edit_state == false): ?>
 				<input type="submit" name="registrar" value="Guardar" class="btn btn__primary">
+                <?php else: ?>
                 <input type="submit" name="actualizar" value="Editar" class="btn btn__primary">
+                <?php endif     ?>
 			</div>
             </form>
             <div class="card-body">
@@ -155,9 +158,9 @@
         echo '<tbody>';
         while($fila = mysqli_fetch_array($ejecutar)){
             echo '<tr>';
-            echo '<td>'.$fila[0].'</td>';
-            echo '<td>'.$fila[1].'</td>';
-            echo "<td><a href='departamento.php?id=$fila[0]' class='boton-editar'>Editar</a>
+            echo '<td>'.$fila['id_departamento'].'</td>';
+            echo '<td>'.$fila['nombre'].'</td>';
+            echo "<td><a href='departamento.php?id=$fila[id_departamento]' class='boton-editar'>Editar</a>
             <a href='../controlador/BDUsuario.php/eliminarUsuario.php?id=$fila[0]' class='boton-eliminar'>Eliminar</a></td>";
 
 

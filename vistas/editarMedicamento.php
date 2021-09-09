@@ -38,7 +38,7 @@
                 </li>
                 <li>
                     <a href=""><span class="las la-map"></span>
-                    <span>Municipio</span>
+                    <span>Ubicación</span>
                 </a>
                 </li>
                 <li>
@@ -109,14 +109,18 @@
           <input type="text" class="input__text" placeholder="Ingrese el numero de lote">
         </p>
         <p>
-          <label for="">Presentación</label>
+          <label for="">Cantidad</label>
+          <input type="text" class="input__text" placeholder="Ingrese el numero de lote">
+        </p>
+        <p>
+          <label for="">Concentración</label>
           <select class="input__text" name="select">
           <option value="value1">Buena</option>
           <option value="value1">Mala</option>
           </select>
         </p>
         <p>
-          <label for="">Concentración</label>
+          <label for="">Presentación</label>
           <select class="input__text" name="select">
           <option value="value1">Buena</option>
           <option value="value1">Mala</option>

@@ -94,7 +94,7 @@ $expediente[0] = $expediente[0] + 1;
                 </li>
                 <li>
                     <a href=""><span class="las la-map"></span>
-                    <span>Municipio</span>
+                    <span>Ubicación</span>
                 </a>
                 </li>
                 <li>
