@@ -16,6 +16,7 @@ if(isset($_GET['id'])){
 <html lang="en">
 
 <head>
+
     <title>Centro de Salud</title>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -26,16 +27,27 @@ if(isset($_GET['id'])){
     <link rel="stylesheet" href="../css/municipio_ingreso.css">
     <style>
         .boton-editar{
-            color: #FFF;
-            background-color: blue;
-            padding: 5px;
-        }
+            text-decoration: none;
+            padding: 10px;
+            font-weight: 600;
+            font-size: 14px;
+            color: #ffffff;
+            background-color: rgb(3, 113, 163);
+            border-radius: 6px;
+          }
+          
 
-        .boton-eliminar{
-            color: #FFF;
-            background-color: red;
-            padding: 5px;
-        }
+          .boton-eliminar{
+            text-decoration: none;
+            padding: 10px;
+            font-weight: 600;
+            font-size: 14px;
+            color: #ffffff;
+            background-color: #ff0000;
+            border-radius: 6px;
+            
+          }
+          
     </style>
     
 </head>
@@ -161,7 +173,7 @@ if(isset($_GET['id'])){
             echo '<td>'.$fila['id_departamento'].'</td>';
             echo '<td>'.$fila['nombre'].'</td>';
             echo "<td><a href='departamento.php?id=$fila[id_departamento]' class='boton-editar'>Editar</a>
-            <a href='../controlador/BDUsuario.php/eliminarUsuario.php?id=$fila[0]' class='boton-eliminar'>Eliminar</a></td>";
+            <a href='../controlador/proceso_eliminarDepartamento.php?id=$fila[0]' class='boton-eliminar'>Eliminar</a></td>";
 
 
             echo '</tr>';
@@ -177,7 +189,7 @@ if(isset($_GET['id'])){
             </div>
             </div>
     </main>
-
+    <script src="../js/proceso_eliminar.js"></script>
     </body>
 
 </html>

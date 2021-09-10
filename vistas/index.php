@@ -85,7 +85,13 @@
 
                 <div class="card-single">
                     <div>
-                        <h1>5</h1>
+                    <?php
+                    include('../controlador/conexion.php');
+                    $sql = "SELECT id_usuario FROM usuario ORDER BY estado=1";
+                    $sql_run = mysqli_query($conexion,$sql);
+                    $row = mysqli_num_rows($sql_run);
+                    echo '<h1>'.$row.'</h1>';
+                    ?>
                         <span>Menejo de usuarios</span>
                     </div>
                     <div>
@@ -95,7 +101,13 @@
 
                 <div class="card-single">
                     <div>
-                        <h1>12</h1>
+                    <?php
+                    include('../controlador/conexion.php');
+                    $sqll = "SELECT id_expediente FROM expediente ORDER BY estado=1";
+                    $sql_runn = mysqli_query($conexion,$sqll);
+                    $roww = mysqli_num_rows($sql_runn);
+                    echo '<h1>'.$roww.'</h1>';
+                    ?>
                         <span>Menejo de expedientes</span>
                     </div>
                     <div>
@@ -115,11 +127,17 @@
 
                 <div class="card-single">
                     <div>
-                        <h1>2</h1>
-                        <span>Nuevas consultas</span>
+                    <?php
+                    include('../controlador/conexion.php');
+                    $sqll = "SELECT id_proveedor FROM proveedor ORDER BY estado=1";
+                    $sql_runn = mysqli_query($conexion,$sqll);
+                    $roww = mysqli_num_rows($sql_runn);
+                    echo '<h1>'.$roww.'</h1>';
+                    ?>
+                        <span>Manejo de proveedores</span>
                     </div>
                     <div>
-                        <span class="lab la-wpforms"></span>
+                        <span class="las la-user-md"></span>
                     </div>
                 </div>
             </div>

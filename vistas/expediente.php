@@ -15,16 +15,27 @@
     <link rel="stylesheet" href="../css/expediente.css">
     <style>
         .boton-editar{
-            color: #FFF;
-            background-color: blue;
-            padding: 5px;
-        }
+            text-decoration: none;
+            padding: 10px;
+            font-weight: 600;
+            font-size: 14px;
+            color: #ffffff;
+            background-color: rgb(3, 113, 163);
+            border-radius: 6px;
+          }
+          
 
-        .boton-eliminar{
-            color: #FFF;
-            background-color: red;
-            padding: 5px;
-        }
+          .boton-eliminar{
+            text-decoration: none;
+            padding: 10px;
+            font-weight: 600;
+            font-size: 14px;
+            color: #ffffff;
+            background-color: #ff0000;
+            border-radius: 6px;
+            
+          }
+          
     </style>
 </head>
 

@@ -2,6 +2,7 @@
 <html lang="en">
 
 <head>
+<script scr="../js/jquery-3.6.0.min.js"></script>
     <title>Centro de Salud</title>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
