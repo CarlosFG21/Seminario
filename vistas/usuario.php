@@ -2,6 +2,7 @@
 <html lang="en">
 
 <head>
+<script scr="../js/jquery-3.6.0.min.js"></script>
     <title>Centro de Salud</title>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -12,16 +13,27 @@
     <link rel="stylesheet" href="../css/usuarios.css">
     <style>
         .boton-editar{
-            color: #FFF;
-            background-color: blue;
-            padding: 5px;
-        }
+            text-decoration: none;
+            padding: 10px;
+            font-weight: 600;
+            font-size: 14px;
+            color: #ffffff;
+            background-color: rgb(3, 113, 163);
+            border-radius: 6px;
+          }
+          
 
-        .boton-eliminar{
-            color: #FFF;
-            background-color: red;
-            padding: 5px;
-        }
+          .boton-eliminar{
+            text-decoration: none;
+            padding: 10px;
+            font-weight: 600;
+            font-size: 14px;
+            color: #ffffff;
+            background-color: #ff0000;
+            border-radius: 6px;
+            
+          }
+          
     </style>
     
 </head>
@@ -133,7 +145,7 @@
             echo '<td>'.$fila[3].'</td>';
             echo '<td>'.$fila[4].'</td>';
             echo "<td><a href='editarUsuario.php?id=$fila[0]' class='boton-editar'>Editar</a>
-            <a href='../controlador/BDUsuario.php/eliminarUsuario.php?id=$fila[0]' class='boton-eliminar'>Eliminar</a></td>";
+            <a href='../controlador/proceso_eliminarUsuario.php?id=$fila[0]' class='boton-eliminar'>Eliminar</a></td>";
 
 
             echo '</tr>';
@@ -148,7 +160,7 @@
             </div>
         </div>
     </main>
-
+    <script src="../js/proceso_eliminar.js"></script>
     </body>
 
 </html>
