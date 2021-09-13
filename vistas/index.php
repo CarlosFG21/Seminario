@@ -51,7 +51,7 @@
                 </a>
                 </li>
                 <li>
-                    <a href=""><span class="las la-clipboard"></span>
+                    <a href="reporte.php"><span class="las la-clipboard"></span>
                     <span>Reportes</span></a>
                 </li>
                 

@@ -16,7 +16,7 @@
 	
 	if (!$fila) {
         ?><script> alert('Usuario o contraseña invalido');
-		//location.href = "../vistas/login.php";</script><?php
+		location.href = "../vistas/login.php";</script><?php
     } else {
         if (password_verify($contrasena, $fila['contrasena'])) {
 			$_SESSION['nombre'] = $fila['nombre']." ".$fila['apellido'];
