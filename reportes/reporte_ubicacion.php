@@ -10,7 +10,7 @@ function Header()
     $this->Image('centro1.jpg',10,6);
     $this->SetFont('Arial','B',15);
     $this->Cell(55);
-    $this->Cell(100,25,'Reporte de Expedientes',0,0,'C');
+    $this->Cell(100,25,'Reporte de Ubicaciones',0,0,'C');
     $this->Ln(30);
 }
 
@@ -27,7 +27,7 @@ function Footer()
 }
 
 include('../controlador/conexion.php');
-$consulta = "SELECT * FROM expediente WHERE estado=1";
+$consulta = "SELECT municipio.id_municipio,departamento.nombre, municipio.nombre_municipio FROM departamento INNER JOIN municipio ON departamento.id_departamento=municipio.id_departamento where municipio.estado=1";
 $resultado = $conexion->query($consulta);
 
 
@@ -37,17 +37,16 @@ $pdf->AliasNbPages();
 $pdf->AddPage();
 
 $pdf->setFillColor(232, 232, 232);
-$pdf->Cell(40,6,'No.Expediente',1,0,'C',1);
-$pdf->Cell(50,6,'Nombre',1,0,'C',1);
-$pdf->Cell(50,6,'Apellido',1,0,'C',1);
-$pdf->Cell(50,6,utf8_decode('Teléfono'),1,1,'C',1);
+$pdf->Cell(50,6,'ID',1,0,'C',1);
+$pdf->Cell(70,6,'Departamento',1,0,'C',1);
+$pdf->Cell(70,6,'Municipio',1,1,'C',1);
 $pdf->SetFont('Arial','B',12);
 
 while ($row=$resultado->fetch_assoc()) {
-	$pdf->Cell(40,25,$row['correlativo_exp'],0,0,'C');
-    $pdf->Cell(50,25,utf8_decode($row['nombre']), 0, 0, 'C');
-    $pdf->Cell(50,25,utf8_decode($row['apellido']), 0, 0, 'C');
-	$pdf->Cell(50,25,$row['telefono'], 0, 1, 'C');
+	$pdf->Cell(50,25,$row['id_municipio'],0,0,'C');
+    $pdf->Cell(70,25,utf8_decode($row['nombre']), 0, 0, 'C');
+    $pdf->Cell(70,25,utf8_decode($row['nombre_municipio']), 0, 1, 'C');
+	
 
 } 
 $pdf->Output();
