@@ -20,8 +20,8 @@ if (isset($_REQUEST['registrarExpediente'])) {
     
 
 
-        $sql = "INSERT INTO expediente (correlativo_exp, nombre, apellido, fecha_nacimiento, telefono, correo, direccion, id_municipio, id_usuario)
-         VALUES ('$expediente', '$nombre', '$apellido', '$fecha', '$telefono', '$correo', '$direccion', '$municipio', '$id_user')";
+        $sql = "INSERT INTO expediente (correlativo_exp, dpi, nombre, apellido, fecha_nacimiento, telefono, correo, direccion, id_municipio, id_usuario)
+         VALUES ('$expediente', '$dpi', '$nombre', '$apellido', '$fecha', '$telefono', '$correo', '$direccion', '$municipio', '$id_user')";
         if ($conexion->query($sql) === true) {            
             header("Location: ../vistas/expediente.php");
             echo "Datos insertados...";

@@ -1,3 +1,24 @@
+<?php
+//departamento
+  require('../controlador/conexion.php');
+
+  $sqlConcentracion = "select id_concentracion, descripcion FROM concentracion ORDER BY descripcion ASC";
+  $ejecutarConcentracion = mysqli_query($conexion, $sqlConcentracion);
+  //cargar ultimo ID de expediente
+
+  $sqlPresentacion = "select id_presentacion, descripcion FROM presentacion ORDER BY descripcion ASC";
+  $ejecutarPresentacion = mysqli_query($conexion, $sqlPresentacion);
+  //cargar ultimo ID de expediente
+?>
+
+<?php
+  // Obteniendo la fecha actual del sistema con PHP
+  $fechaActual = date('d-m-Y');
+  
+
+?>
+
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -91,48 +112,57 @@
 
             <div class="card-body">
             <br>
-            <form name="" id="" method="POST" action=""> 
+            <form name="" id="" method="POST" action="../controlador/BDMedicamento.php"> 
             <p>
             <label for="">Nombre del medicamento</label>
-            <input type="text" class="input__text" placeholder="Ingrese el nombre del medicamento">
+            <input name="txtNombre" type="text" class="input__text" placeholder="Ingrese el nombre del medicamento">
             </p>
            <p>
            <label for="">Descripcion del medicamento</label>
-           <input type="text" class="input__text" placeholder="Ingresa una descripción del medicamento">
+           <input name="txtDescripcion" type="text" class="input__text" placeholder="Ingresa una descripción del medicamento" value="<?= $fechaActual ?>">
            </p>
-           <p>
-           <label for="">Fecha de vencimiento</label>
-           <input type="date" class="input__text">
-           </p>
+           
         <p>
           <label for="">Numero de lote</label>
-          <input type="text" class="input__text" placeholder="Ingrese el numero de lote">
+          <input name="txtLote" type="number" class="input__text" placeholder="Ingrese el numero de lote" value="">
         </p>
-        <p>
-          <label for="">Cantidad</label>
-          <input type="text" class="input__text" placeholder="Ingrese el numero de lote">
-        </p>
+        
         <p>
           <label for="">Concentración</label>
-          <select class="input__text" name="select">
-          <option value="value1">Buena</option>
-          <option value="value1">Mala</option>
+          <select class="input__text" name="cbConcentracion">
+              
+          <?php
+          while($rowC = mysqli_fetch_array($ejecutarConcentracion)){
+
+          
+
+          ?>
+            <option value="<?php echo $rowC[0]; ?>"><?php echo $rowC[1]; ?></option>
+          <?php }  ?>
+         
+
+
           </select>
         </p>
         <p>
           <label for="">Presentación</label>
-          <select class="input__text" name="select">
-          <option value="value1">Buena</option>
-          <option value="value1">Mala</option>
+          <select class="input__text" name="cbPresentacion">
+          
+
+          <?php
+          while($rowP = mysqli_fetch_array($ejecutarPresentacion)){
+
+          ?>
+            <option value="<?php echo $rowP[0]; ?>"><?php echo $rowP[1]; ?></option>
+          <?php }  ?>
+
+
           </select>
         </p>
-        <p>
-          <label for="">Fecha de ingreso</label>
-          <input type="date" class="input__text">
-        </p>
+     
         <p>
           <label for="">Stock</label>
-          <input type="text" class="input__text" placeholder="Ingrese el stock">
+          <input name="txtStock" type="number" class="input__text" placeholder="Ingrese el stock" value="0">
         </p>
         <p>
         </p>    
@@ -141,7 +171,7 @@
         <br>
         <div class="btn__group">
 				<a href="medicamento.php" class="btn btn__danger">Regresar</a>
-				<input type="submit" name="guardar" value="Guardar" class="btn btn__primary">
+				<input type="submit" name="registrarMedicamento" value="Guardar" class="btn btn__primary">
 			</div>
             </form>
             </div>
