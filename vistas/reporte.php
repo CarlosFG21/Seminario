@@ -92,22 +92,22 @@
             <br>
             <form name="" id="" method="POST" action=""> 
            <p>
-           <a type="submit" href="puesto_ingresar.php" class="las la-folder-open  " target="_blank" id="botonr">  Reporte de Expedientes</a> 
+           <a type="submit" href="../reportes/reporte_expediente.php" class="las la-folder-open  " target="_blank" id="botonr">  Reporte de Expedientes</a> 
            </p>
            <p>
            <a type="submit" href="puesto_ingresar.php" class="las la-medkit  " target="_blank" id="botonr">  Reporte de Medicamentos</a>
            </p>
            <p>
-           <a type="submit" href="puesto_ingresar.php" class="las la-clinic-medical  " target="_blank" id="botonr">  Reporte de Puestos de Salud</a>
+           <a type="submit" href="../reportes/reporte_puesto.php" class="las la-clinic-medical  " target="_blank" id="botonr">  Reporte de Puestos de Salud</a>
            </p>
            <p>
-           <a type="submit" href="puesto_ingresar.php" class="las la-user-md  " target="_blank" id="botonr">  Reporte de Proveedores</a>
+           <a type="submit" href="../reportes/reporte_proveedor.php" class="las la-user-md  " target="_blank" id="botonr">  Reporte de Proveedores</a>
            </p>
            <p>
-           <a type="submit" href="puesto_ingresar.php" class=" las la-users  " target="_blank" id="botonr">  Reporte de Usuarios</a>
+           <a type="submit" href="../reportes/reporte_usuario.php" class=" las la-users  " target="_blank" id="botonr">  Reporte de Usuarios</a>
            </p>
            <p>
-           <a type="submit" href="../reportes/reporte_expediente.php" class="las la-map  " target="_blank" id="botonr">  Reporte de Ubicación </a>
+           <a type="submit" href="../reportes/reporte_ubicacion.php" class="las la-map  " target="_blank" id="botonr">  Reporte de Ubicación </a>
            </p>
         <p>
         </p>    
