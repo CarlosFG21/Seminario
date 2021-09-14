@@ -2,6 +2,7 @@
 <html lang="en">
 
 <head>
+    <script scr="../js/jquery-3.6.0.min.js"></script>
     <title>Centro de Salud</title>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -129,34 +130,35 @@
                                 <table width="100%">
                                     <thead>
                                         <tr>
-                                            <td>Nombre</td>
+                                            <td>ID</td>
+                                            <td>Medicamento</td>
                                             <td>Descripcion</td>
-                                            <td>Estado</td>
+                                            <td>Concentracion</td>
+                                            <td>Presentacion</td>
+                                        
+                                            <td>Funciones</td>
                                         </tr>
                                     </thead>
-                                    <tbody>
-                                        <tr>
-                                            <td>Buprenor</td>
-                                            <td>Tableta sublingual</td>
-                                            <td>
-                                                <span class="status green"></span> Bueno
-                                            </td>
-                                        </tr>
-                                        <tr>
-                                            <td>Tramadol</td>
-                                            <td>Solución inyectable</td>
-                                            <td>
-                                                <span class="status red"></span> Vencido
-                                            </td>
-                                        </tr>
-                                        <tr>
-                                            <td>Oxicodona</td>
-                                            <td>Tableta de liberación</td>
-                                            <td>
-                                                <span class="status yellow"></span> Por Vencer
-                                            </td>
-                                        </tr>
-                                        </tr>
+                                    <?php
+        include('../controlador/conexion.php');
+        $sql = "SELECT id_medicamento, nombre, descripcion, concentracion, id_presentacion FROM medicamento where estado=1";
+        $ejecutar = mysqli_query($conexion, $sql);
+        echo '<tbody>';
+        while($fila = mysqli_fetch_array($ejecutar)){
+            echo '<tr>';
+            echo '<td>'.$fila[0].'</td>';
+            echo '<td>'.$fila[1].'</td>';
+            echo '<td>'.$fila[2].'</td>';
+            echo '<td>'.$fila[3].'</td>';
+            echo '<td>'.$fila[4].'</td>';
+           
+            echo "<td><a href='editarMedicamento.php?id=$fila[0]' class='boton-editar'>Editar</a>
+            <a href='../controlador/proceso_eliminarMedicamento.php?id=$fila[0]' class='boton-eliminar'>Eliminar</a></td>";
+
+
+            echo '</tr>';
+        }
+        ?>
                                     </tbody>
                                 </table>
                             </div>
@@ -167,6 +169,7 @@
 
     </main>
 
+    <script src="../js/proceso_eliminar.js"></script>
     </body>
 
 </html>
