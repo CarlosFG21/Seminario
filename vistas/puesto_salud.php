@@ -114,32 +114,33 @@
                 <div class="card-header">
                     <h3>Puesto de salud</h3>
                     <div class="encabezado">
-                    <input type="text" name="" id="" placeholder="Buscar" class="input__text">
+                    <input type="text" id="myInput" onkeyup="myFunction()" placeholder="Buscar" class="input__text">
                     <a type="submit" href="puesto_ingresar.php" name="" id="" class="boton">Ingresar nuevo puesto de salud</a>
                     </div> 
                 </div>
                 
                 <div class="card-body">
                     <div class="table-responsive">
-                        <table width="100%">
+                        <table id="myTable" width="100%">
                             <thead>
-                                <tr>
-                                    <td>ID</td>
-                                    <td>Nombre</td>
-                                    <td>Dirección</td>
-                                    <td>Funciones</td>
+                                <tr class="header">
+                                    <th>ID</th>
+                                    <th>Nombre</th>
+                                    <th>Dirección</th>
+                                    <th align=left>Funciones</th>
                                 </tr>
                             </thead>
+                            <tbody class="buscartabla">
                            <?php
                            include('../controlador/conexion.php');
                            $sql = "SELECT * FROM extencion_centro where estado=1";
                            $ejecutar = mysqli_query($conexion,$sql);
-                           echo '</tbody>';
+                           
                            while($fila=mysqli_fetch_array($ejecutar)){
                                echo '<tr>';
-                               echo '<td>'.$fila[0].'</td>';
-                               echo '<td>'.$fila[1].'</td>';
-                               echo '<td>'.$fila[2].'</td>';
+                               echo '<td><p align=center>'.$fila[0].'</p></td>';
+                               echo '<td><p align=center>'.$fila[1].'</p></td>';
+                               echo '<td><p align=center>'.$fila[2].'</p></td>';
                                echo "<td><a href='editarPuesto.php?id=$fila[0]' class='boton-editar'>Editar</a>
                                <a href='../controlador/proceso_eliminarPuesto.php?id=$fila[0]' class='boton-eliminar'>Eliminar</a></td>";
 
@@ -156,6 +157,7 @@
         </div>
     </main>
     <script src="../js/proceso_eliminar.js"></script>
+    <script src="../js/buscador_puesto.js"></script>
     </body>
 
 </html>
