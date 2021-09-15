@@ -77,7 +77,7 @@
                 </a>
                 </li>
                 <li>
-                    <a href=""><span class="las la-clipboard"></span>
+                    <a href="reporte.php"><span class="las la-clipboard"></span>
                     <span>Reportes</span></a>
                 </li>
                 <li>
@@ -113,37 +113,37 @@
                 <div class="card-header">
                     <h3>Usuarios</h3>
                     <div class="encabezado">
-                    <input type="text" name="" id="" placeholder="Buscar" class="input__text">
+                    <input type="text" id="myInput" onkeyup="myFunction()" placeholder="Buscar" class="input__text">
                     <a type="submit" href="usuario_ingresar.php" name="" id="" class="boton">Ingresar nuevo usuario</a>
                     </div> 
                 </div>
                 
                 <div class="card-body">
                     <div class="table-responsive">
-                        <table width="100%">
+                        <table id="myTable" width="100%">
                             <thead>
                                 <tr>
-                                    <td>ID</td>
-                                    <td>Nombre</td>
-                                    <td>Apellido</td>
-                                    <td>Nickname</td>
-                                    <td>Permiso</td>
-                                    <td>Funciones</td>
+                                    <th>ID</th>
+                                    <th>Nombre</th>
+                                    <th>Apellido</th>
+                                    <th>Nickname</th>
+                                    <th>Permiso</th>
+                                    <th align=left>Funciones</th>
                                 </tr>
                             </thead>
-
+                            <tbody class="buscartabla">
                             <?php
         include('../controlador/conexion.php');
         $sql = "SELECT * FROM usuario where estado=1";
         $ejecutar = mysqli_query($conexion, $sql);
-        echo '<tbody>';
+       
         while($fila = mysqli_fetch_array($ejecutar)){
             echo '<tr>';
-            echo '<td>'.$fila[0].'</td>';
-            echo '<td>'.$fila[1].'</td>';
-            echo '<td>'.$fila[2].'</td>';
-            echo '<td>'.$fila[3].'</td>';
-            echo '<td>'.$fila[4].'</td>';
+            echo '<td><p align=center>'.$fila[0].'</p></td>';
+            echo '<td><p align=center>'.$fila[1].'</p></td>';
+            echo '<td><p align=center>'.$fila[2].'</p></td>';
+            echo '<td><p align=center>'.$fila[3].'</p></td>';
+            echo '<td><p align=center>'.$fila[4].'</p></td>';
             echo "<td><a href='editarUsuario.php?id=$fila[0]' class='boton-editar'>Editar</a>
             <a href='../controlador/proceso_eliminarUsuario.php?id=$fila[0]' class='boton-eliminar'>Eliminar</a></td>";
 
@@ -161,6 +161,7 @@
         </div>
     </main>
     <script src="../js/proceso_eliminar.js"></script>
+    <script src="../js/buscador.js"></script>
     </body>
 
 </html>

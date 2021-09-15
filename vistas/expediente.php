@@ -3,7 +3,7 @@
 
 <head>
     <script scr="../js/jquery-3.6.0.min.js"></script>
-
+    <script src = " http://code.jquery.com/jquery-2.1.4.min.js " type=" text/javascript"></script>
 
     <title>Centro de Salud</title>
     <meta charset="UTF-8">
@@ -78,7 +78,7 @@
                 </a>
                 </li>
                 <li>
-                    <a href=""><span class="las la-clipboard"></span>
+                    <a href="reporte.php"><span class="las la-clipboard"></span>
                     <span>Reportes</span></a>
                 </li>
                 
@@ -133,39 +133,38 @@
                         <div class="card-header">
                             <h3>Expedientes</h3>
                             <div class="encabezado">
-                            <input type="text" name="" id="" placeholder="Buscar" class="input__text">
+                            <input type="text"  id="myInput" onkeyup="todos()" placeholder="Buscar" class="input__text">
                             <a type="submit" href="expediente_ingresar.php" name="" id="" class="boton">Ingresar nuevo expediente</a>
                             </div> 
                         </div>
-                        
                         <div class="card-body">
                             <div class="table-responsive">
-                                <table width="100%">
+                                <table  id="myTable"  width="100%">
                                     <thead>
                                         <tr>
-                                            <td>ID</td>
-                                            <td>No. Expediente</td>
-                                            <td>Nombres</td>
-                                            <td>Apellidos</td>
-                                            <td>Fecha nacimiento</td>
-                                            <td>Telefono</td>
-                                            <td>Funciones</td>
+                                            <th>ID</td>
+                                            <th>No. Expediente</td>
+                                            <th>Nombres</td>
+                                            <th>Apellidos</td>
+                                            <th>Fecha nacimiento</td>
+                                            <th>Telefono</td>
+                                            <th align=left>Funciones</td>
                                         </tr>
                                     </thead>
-                                    
+                                    <tbody class="buscar">
                                     <?php
         include('../controlador/conexion.php');
-        $sql = "SELECT id_expediente, correlativo_exp, nombre, apellido, fecha_nacimiento, telefono FROM expediente where estado=1";
+        $sql = "SELECT * FROM expediente where estado=1";
         $ejecutar = mysqli_query($conexion, $sql);
-        echo '<tbody>';
+        
         while($fila = mysqli_fetch_array($ejecutar)){
             echo '<tr>';
-            echo '<td>'.$fila[0].'</td>';
-            echo '<td>'.$fila[1].'</td>';
-            echo '<td>'.$fila[2].'</td>';
-            echo '<td>'.$fila[3].'</td>';
-            echo '<td>'.$fila[4].'</td>';
-            echo '<td>'.$fila[5].'</td>';
+            echo '<td><p align=center>'.$fila[0].'</p></td>';
+            echo '<td><p align=center>'.$fila[2].'</p></td>';
+            echo '<td><p align=center>'.$fila[3].'</p></td>';
+            echo '<td><p align=center>'.$fila[4].'</p></td>';
+            echo '<td><p align=center>'.$fila[5].'</p></td>';
+            echo '<td><p align=center>'.$fila[6].'</p></td>';
             echo "<td><a href='editarExpediente.php?id=$fila[0]' class='boton-editar'>Editar</a>
             <a href='../controlador/proceso_eliminarExpediente.php?id=$fila[0]' class='boton-eliminar'>Eliminar</a></td>";
 
@@ -184,8 +183,9 @@
     </main>
 
     <script src="../js/proceso_eliminarExpediente.js"></script>
-   
-
+    <script src="../js/buscador_expediente_nombre.js"></script>
+    
+    
     </body>
 
 </html>

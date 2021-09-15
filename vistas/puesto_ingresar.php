@@ -93,11 +93,11 @@
             <form name="" id="" method="POST" action="../controlador/BDPuesto.php"> 
            <p>
            <label for="">Nombre</label>
-           <input name="txtnombre" type="text" class="input__text" placeholder="Ingrese un nombre">
+           <input name="txtnombre" type="text" class="input__text" placeholder="Ingrese un nombre" required>
            </p>
            <p>
            <label for="">Dirección</label>
-           <input name="txtdireccion" type="text" class="input__text" placeholder="Ingrese una dirección">
+           <input name="txtdireccion" type="text" class="input__text" placeholder="Ingrese una dirección" required>
            </p>
         <p>
         </p>    

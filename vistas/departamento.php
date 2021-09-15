@@ -25,6 +25,7 @@ if(isset($_GET['id'])){
     <link rel="stylesheet" href="https://maxst.icons8.com/vue-static/landings/line-awesome/line-awesome/1.3.0/css/line-awesome.min.css">
     <link rel="stylesheet" href="../css/index.css">
     <link rel="stylesheet" href="../css/municipio_ingreso.css">
+    <link rel="stylesheet" href="../css/municipio.css">
     <style>
         .boton-editar{
             text-decoration: none;
@@ -125,7 +126,11 @@ if(isset($_GET['id'])){
         <div class="projects">
             <div class="card">
                 <div class="card-header">
-                <h3>Datos del municipio</h3>   
+                <h3>Datos del departamento</h3>   
+                <div class="encabezado">
+                    <input type="text" id="myInput" onkeyup="myFunction()" placeholder="Buscar" class="input__text">
+                    
+                    </div> 
                 </div>
 
             <div class="card-body">
@@ -155,23 +160,24 @@ if(isset($_GET['id'])){
             </form>
             <div class="card-body">
                             <div class="table-responsive">
-                                <table width="100%">
+                                <table id="myTable" width="100%">
                                     <thead>
                                         <tr>
-                                            <td>ID</td>
-                                            <td>Departamento</td>
-                                            <td>Funciones</td>
+                                            <th>ID</th>
+                                            <th>Departamento</th>
+                                            <th align=left>Funciones</th>
                                         </tr>
                                     </thead>
+                                    <tbody>
                                     <?php
         include('../controlador/conexion.php');
         $sql = "SELECT * FROM departamento where estado=1";
         $ejecutar = mysqli_query($conexion, $sql);
-        echo '<tbody>';
+        
         while($fila = mysqli_fetch_array($ejecutar)){
             echo '<tr>';
-            echo '<td>'.$fila['id_departamento'].'</td>';
-            echo '<td>'.$fila['nombre'].'</td>';
+            echo '<td><p align=center>'.$fila['id_departamento'].'</p></td>';
+            echo '<td><p align=center>'.$fila['nombre'].'</p></td>';
             echo "<td><a href='departamento.php?id=$fila[id_departamento]' class='boton-editar'>Editar</a>
             <a href='../controlador/proceso_eliminarDepartamento.php?id=$fila[0]' class='boton-eliminar'>Eliminar</a></td>";
 
@@ -190,6 +196,7 @@ if(isset($_GET['id'])){
             </div>
     </main>
     <script src="../js/proceso_eliminar.js"></script>
+    <script src="../js/buscador.js"></script>
     </body>
 
 </html>
