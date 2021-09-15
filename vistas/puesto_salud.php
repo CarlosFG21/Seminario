@@ -78,7 +78,7 @@
                 </a>
                 </li>
                 <li>
-                    <a href=""><span class="las la-clipboard"></span>
+                    <a href="reporte.php"><span class="las la-clipboard"></span>
                     <span>Reportes</span></a>
                 </li>
                 <li>
@@ -157,7 +157,7 @@
         </div>
     </main>
     <script src="../js/proceso_eliminar.js"></script>
-    <script src="../js/buscador_puesto.js"></script>
+    <script src="../js/buscador.js"></script>
     </body>
 
 </html>

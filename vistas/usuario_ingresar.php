@@ -94,15 +94,15 @@
             <form name="" id="" method="POST" action="../controlador/BDUsuario.php"> 
            <p>
            <label for="">Nombre</label>
-           <input name="txtNombre"type="text" class="input__text" placeholder="Ingrese su nombre">
+           <input name="txtNombre"type="text" class="input__text" placeholder="Ingrese su nombre" required>
            </p>
            <p>
            <label for="">Apellido</label>
-           <input name="txtApellido" type="text" class="input__text" placeholder="Ingrese su apellido">
+           <input name="txtApellido" type="text" class="input__text" placeholder="Ingrese su apellido" required>
            </p>
            <p>
            <label for="">Usuario</label>
-           <input name="txtUsuario" type="text" class="input__text" placeholder="Ingrese un usuario">
+           <input name="txtUsuario" type="text" class="input__text" placeholder="Ingrese un usuario" required>
            </p>
            <p>
            <label for="">Permiso</label>
@@ -113,7 +113,7 @@
            </p>
            <p>
            <label for="">Contraseña</label>
-           <input name="txtContrasena" type="password" class="input__text" placeholder="Ingrese su contraseña">
+           <input name="txtContrasena" type="password" class="input__text" placeholder="Ingrese su contraseña" required>
            </p>
         <p>
         </p>    
