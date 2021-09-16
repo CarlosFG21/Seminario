@@ -7,11 +7,16 @@ class PDF extends FPDF
 function Header()
 {
     
-    $this->Image('centro1.jpg',10,6);
+    $this->Image('centro1.jpg',10,10,40);
     $this->SetFont('Arial','B',15);
-    $this->Cell(55);
-    $this->Cell(100,25,'Reporte de Usuarios',0,0,'C');
+    $this->Cell(210,20,'Centro de Salud San Diego, Zacapa',0,0,'C');
+    $this->Ln(9);
+    $this->Cell(210,20,'Reporte de Usuarios',0,0,'C');
+    $this->Ln(6);
+    $this->SetFont('Arial','',12);
+    $this->Cell(200,30,'Horarios de atencion: Lunes a Domingo: 7 AM-5 PM ',0,0,'C');
     $this->Ln(30);
+    
 }
 
 // Pie de página
@@ -37,17 +42,18 @@ $pdf->AliasNbPages();
 $pdf->AddPage();
 
 $pdf->setFillColor(232, 232, 232);
+$pdf->SetFont('Arial','B',12);
 $pdf->Cell(40,6,'ID',1,0,'C',1);
 $pdf->Cell(50,6,'Nombre',1,0,'C',1);
 $pdf->Cell(50,6,'Apellido',1,0,'C',1);
 $pdf->Cell(50,6,utf8_decode('Nickname'),1,1,'C',1);
-$pdf->SetFont('Arial','B',12);
+$pdf->SetFont('Arial','',12);
 
 while ($row=$resultado->fetch_assoc()) {
-	$pdf->Cell(40,25,$row['id_usuario'],0,0,'C');
-    $pdf->Cell(50,25,utf8_decode($row['nombre']), 0, 0, 'C');
-    $pdf->Cell(50,25,utf8_decode($row['apellido']), 0, 0, 'C');
-	$pdf->Cell(50,25,$row['nickname'], 0, 1, 'C');
+	$pdf->Cell(40,10,$row['id_usuario'],0,0,'C');
+    $pdf->Cell(50,10,utf8_decode($row['nombre']), 0, 0, 'C');
+    $pdf->Cell(50,10,utf8_decode($row['apellido']), 0, 0, 'C');
+	$pdf->Cell(50,10,$row['nickname'], 0, 1, 'C');
 
 } 
 $pdf->Output();

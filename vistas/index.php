@@ -1,3 +1,13 @@
+<?php 
+	
+	session_start();
+	$nombre = $_SESSION['nombre'];
+    $permiso = $_SESSION['permiso'];
+    
+    if (isset($_SESSION['nombre'])) {
+
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -9,6 +19,7 @@
     <title>Admin</title>
     <link rel="stylesheet" href="https://maxst.icons8.com/vue-static/landings/line-awesome/line-awesome/1.3.0/css/line-awesome.min.css">
     <link rel="stylesheet" href="../css/index.css">
+    <link rel="stylesheet" href="../css/boton_navegacion.css">
 </head>
 
 <body>
@@ -72,11 +83,20 @@
             </h2>
 
             <div class="user-wrapper">
-                <img src="../img/Avatar.png" width="40px" height="40px" alt="">
+                <img src="../reportes/centro1.jpg" width="50px" height="50px" alt="">
                 <div>
-                    <h4>Administrador</h4>
-                    <small>Carlos Franco</small>
-                </div>
+                <nav id="menu">
+                <ul>
+               <li><a href=""><?php echo $nombre;?></a>
+               <ul>
+                <li><a href=""><?php echo $permiso;?></a></li>
+                <li><a href="../controlador/salir.php">Cerrar Sesion</a></li>
+                </ul>
+                </li>
+               </ul>
+            </nav> 
+            
+            </div>
             </div>
         </header>
 
@@ -87,7 +107,7 @@
                     <div>
                     <?php
                     include('../controlador/conexion.php');
-                    $sql = "SELECT id_usuario FROM usuario ORDER BY estado=1";
+                    $sql = "SELECT id_usuario FROM usuario  where estado=1";
                     $sql_run = mysqli_query($conexion,$sql);
                     $row = mysqli_num_rows($sql_run);
                     echo '<h1>'.$row.'</h1>';
@@ -103,7 +123,7 @@
                     <div>
                     <?php
                     include('../controlador/conexion.php');
-                    $sqll = "SELECT id_expediente FROM expediente ORDER BY estado=1";
+                    $sqll = "SELECT id_expediente FROM expediente where estado=1";
                     $sql_runn = mysqli_query($conexion,$sqll);
                     $roww = mysqli_num_rows($sql_runn);
                     echo '<h1>'.$roww.'</h1>';
@@ -129,7 +149,7 @@
                     <div>
                     <?php
                     include('../controlador/conexion.php');
-                    $sqll = "SELECT id_proveedor FROM proveedor ORDER BY estado=1";
+                    $sqll = "SELECT id_proveedor FROM proveedor where estado=1";
                     $sql_runn = mysqli_query($conexion,$sqll);
                     $roww = mysqli_num_rows($sql_runn);
                     echo '<h1>'.$roww.'</h1>';
@@ -254,3 +274,9 @@
 </body>
 
 </html>
+
+<?php
+	}else{
+		header('Location: login.php');
+	}
+?>
