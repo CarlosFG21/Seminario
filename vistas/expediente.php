@@ -1,3 +1,12 @@
+<?php 
+	
+	session_start();
+	$nombre = $_SESSION['nombre'];
+    $permiso = $_SESSION['permiso'];
+    
+    if (isset($_SESSION['nombre'])) {
+
+?>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -13,6 +22,7 @@
     <link rel="stylesheet" href="https://maxst.icons8.com/vue-static/landings/line-awesome/line-awesome/1.3.0/css/line-awesome.min.css">
     <link rel="stylesheet" href="../css/index.css">
     <link rel="stylesheet" href="../css/expediente.css">
+    <link rel="stylesheet" href="../css/boton_navegacion.css">
     <style>
         .boton-editar{
             text-decoration: none;
@@ -99,10 +109,18 @@
             </h2>
 
             <div class="user-wrapper">
-                <img src="../img/Avatar.png" width="40px" height="40px" alt="">
-                <div>
-                    <h4>Administrador</h4>
-                    <small>Carlos Franco</small>
+            <img src="../reportes/centro1.jpg" width="50px" height="50px" alt="">
+            <div>
+            <nav id="menu">
+            <ul>
+           <li><a href=""><?php echo $nombre;?></a>
+           <ul>
+            <li><a href=""><?php echo $permiso;?></a></li>
+            <li><a href="../controlador/salir.php">Cerrar Sesion</a></li>
+            </ul>
+            </li>
+           </ul>
+        </nav>
                 </div>
             </div>
         </header>
@@ -189,3 +207,8 @@
     </body>
 
 </html>
+<?php
+	}else{
+		header('Location: login.php');
+	}
+?>

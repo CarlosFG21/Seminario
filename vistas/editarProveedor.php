@@ -1,3 +1,12 @@
+<?php 
+	
+	session_start();
+	$nombre = $_SESSION['nombre'];
+    $permiso = $_SESSION['permiso'];
+    
+    if (isset($_SESSION['nombre'])) {
+
+?>
 <?php
     include('../controlador/conexion.php');
     $expediente = null;
@@ -25,7 +34,7 @@
     <link rel="stylesheet" href="https://maxst.icons8.com/vue-static/landings/line-awesome/line-awesome/1.3.0/css/line-awesome.min.css">
     <link rel="stylesheet" href="../css/index.css">
     <link rel="stylesheet" href="../css/proveedor_ingresar.css">
-    
+    <link rel="stylesheet" href="../css/boton_navegacion.css">
 </head>
 
 <body>
@@ -88,9 +97,18 @@
 
             <div class="user-wrapper">
                 <img src="../img/Avatar.png" width="40px" height="40px" alt="">
+                <img src="../reportes/centro1.jpg" width="50px" height="50px" alt="">
                 <div>
-                    <h4>Usuario</h4>
-                    <small>Carlos Franco</small>
+                <nav id="menu">
+                <ul>
+               <li><a href=""><?php echo $nombre;?></a>
+               <ul>
+                <li><a href=""><?php echo $permiso;?></a></li>
+                <li><a href="../controlador/salir.php">Cerrar Sesion</a></li>
+                </ul>
+                </li>
+               </ul>
+            </nav>
                 </div>
             </div>
         </header>
@@ -135,3 +153,8 @@
     </body>
 
 </html>
+<?php
+	}else{
+		header('Location: login.php');
+	}
+?>

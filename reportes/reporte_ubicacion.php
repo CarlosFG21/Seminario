@@ -7,10 +7,14 @@ class PDF extends FPDF
 function Header()
 {
     
-    $this->Image('centro1.jpg',10,6);
+    $this->Image('centro1.jpg',10,10,40);
     $this->SetFont('Arial','B',15);
-    $this->Cell(55);
-    $this->Cell(100,25,'Reporte de Ubicaciones',0,0,'C');
+    $this->Cell(210,20,'Centro de Salud San Diego, Zacapa',0,0,'C');
+    $this->Ln(9);
+    $this->Cell(210,20,'Reporte de Ubicaciones',0,0,'C');
+    $this->Ln(6);
+    $this->SetFont('Arial','',12);
+    $this->Cell(200,30,'Horarios de atencion: Lunes a Domingo: 7 AM-5 PM ',0,0,'C');
     $this->Ln(30);
 }
 
@@ -27,7 +31,7 @@ function Footer()
 }
 
 include('../controlador/conexion.php');
-$consulta = "SELECT municipio.id_municipio,departamento.nombre, municipio.nombre_municipio FROM departamento INNER JOIN municipio ON departamento.id_departamento=municipio.id_departamento where municipio.estado=1";
+$consulta = "SELECT m.id_municipio,d.nombre as ndp, m.nombre as nm FROM  departamento d INNER JOIN municipio m ON d.id_departamento=m.id_departamento where m.estado=1";
 $resultado = $conexion->query($consulta);
 
 
@@ -37,15 +41,16 @@ $pdf->AliasNbPages();
 $pdf->AddPage();
 
 $pdf->setFillColor(232, 232, 232);
+$pdf->SetFont('Arial','B',12);
 $pdf->Cell(50,6,'ID',1,0,'C',1);
 $pdf->Cell(70,6,'Departamento',1,0,'C',1);
 $pdf->Cell(70,6,'Municipio',1,1,'C',1);
-$pdf->SetFont('Arial','B',12);
+$pdf->SetFont('Arial','',12);
 
 while ($row=$resultado->fetch_assoc()) {
-	$pdf->Cell(50,25,$row['id_municipio'],0,0,'C');
-    $pdf->Cell(70,25,utf8_decode($row['nombre']), 0, 0, 'C');
-    $pdf->Cell(70,25,utf8_decode($row['nombre_municipio']), 0, 1, 'C');
+	$pdf->Cell(50,10,$row['id_municipio'],0,0,'C');
+    $pdf->Cell(70,10,utf8_decode($row['ndp']), 0, 0, 'C');
+    $pdf->Cell(70,10,utf8_decode($row['nm']), 0, 1, 'C');
 	
 
 } 

@@ -165,11 +165,9 @@ form .btn {
 }
 
 .btn__danger {
-    background: #8a0505 !important;
+    background: #ff0000 !important;
 }
 
 ·classo {
     pad: -moz-element();
 }
-
-

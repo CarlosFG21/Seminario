@@ -22,16 +22,16 @@
                         <input type="password" placeholder="Contraseña" name="contrasena"/>
                     </div>
                     <input type="submit" value="Acceder" class="btn solid" />
-                    <p class="social-text">¿Olvidaste la Contraseña?</p>
+                    <p class="social-text">!Accede ahora!</p>
                 </form>
             </div>
         </div>
         <div class="panels-container">
             <div class="panel left-panel">
                 <div class="content">
-                    <h3>Centro de Salud San Diego,Zacapa</h3>
+                    <h3>Centro de Salud San Diego, Zacapa</h3>
                     <p>
-                        Al servicio de toda la poblacion del municipio de San Diego,Zacapa!
+                        Al servicio de toda la poblacion del municipio de San Diego, Zacapa!
                     </p>
                 </div>
                 <img src="../img/doctor.svg" class="image" alt="" />
