@@ -20,6 +20,7 @@
     <link rel="stylesheet" href="https://maxst.icons8.com/vue-static/landings/line-awesome/line-awesome/1.3.0/css/line-awesome.min.css">
     <link rel="stylesheet" href="../css/index.css">
     <link rel="stylesheet" href="../css/municipio_ingreso.css">
+    <link rel="stylesheet" href="../css/municipio.css">
     <link rel="stylesheet" href="../css/boton_navegacion.css">
 </head>
 
@@ -83,7 +84,7 @@
             </h2>
 
             <div class="user-wrapper">
-                <img src="../img/Avatar.png" width="40px" height="40px" alt="">
+                
                 <img src="../reportes/centro1.jpg" width="50px" height="50px" alt="">
                 <div>
                 <nav id="menu">
@@ -105,7 +106,8 @@
         <div class="projects">
             <div class="card">
                 <div class="card-header">
-                <h3>Datos del municipio</h3>   
+                <h3>Datos del municipio</h3> 
+                <input type="text" id="myInput" onkeyup="myFunction()" placeholder="Buscar" class="input__text">  
                 </div>
 
             <div class="card-body">

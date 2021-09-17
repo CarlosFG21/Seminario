@@ -8,14 +8,15 @@
 
 ?>
 <?php 
+
 include('../controlador/conexion.php');
 include('../controlador/BDepartamento.php');
 if(isset($_GET['id'])){
  $id = $_GET['id'];
  $edit_state = true;
- $sql = mysqli_query($conexion,"SELECT * FROM departamento WHERE id_departamento=$id");
+ $sql = mysqli_query($conexion,"SELECT m.id_departamento,m.nombre as nm FROM departamento m WHERE m.id_departamento=$id");
  $rec = mysqli_fetch_array($sql);
- $nombre = $rec['nombre'];
+ $nombred = $rec['nm'];
  $id = $rec['id_departamento'];
 
 }
@@ -123,7 +124,7 @@ if(isset($_GET['id'])){
             </h2>
 
             <div class="user-wrapper">
-                <img src="../img/Avatar.png" width="40px" height="40px" alt="">
+               
                 <img src="../reportes/centro1.jpg" width="50px" height="50px" alt="">
                 <div>
                 <nav id="menu">
@@ -161,7 +162,7 @@ if(isset($_GET['id'])){
            </p>
            <p>
            <label for="">Departamento</label>
-           <input name="txtdepartamento" type="text" class="input__text" placeholder="Ingrese un departamento" value="<?php echo $nombre;?>">
+           <input name="txtdepartamento" type="text" class="input__text" placeholder="Ingrese un departamento" value="<?php echo $nombred;?>">
            </p>     
         <p>
         </p>    

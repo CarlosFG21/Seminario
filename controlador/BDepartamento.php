@@ -1,6 +1,6 @@
 <?php
 
-$nombre = "";
+$nombred = "";
 $id = 0;
 $edit_state = false;
 
