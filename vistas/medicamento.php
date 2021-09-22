@@ -141,7 +141,7 @@
                                     </thead>
                                     <?php
         include('../controlador/conexion.php');
-        $sql = "SELECT id_medicamento, nombre, descripcion, concentracion, id_presentacion FROM medicamento where estado=1";
+        $sql = "SELECT id_medicamento, nombre, descripcion, id_concentracion, id_presentacion FROM medicamento where estado=1";
         $ejecutar = mysqli_query($conexion, $sql);
         echo '<tbody>';
         while($fila = mysqli_fetch_array($ejecutar)){
