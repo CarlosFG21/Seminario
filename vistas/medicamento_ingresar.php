@@ -115,7 +115,7 @@
             <form name="" id="" method="POST" action="../controlador/BDMedicamento.php"> 
             <p>
             <label for="">Nombre del medicamento</label>
-            <input name="txtNombre" type="text" class="input__text" placeholder="Ingrese el nombre del medicamento">
+            <input name="txtNombre" type="text" class="input__text" placeholder="Ingrese el nombre del medicamento" required>
             </p>
            <p>
            <label for="">Descripcion del medicamento</label>
@@ -124,7 +124,7 @@
            
         <p>
           <label for="">Numero de lote</label>
-          <input name="txtLote" type="number" class="input__text" placeholder="Ingrese el numero de lote" value="">
+          <input name="txtLote" type="text" class="input__text" placeholder="Ingrese el numero de lote" required>
         </p>
         
         <p>
@@ -162,7 +162,7 @@
      
         <p>
           <label for="">Stock</label>
-          <input name="txtStock" type="number" class="input__text" placeholder="Ingrese el stock" value="0">
+          <input name="txtStock" type="number" class="input__text" placeholder="Ingrese el stock" value="0" required>
         </p>
         <p>
         </p>    

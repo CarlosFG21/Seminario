@@ -2,13 +2,20 @@
 //departamento
   require('../controlador/conexion.php');
 
-  $sqlConcentracion = "select id_concentracion, descripcion FROM concentracion ORDER BY descripcion ASC";
-  $ejecutarConcentracion = mysqli_query($conexion, $sqlConcentracion);
+  $sqlProveedor = "select id_proveedor, nombre_proveedor FROM proveedor ORDER BY nombre_proveedor ASC";
+  $ejecutarProveedor = mysqli_query($conexion, $sqlProveedor);
   //cargar ultimo ID de expediente
 
-  $sqlPresentacion = "select id_presentacion, descripcion FROM presentacion ORDER BY descripcion ASC";
-  $ejecutarPresentacion = mysqli_query($conexion, $sqlPresentacion);
+?>
+
+<?php
+//departamento
+  require('../controlador/conexion.php');
+
+  $sqlMedicamento = "select id_medicamento, nombre FROM medicamento ORDER BY nombre ASC";
+  $ejecutarMedicamento = mysqli_query($conexion, $sqlMedicamento);
   //cargar ultimo ID de expediente
+
 ?>
 
 <?php
@@ -23,6 +30,11 @@
 <html lang="en">
 
 <head>
+    <script src="//ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+    
+  
+ 
+    <script scr="../js/jquery-3.6.0.min.js"></script>
     <title>Centro de Salud</title>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -31,6 +43,33 @@
     <link rel="stylesheet" href="https://maxst.icons8.com/vue-static/landings/line-awesome/line-awesome/1.3.0/css/line-awesome.min.css">
     <link rel="stylesheet" href="../css/index.css">
     <link rel="stylesheet" href="../css/medicamento_ingreso_stock.css">
+
+
+    <style>
+        .boton-editar{
+            text-decoration: none;
+            padding: 10px;
+            font-weight: 600;
+            font-size: 14px;
+            color: #ffffff;
+            background-color: rgb(3, 113, 163);
+            border-radius: 6px;
+          }
+          
+
+          .fa-eraser{
+            text-decoration: none;
+            padding: 10px;
+            font-weight: 600;
+            font-size: 14px;
+            color: #ffffff;
+            background-color: #ff0000;
+            border-radius: 6px;
+            
+          }
+          
+    </style>
+
     
 </head>
 
@@ -112,43 +151,57 @@
 
             <div class="card-body">
             <br>
-            <form name="" id="" method="POST" action="../controlador/BDMedicamento.php"> 
+            <form id="transactionForm" name="transactionForm" id="" method="POST" action="#"> 
             <p>
             <label for="">Fecha de ingreso</label>
-            <input name="txtFechaIngreso" type="date" class="input__text" placeholder="Ingrese el nombre del medicamento">
+            <input id="txtFechaIngreso" name="txtFechaIngreso" type="date" class="input__text" placeholder="Ingrese el nombre del medicamento" required>
             </p>
 
            <p>
             <label for="">Proveedor</label>
-             <select class="input__text" name="cbProveedor">
-              
+             <select id="cbProveedor" class="input__text" name="cbProveedorS" required>
+
+             <?php
+                 while($row = mysqli_fetch_array($ejecutarProveedor)){
+             ?>
+            <option value="<?php echo $row[0]; ?>"><?php echo $row[1]; ?></option>
+             <?php }  ?>   
             </select>
             </p>
 
 
             <p>
             <label for="">Medicamento</label>
-             <select class="input__text" name="cbMedicamento">
-              
+             <select id="cbMedicamento" class="input__text" name="cbMedicamento" required>
+             <?php
+                 while($row = mysqli_fetch_array($ejecutarMedicamento)){
+             ?>
+            <option value="<?php echo $row[0]; ?>"><?php echo $row[1]; ?></option>
+             <?php }  ?>   
             </select>
             </p>
-           
-        <p>
-          <label for="">Cantidad a ingresar</label>
-          <input name="txtCantidad" type="number" class="input__text" placeholder="Ingrese cantidad a ingresar" value="">
-        </p>
 
-        <p>
-          <label for="">Número de lote</label>
-          <input name="txtLote" type="text" class="input__text" placeholder="Ingrese cantidad a ingresar" value="">
-        </p>
+            <p>
+            <label for="">Fecha de vencimiento</label>
+            <input id="txtFechaVencimiento" name="txtFechaVencimiento" type="date" class="input__text" placeholder="" required>
+            </p>
+
+            <p>
+             <label for="">Número de Lote</label>
+            <input id="txtLote" name="txtLote" type="text" class="input__text" placeholder="Numero de Lote" value="">
+            </p>
+           
+             <p>
+             <label for="">Cantidad a ingresar</label>
+             <input id="txtCantidad" name="txtCantidad" type="number" class="input__text" placeholder="Ingrese cantidad a ingresar" value="" required>
+             </p>
+
+        
+
+        
         
        
-       
-     
 
-
-      
         <p>
         </p>    
         <p>
@@ -156,59 +209,86 @@
         <br>
         <div class="btn__group">
 				<a href="medicamento.php" class="btn btn__danger">Regresar</a>
-				<input type="submit" name="registrarMedicamento" value="Guardar" class="btn btn__primary">
-			</div>
-            </form>
+				<input id="add_row" type="submit" name="add_row" value="Añadir" class="btn btn__primary">
 
+                <input id="enviar" name="enviar" type="button"  value="Activar Función" onclick="">
+
+
+			</div>
 
             <div class="card-body">
                             <div class="table-responsive">
-                                <table width="100%">
+                                <table id="transactionTable" width="100%"  name="tabla_detalles">
                                     <thead>
                                         <tr>
-                                            <td>ID</td>
-                                            <td>Medicamento</td>
-                                            <td>Descripcion</td>
-                                            <td>Concentracion</td>
-                                            <td>Presentacion</td>
-                                        
+                                            <td>fecha_ingreso</td>
+                                            <td>id_prov</td>
+                                            <td>proveedor</td>
+                                            <td>id_med</td>
+                                            <td>medicamento</td>
+                                            <td>fecha_vencimiento</td>
+                                            <td>num_lote</td>
+                                            <td>cantidad</td>
                                             <td>Funciones</td>
                                         </tr>
                                     </thead>
-                                    <?php
-        include('../controlador/conexion.php');
-        $sql = "SELECT id_medicamento, nombre, descripcion, concentracion, id_presentacion FROM medicamento where estado=1";
-        $ejecutar = mysqli_query($conexion, $sql);
-        echo '<tbody>';
-        while($fila = mysqli_fetch_array($ejecutar)){
-            echo '<tr>';
-            echo '<td>'.$fila[0].'</td>';
-            echo '<td>'.$fila[1].'</td>';
-            echo '<td>'.$fila[2].'</td>';
-            echo '<td>'.$fila[3].'</td>';
-            echo '<td>'.$fila[4].'</td>';
+                                   
+                                         <tbody id="content_table">
+     
+                                        <tr>
+                                            
            
-            echo "<td><a href='editarMedicamento.php?id=$fila[0]' class='boton-editar'>Editar</a>
-            <a href='../controlador/proceso_eliminarMedicamento.php?id=$fila[0]' class='boton-eliminar'>Eliminar</a></td>";
-
-
-            echo '</tr>';
-        }
-        ?>
+                                         </tr>
+       
                                     </tbody>
                                 </table>
+
+                                <script>
+                                    const form = document.getElementById("transactionForm");
+
+                                    form.addEventListener("submit", function(event) {
+                                        event.preventDefault(); //cancelar el evento para que no se recargue la pagina
+                                        let transactionFormData = new FormData(form);
+                                       // console.log("di click");
+                                    })
+                                    
+                                </script>
+
+
+
+
+
+
+
                             </div>
                         </div>
 
 
 
             </div>
+
+
+
+
+
+
+
+            </form>
+
+
+          
             </div>
             </div>
             </div>
             </div>
     </main>
 
+    <script src="../js/tablaDetalleIngreso.js"></script>
+    <script src="../js/recorrerTabla.js"></script>
+    <script src="../js/tablajson.js"></script>
+
+
+    
     </body>
 
 </html>
