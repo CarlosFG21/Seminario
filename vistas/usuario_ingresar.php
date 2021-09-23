@@ -111,15 +111,15 @@
             <form name="" id="" method="POST" action="../controlador/BDUsuario.php"> 
            <p>
            <label for="">Nombre</label>
-           <input name="txtNombre"type="text" class="input__text" placeholder="Ingrese su nombre" required>
+           <input name="txtNombre"type="text" class="input__text" placeholder="Ingrese su nombre" pattern="^[a-zA-Záéíóú ]{1,30}" minlength="4" required>
            </p>
            <p>
            <label for="">Apellido</label>
-           <input name="txtApellido" type="text" class="input__text" placeholder="Ingrese su apellido" required>
+           <input name="txtApellido" type="text" class="input__text" placeholder="Ingrese su apellido" pattern="^[a-zA-Záéíóú ]{1,30}" minlength="3" required>
            </p>
            <p>
            <label for="">Usuario</label>
-           <input name="txtUsuario" type="text" class="input__text" placeholder="Ingrese un usuario" required>
+           <input name="txtUsuario" type="text" class="input__text" placeholder="Ingrese un usuario" pattern="^[a-zA-Záéíóú0-9.,_- ]{1,30}" minlength="4" maxlength="9" required>
            </p>
            <p>
            <label for="">Permiso</label>
@@ -130,7 +130,7 @@
            </p>
            <p>
            <label for="">Contraseña</label>
-           <input name="txtContrasena" type="password" class="input__text" placeholder="Ingrese su contraseña" required>
+           <input name="txtContrasena" type="password" class="input__text" placeholder="Ingrese su contraseña" pattern="^[a-zA-Záéíóú0-9.$#,_- ]{1,30}" minlength="5" maxlength="8" required>
            </p>
         <p>
         </p>    

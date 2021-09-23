@@ -12,6 +12,7 @@
 
 <head>
 <script scr="../js/jquery-3.6.0.min.js"></script>
+
     <title>Centro de Salud</title>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -22,6 +23,30 @@
     <link rel="stylesheet" href="../css/municipio_ingreso.css">
     <link rel="stylesheet" href="../css/municipio.css">
     <link rel="stylesheet" href="../css/boton_navegacion.css">
+    <style>
+        .boton-editar{
+            text-decoration: none;
+            padding: 10px;
+            font-weight: 600;
+            font-size: 14px;
+            color: #ffffff;
+            background-color: rgb(3, 113, 163);
+            border-radius: 6px;
+          }
+          
+
+          .boton-eliminar{
+            text-decoration: none;
+            padding: 10px;
+            font-weight: 600;
+            font-size: 14px;
+            color: #ffffff;
+            background-color: #ff0000;
+            border-radius: 6px;
+            
+          }
+          
+    </style>
 </head>
 
 <body>
@@ -115,8 +140,16 @@
             <form name="" id="" method="POST" action=""> 
            <p>
            <label for="">Departamento</label>
-           <select class="input__text" name="select">
-           <option value="value1">Zacapa</option>
+           <select class="input__text">
+           <?php
+           include('../controlador/conexion.php');
+           $consulta ="SELECT id_departamento,nombre FROM departamento where estado=1";
+           $ejecutar=mysqli_query($conexion,$consulta);
+           ?>
+           <?php foreach($ejecutar as $opciones): ?>
+           <option value="<?php echo $opciones['id_departamento']; ?>"><?php echo $opciones['nombre']; ?></option>
+           
+           <?php endforeach ?>
            </select>
            </p>
            <p>
@@ -138,34 +171,28 @@
                                 <table width="100%">
                                     <thead>
                                         <tr>
-                                            <td>ID</td>
-                                            <td>Municipio</td>
-                                            <td>Funciones</td>
+                                            <th>ID</th>
+                                            <th>Municipio</th>
+                                            <th align=left>Funciones</td>
                                         </tr>
                                     </thead>
                                     <tbody>
-                                        <tr>
-                                            <td>Buprenor</td>
-                                            <td>Tableta sublingual</td>
-                                            <td>
-                                                <span class="status green"></span> Bueno
-                                            </td>
-                                        </tr>
-                                        <tr>
-                                            <td>Tramadol</td>
-                                            <td>Solución inyectable</td>
-                                            <td>
-                                                <span class="status red"></span> Vencido
-                                            </td>
-                                        </tr>
-                                        <tr>
-                                            <td>Oxicodona</td>
-                                            <td>Tableta de liberación</td>
-                                            <td>
-                                                <span class="status yellow"></span> Por Vencer
-                                            </td>
-                                        </tr>
-                                        </tr>
+                                    <?php
+        include('../controlador/conexion.php');
+        $sql = "SELECT * FROM municipio where estado=1";
+        $ejecutar = mysqli_query($conexion, $sql);
+        
+        while($fila = mysqli_fetch_array($ejecutar)){
+            echo '<tr>';
+            echo '<td><p align=center>'.$fila['id_municipio'].'</p></td>';
+            echo '<td><p align=center>'.$fila['nombre'].'</p></td>';
+            echo "<td><a href='departamento.php?id=$fila[id_municipio]' class='boton-editar'>Editar</a>
+            <a href='../controlador/proceso_eliminarDepartamento.php?id=$fila[0]' class='boton-eliminar'>Eliminar</a></td>";
+
+
+            echo '</tr>';
+        }
+        ?>
                                     </tbody>
                                 </table>
                             </div>
@@ -176,7 +203,11 @@
             </div>
             </div>
     </main>
-
+    <script>
+      $(".input__text").on("change", function(){
+    $('#id').val($(".input__text option:selected").text());
+    });
+</script>
     </body>
 
 </html>

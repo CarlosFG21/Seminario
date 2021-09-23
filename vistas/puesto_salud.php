@@ -168,6 +168,8 @@
                            ?>   
                             </tbody>
                         </table>
+                        
+                        <div id="pageNavPosition" class="pager-nav"></div>
                     </div>
                 </div>
 
@@ -176,6 +178,7 @@
     </main>
     <script src="../js/proceso_eliminar.js"></script>
     <script src="../js/buscador.js"></script>
+
     </body>
 
 </html>
