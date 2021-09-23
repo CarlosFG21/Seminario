@@ -1,22 +1,19 @@
 jQuery(document).ready(function() {
     jQuery('#enviar').on('click', function() {
-      let txtFechaIngreso  = document.getElementById("txtFechaIngreso").value;
-      let cbProveedor  = document.getElementById("cbProveedor").value;
+      let txtFechaEgreso  = document.getElementById("txtFechaEgreso").value;
+      let cbPuestoSalud  = document.getElementById("cbPuestoSalud").value;
       
       let filas = [];
       $('#transactionTable tbody tr').each(function() {
+
         var id_medicamento = $(this).find('td').eq(0).text();
         var nombre_medicamento = $(this).find('td').eq(1).text();
-        var fecha_vencimiento = $(this).find('td').eq(2).text();
-        var num_lote = $(this).find('td').eq(3).text();
-        var cantidad_ingreso = $(this).find('td').eq(4).text();
+        var cantidad_egreso = $(this).find('td').eq(2).text();
        
         let fila = {
           id_medicamento,
           nombre_medicamento,
-          fecha_vencimiento,
-          num_lote,
-          cantidad_ingreso
+          cantidad_egreso
         };
 
         filas.push(fila);
@@ -28,11 +25,11 @@ jQuery(document).ready(function() {
       
       $.ajax({
         type: "POST",
-        url: "../controlador/BDIngreso.php",
+        url: "../controlador/BDEgreso.php",
         data: {
           valores : JSON.stringify(filas) ,
-          fechaIngresoPHP : txtFechaIngreso,
-          cbProveedorPHP : cbProveedor,
+          fechaEgresoPHP : txtFechaEgreso,
+          cbPuestoSaludPHP : cbPuestoSalud,
         },
         success: function(data) { 
           console.log(data);

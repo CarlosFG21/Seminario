@@ -52,13 +52,17 @@ while($row = mysqli_fetch_row($ejecutarMax)){
            fecha_vencimiento,
            id_ingreso,
            id_medicamento,
-           num_lote
+           num_lote,
+           stock_inicial,
+           stock_actual
        ) VALUES (
            '$cantidad_ingreso',
            '$fecha_vencimiento',
            '$id_ingreso',
            '$id_medicamento',
-           '$num_lote'
+           '$num_lote',
+           '$cantidad_ingreso',
+           '$cantidad_ingreso'
        )";
    
 //    var_dump($sql); die();
