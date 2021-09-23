@@ -111,11 +111,11 @@
             <form name="" id="" method="POST" action="../controlador/BDProveedor.php"> 
            <p>
            <label for="">Nombre</label>
-           <input name="txtnombre" type="text" class="input__text" placeholder="Ingrese un nombre" required>
+           <input name="txtnombre" type="text" class="input__text" placeholder="Ingrese un nombre" pattern="^[a-zA-Záéíóú0-9.,_- ]{1,30}" minlength="3" required>
            </p>
            <p>
            <label for="">Dirección</label>
-           <input name="txtdireccion" type="text" class="input__text" placeholder="Ingrese una dirección" required>
+           <input name="txtdireccion" type="text" class="input__text" placeholder="Ingrese una dirección" pattern="^[a-zA-Záéíóú0-9.,_- ]{1,30}" minlength="3" required>
            </p>
         <p>
         </p>    

@@ -128,15 +128,15 @@
             <form name="" id="" method="POST" action="../controlador/BDUsuario.php"> 
            <p>
            <label for="">Nombre</label>
-           <input name="txtNombre" type="text" class="input__text" placeholder="Ingresa su nombre" value="<?= $usuario[1] ?>">
+           <input name="txtNombre" type="text" class="input__text" placeholder="Ingresa su nombre" pattern="^[a-zA-Záéíóú ]{1,30}" minlength="3" value="<?= $usuario[1] ?>">
            </p>
            <p>
            <label for="">Apellido</label>
-           <input name="txtApellido" type="text" class="input__text" placeholder="Ingreso su apellido" value="<?= $usuario[2] ?>">
+           <input name="txtApellido" type="text" class="input__text" placeholder="Ingreso su apellido" pattern="^[a-zA-Záéíóú ]{1,30}" minlength="3" value="<?= $usuario[2] ?>">
            </p>
            <p>
            <label for="">Usuario</label>
-           <input name="txtUsuario" type="text" class="input__text" placeholder="Ingreso un usuario" value="<?= $usuario[3] ?>">
+           <input name="txtUsuario" type="text" class="input__text" placeholder="Ingreso un usuario" pattern="^[a-zA-Záéíóú0-9.,_- ]{1,30}" minlength="4" maxlength="9" value="<?= $usuario[3] ?>" required>
            </p>
            <p>
            <label for="">Permiso</label>
@@ -147,7 +147,7 @@
            </p>
            <p>
            <label for="">Contraseña</label>
-           <input name="txtContrasena" type="password" class="input__text" placeholder="Ingrese su contraseña" value="<?= $usuario[5] ?>">
+           <input name="txtContrasena" type="password" class="input__text" placeholder="Ingrese su contraseña" pattern="^[a-zA-Záéíóú0-9.$#,_- ]{1,30}" minlength="5" maxlength="8" value="<?= $usuario[5] ?>" required>
            </p>
         <p>
         </p>    

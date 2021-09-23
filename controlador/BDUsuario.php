@@ -8,7 +8,13 @@ if (isset($_REQUEST['registrar'])) {
     $permiso = $_POST['cbPermiso'];
     $contrasena = $_POST['txtContrasena'];
     $contrasena_h = password_hash($contrasena, PASSWORD_BCRYPT);
-    if (isset($_POST['txtNombre']) && isset($_POST['txtApellido'])) {
+    if ($nombre=="" || $apellido=="" || $nickname=="" || $permiso=="" || $contrasena=="" || !preg_match("/^(?!-+)[a-zA-Z0-9-ñáéíóú.,\s]+[a-zA-Z\s]*$/", $nombre) ||
+    !preg_match("/^(?!-+)[a-zA-Z0-9-ñáéíóú.,\s]+[a-zA-Z\s]*$/", $apellido) || !preg_match("/^(?!-+)[a-zA-Z0-9-ñáéíóú.,\s]+[a-zA-Z0-9.,_-\s]*$/", $nickname) ||
+    !preg_match("/^(?!-+)[a-zA-Z0-9-ñáéíóú.,\s]+[a-zA-Z0-9.#$,_-\s]*$/", $contrasena)){
+
+        header("Location: ../vistas/usuario_ingresar.php");
+
+    }else {
 
         $sql = "INSERT INTO usuario (nombre, apellido, nickname, permiso, contrasena) VALUES ('$nombre', '$apellido', '$nickname', '$permiso', '$contrasena_h')";
         if ($conexion->query($sql) === true) {            
@@ -37,6 +43,14 @@ if (isset($_REQUEST['actualizar'])) {
     $contrasena = $_POST['txtContrasena'];
     $contrasena_h = password_hash($contrasena, PASSWORD_BCRYPT);
 
+    if ($nombre=="" || $apellido=="" || $nickname=="" || $permiso=="" || $contrasena=="" || !preg_match("/^(?!-+)[a-zA-Z0-9-ñáéíóú.,\s]+[a-zA-Z\s]*$/", $nombre) ||
+    !preg_match("/^(?!-+)[a-zA-Z0-9-ñáéíóú.,\s]+[a-zA-Z\s]*$/", $apellido) || !preg_match("/^(?!-+)[a-zA-Z0-9-ñáéíóú.,\s]+[a-zA-Z0-9.,_-\s]*$/", $nickname) ||
+    !preg_match("/^(?!-+)[a-zA-Z0-9-ñáéíóú.,\s]+[a-zA-Z0-9.#$,_-\s]*$/", $contrasena)){
+
+        header("Location: ../vistas/usuario_ingresar.php");
+
+    }else {
+
     $sql = "UPDATE usuario SET nombre='$nombre', apellido='$apellido', nickname='$nickname', permiso='$permiso' WHERE id_usuario='$id'";
     
     if ($conexion->query($sql) === true) {            
@@ -46,6 +60,7 @@ if (isset($_REQUEST['actualizar'])) {
         die("Error algo salio mal: " . $conexion->error);
     }
     $conexion->close();
+}
 }
 
 

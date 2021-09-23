@@ -162,7 +162,7 @@ if(isset($_GET['id'])){
            </p>
            <p>
            <label for="">Departamento</label>
-           <input name="txtdepartamento" type="text" class="input__text" placeholder="Ingrese un departamento" value="<?php echo $nombred;?>">
+           <input name="txtdepartamento" type="text" class="input__text" placeholder="Ingrese un departamento"  pattern="^[a-zA-Záéíóú ]{1,30}" minlength="3" value="<?php echo $nombred;?>" required>
            </p>     
         <p>
         </p>    
