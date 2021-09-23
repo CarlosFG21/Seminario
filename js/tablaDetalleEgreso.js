@@ -59,16 +59,14 @@ function getRowSelected(objectPressed){
 	//Obteniendo la linea que se esta eliminando
 	var a=objectPressed.parentNode.parentNode;
 	//b=(fila).(obtener elementos de clase columna y traer la posicion 0).(obtener los elementos de tipo parrafo y traer la posicion0).(contenido en el nodo)
-
+	
 	var cbMedicamento=a.getElementsByTagName("td")[0].getElementsByTagName("p")[0].innerHTML;
     var txtMedicamento=a.getElementsByTagName("td")[1].getElementsByTagName("p")[0].innerHTML;
-	var fechaVencimiento=a.getElementsByTagName("td")[2].getElementsByTagName("p")[0].innerHTML;
-	var lote=a.getElementsByTagName("td")[3].getElementsByTagName("p")[0].innerHTML;
-	var cantidad=a.getElementsByTagName("td")[4].getElementsByTagName("p")[0].innerHTML;
+	var cantidad=a.getElementsByTagName("td")[2].getElementsByTagName("p")[0].innerHTML;
 	//var impuesto=a.getElementsByTagName("td")[6].getElementsByTagName("p")[0].innerHTML;
 	//var total=a.getElementsByTagName("td")[7].getElementsByTagName("p")[0].innerHTML;
 
-	var array_fila = [cbMedicamento, txtMedicamento, fechaVencimiento, lote, cantidad];
+	var array_fila = [cbMedicamento, txtMedicamento, cantidad];
 
 	return array_fila;
 	console.log(numero+' '+codigo+' '+descripcion);
@@ -78,20 +76,13 @@ function getRowSelected(objectPressed){
 
 function newRowTable()
 {
-	
 
 	var cbMedicamento=document.getElementById("cbMedicamento").value;
-
-
+  
     var selMedicamento = document.getElementById("cbMedicamento");
     var textMedicamento= selMedicamento.options[selMedicamento.selectedIndex].text;
     var txtMedicamento = textMedicamento;
-
-
-
-	var fechaVencimiento=document.getElementById("txtFechaVencimiento").value;
-	var lote=document.getElementById("txtLote").value;
-    var cantidad=document.getElementById("txtCantidad").value;
+    var cantidad=document.getElementById("txtCantidadEgreso").value;
 //	var subtotal=parseFloat(cantidad)*parseFloat(precio);
 //	var impuesto=parseFloat(subtotal)*0.15;
 //	var total_n=parseFloat(subtotal)+parseFloat(impuesto);
@@ -103,19 +94,14 @@ function newRowTable()
     var cell2 = row.insertCell(1);
     var cell3 = row.insertCell(2);
     var cell4 = row.insertCell(3);
-    var cell5 = row.insertCell(4);
-    var cell6 = row.insertCell(5);
-   
-
-
-
     
+
+
+
     cell1.innerHTML = '<p name="cbMedicamento_p[]" class="non-margin">'+cbMedicamento+'</p>';
     cell2.innerHTML = '<p name="txtMedicamento_p[]" class="non-margin">'+txtMedicamento+'</p>';
-    cell3.innerHTML = '<p name="fechaVencimiento_p[]" class="non-margin">'+fechaVencimiento+'</p>';
-    cell4.innerHTML = '<p name="lote_p[]" class="non-margin">'+lote+'</p>';
-    cell5.innerHTML = '<p name="cantidad_p[]" class="non-margin">'+cantidad+'</p>';
-    cell6.innerHTML = '<button class="fa-eraser">Quitar</button>';
+    cell3.innerHTML = '<p name="cantidad_p[]" class="non-margin">'+cantidad+'</p>';
+    cell4.innerHTML = '<button class="fa-eraser">Quitar</button>';
     
     
     //cell7.innerHTML = '<span class="icon fa-edit"></span><input type="button" class="icon fa-eraser">Eliminar</input>';

@@ -14,12 +14,17 @@ if (isset($_REQUEST['registrarMedicamento'])) {
 
     //para que funcione el crud para mientras
     $id_user = $_SESSION['id_usuario'];
+
     
-    if($nombre="" || $id_presentacion="" || $id_concentracion="" || $stock="" || $stock < 0){
+    
+    if(strlen($nombre)==0 || strlen($id_presentacion)==0 || strlen($id_concentracion)==0 || strlen($stock)==0 || $stock < 0){
        
        echo "<script>alert('Error, campo vacío o stock negativo')</script>"; 
 
     }else{
+
+
+        
         $sqlMedicamento = "INSERT INTO medicamento (nombre, descripcion, id_concentracion, stock, id_presentacion, id_usuario)
         VALUES ('$nombre', '$descripcion', '$id_concentracion', '$stock', '$id_presentacion', '$id_user')";
     

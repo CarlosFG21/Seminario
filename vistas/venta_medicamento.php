@@ -2,17 +2,32 @@
 //departamento
   require('../controlador/conexion.php');
 
-  $sqlProveedor = "select id_proveedor, nombre_proveedor FROM proveedor ORDER BY nombre_proveedor ASC";
-  $ejecutarProveedor = mysqli_query($conexion, $sqlProveedor);
+  $sqlPuestoSalud = "select id_extencion_cen, nombre FROM extencion_centro where estado = 1 ORDER BY nombre ASC";
+  $ejecutarPuestoSalud = mysqli_query($conexion, $sqlPuestoSalud);
   //cargar ultimo ID de expediente
 
 ?>
+
+
+
+
 
 <?php
 //departamento
   require('../controlador/conexion.php');
 
-  $sqlMedicamento = "select id_medicamento, nombre FROM medicamento ORDER BY nombre ASC";
+  $sqlMedicamento = "SELECT d.id_detalle_ing, m.nombre, c.descripcion as Concentra, p.descripcion as Presenta, d.stock_actual,
+  d.fecha_vencimiento, d.num_lote
+  
+  from
+  medicamento m inner join concentracion c
+  on m.id_concentracion = c.id_concentracion
+  inner join presentacion p
+  on m.id_presentacion = p.id_presentacion
+  inner join detalle_ingreso d
+  on m.id_medicamento = d.id_medicamento
+  inner join ingreso i
+  on d.id_ingreso = i.id_ingreso";
   $ejecutarMedicamento = mysqli_query($conexion, $sqlMedicamento);
   //cargar ultimo ID de expediente
 
@@ -43,6 +58,21 @@
     <link rel="stylesheet" href="https://maxst.icons8.com/vue-static/landings/line-awesome/line-awesome/1.3.0/css/line-awesome.min.css">
     <link rel="stylesheet" href="../css/index.css">
     <link rel="stylesheet" href="../css/medicamento_ingreso_stock.css">
+
+
+    <script language="javascript">
+			$(document).ready(function(){
+				$("#cbMedicamento").change(function () { 		
+					$("#cbMedicamento option:selected").each(function () {
+						id_medicamento = $(this).val();
+						$.post("../controlador/getStockMedicamento.php", { id_medicamento: id_medicamento }, function(data){
+							$("#txtStockDisponible").html(data);
+						});            
+					});
+				})
+			});
+		</script>
+
 
 
     <style>
@@ -146,23 +176,23 @@
         <div class="projects">
             <div class="card">
                 <div class="card-header">
-                <h3>Ingreso de medicamento</h3>   
+                <h3>Egreso de medicamento</h3>   
                 </div>
 
             <div class="card-body">
             <br>
             <form id="transactionForm" name="transactionForm" id="" method="POST" action="#"> 
             <p>
-            <label for="">Fecha de ingreso</label>
-            <input id="txtFechaIngreso" name="txtFechaIngreso" type="date" class="input__text" placeholder="Ingrese el nombre del medicamento" required>
+            <label for="">Fecha de egreso</label>
+            <input id="txtFechaEgreso" name="txtFechaEgreso" type="date" class="input__text"  required>
             </p>
 
            <p>
-            <label for="">Proveedor</label>
-             <select id="cbProveedor" class="input__text" name="cbProveedorS" required>
+            <label for="">Puesto de salud</label>
+             <select id="cbPuestoSalud" class="input__text" name="cbPuestoSalud" onChange="mostrar()" required>
 
              <?php
-                 while($row = mysqli_fetch_array($ejecutarProveedor)){
+                 while($row = mysqli_fetch_array($ejecutarPuestoSalud)){
              ?>
             <option value="<?php echo $row[0]; ?>"><?php echo $row[1]; ?></option>
              <?php }  ?>   
@@ -173,27 +203,42 @@
             <p>
             <label for="">Medicamento</label>
              <select id="cbMedicamento" class="input__text" name="cbMedicamento" required>
+             <option value="" disabled="disabled" selected>Seleccione</option>
              <?php
                  while($row = mysqli_fetch_array($ejecutarMedicamento)){
              ?>
-            <option value="<?php echo $row[0]; ?>"><?php echo $row[1]; ?></option>
+            <option value="<?php echo $row[0]; ?>"><?php echo $row[1] . ' - ' . $row[6]; ?></option>
              <?php }  ?>   
             </select>
             </p>
 
-            <p>
-            <label for="">Fecha de vencimiento</label>
-            <input id="txtFechaVencimiento" name="txtFechaVencimiento" type="date" class="input__text" placeholder="" required>
-            </p>
 
+            
             <p>
-             <label for="">Número de Lote</label>
-            <input id="txtLote" name="txtLote" type="text" class="input__text" placeholder="Numero de Lote" value="">
-            </p>
+             <label for="">STOCK DISPONIBLE</label>
+             <input id="txtStockDisponible" name="txtStockDisponible" type="text" class="input__text" placeholder="Stock Disponible" value="">
+             </p>
+            
+           
            
              <p>
-             <label for="">Cantidad a ingresar</label>
-             <input id="txtCantidad" name="txtCantidad" type="number" class="input__text" placeholder="Ingrese cantidad a ingresar" value="" required>
+             <label for="">Concentracion</label>
+             <input id="txtConcentracion" name="txtConcentracion" type="text" class="input__text" placeholder="Concentracion" value="" readonly>
+             </p>
+
+             <p>
+             <label for="">Presentacion</label>
+             <input id="txtPresentacion" name="txtCantidadEgreso" type="text" class="input__text" placeholder="Presentacion" value="" readonly >
+             </p>
+
+             <p>
+             <label for="">Fecha de vencimiento</label>
+             <input id="txtFechaVencimiento" name="txtFechaVencimiento" type="text" class="input__text" placeholder="Fecha de Vencimiento" value="" readonly >
+             </p>
+
+             <p>
+             <label for="">Cantidad Egresar</label>
+             <input id="txtCantidadEgreso" name="txtCantidadEgreso" type="number" class="input__text" placeholder="Ingrese cantidad a egresar" value="0"  >
              </p>
 
         
@@ -208,10 +253,19 @@
         </p>
         <br>
         <div class="btn__group">
+
+
+        
+             <input id="txtId" name="txtId" type="text" class="input__text" placeholder="" value="0"  >
+             <input id="txtNombre" name="txtNombre" type="text" class="input__text" placeholder="" value=""  >
+             <input id="txtLote" name="txtLote" type="text" class="input__text" placeholder="" value=""  >
+            
+
+
 				<a href="medicamento.php" class="btn btn__danger">Regresar</a>
 				<input id="add_row" type="submit" name="add_row" value="Añadir" class="btn btn__primary">
 
-                <input id="enviar" name="enviar" type="button"  value="Activar Función" onclick="">
+                <input id="enviar" name="enviar" type="button"  value="EGRESO" onclick="">
 
 
 			</div>
@@ -221,13 +275,13 @@
                                 <table id="transactionTable" width="100%"  name="tabla_detalles">
                                     <thead>
                                         <tr>
+                                           
                                             
-                                            <td>id_med</td>
+                                            <td>id_detalle_ing</td>
                                             <td>medicamento</td>
-                                            <td>fecha_vencimiento</td>
-                                            <td>num_lote</td>
-                                            <td>cantidad</td>
-                                            <td>Funciones</td>
+                                            <td>lote</td>
+                                            <td>cantidad_egresar</td>
+                                            <td>Funcion</td>
                                         </tr>
                                     </thead>
                                    
@@ -281,9 +335,12 @@
             </div>
     </main>
 
-    <script src="../js/tablaDetalleIngreso.js"></script>
+    <script src="../js/tablaDetalleVenta.js"></script>
     <script src="../js/recorrerTabla.js"></script>
-    <script src="../js/tablajson.js"></script>
+    <script src="../js/tablajsonVenta.js"></script>
+    <script src="../js/eventoMedicamentoEgreso.js"></script>
+
+    
 
 
     
