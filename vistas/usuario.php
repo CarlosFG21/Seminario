@@ -11,7 +11,11 @@
 <html lang="en">
 
 <head>
-<script scr="../js/jquery-3.6.0.min.js"></script>
+<script src="https://code.jquery.com/jquery-3.6.0.js" integrity="sha256-H+K7U5CnXl1h5ywQfKtSj8PCmoN9aaq30gDh27Xc0jk=" crossorigin="anonymous"></script>
+    <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.10.25/css/jquery.dataTables.css">
+    <script type="text/javascript" charset="utf8" src="https://cdn.datatables.net/1.10.25/js/jquery.dataTables.js"></script>
+    
+    
     <title>Centro de Salud</title>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -30,6 +34,17 @@
             color: #ffffff;
             background-color: #1f8fc3;
             border-radius: 6px;
+          }
+
+          .boton-reporte{
+            text-decoration: none;
+            padding: 10px;
+            font-weight: 600;
+            font-size: 14px;
+            color: #ffffff;
+            background-color: #1f8fc3;
+            border-radius: 6px;
+            margin-left: 10px
           }
           
 
@@ -53,9 +68,9 @@
     <input type="checkbox" id="nav-toggle">
     <div class="sidebar">
         <div class="sidebar-brand">
-            <h2><span class="las la-clinic-medical"></span> <span>Centro de Salud San Diego</span></h2>
+            <h2><span class="las la-clinic-medical"></span> <span>Centro de Salud</span></h2>
         </div>
-        <br>
+        
         <!--Secciones-del-tablero-->
         <div class="sidebar-menu">
             <ul>
@@ -72,6 +87,16 @@
                     <span>Medicamentos</span></a>
                 </li>
                 <li>
+                    <a href="ingresos.php"><span class="las la-prescription-bottle-alt"></span>
+                    <span>Ingresos</span>
+                </a>
+                </li>
+                <li>
+                    <a href="egresos.php"><span class="la la-prescription-bottle"></span>
+                    <span>Egresos</span>
+                </a>
+                </li>
+                <li>
                     <a href="ubicacion.php"><span class="las la-map"></span>
                     <span>Ubicación</span>
                 </a>
@@ -85,10 +110,6 @@
                     <a href="proveedor.php"><span class="las la-user-md"></span>
                     <span>Proveedor</span>
                 </a>
-                </li>
-                <li>
-                    <a href="reporte.php"><span class="las la-clipboard"></span>
-                    <span>Reportes</span></a>
                 </li>
                 <li>
                     <a href="" class="active"><span class="las la-users"></span>
@@ -131,7 +152,8 @@
                 <div class="card-header">
                     <h3>Usuarios</h3>
                     <div class="encabezado">
-                    <a type="submit" href="usuario_ingresar.php" name="" id="" class="boton-editar">Ingresar nuevo usuario</a>
+                    <a type="submit" href="../reportes/reporte_usuario.php" target="_blank" name="" id="" class="boton-reporte">Reporte</a>
+                    <a type="submit" href="usuario_ingresar.php" name="" id="" class="boton-reporte">Ingresar nuevo usuario</a>
                     </div> 
                 </div>
                 
@@ -178,10 +200,7 @@
         </div>
     </main>
     <script src="../js/proceso_eliminar.js"></script>
-    <script src="https://code.jquery.com/jquery-3.6.0.js" integrity="sha256-H+K7U5CnXl1h5ywQfKtSj8PCmoN9aaq30gDh27Xc0jk=" crossorigin="anonymous"></script>
-    <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.10.25/css/jquery.dataTables.css">
-    <script type="text/javascript" charset="utf8" src="https://cdn.datatables.net/1.10.25/js/jquery.dataTables.js"></script>
-    <script type="text/javascript" charset="utf8" src="//cdn.datatables.net/1.10.11/js/jquery.dataTables.js"></script>
+    
     <script>
         $(document).ready(function () {
             $('#tblusuario').DataTable({
@@ -209,6 +228,7 @@
             });
         })
     </script>
+    <script type="text/javascript" charset="utf8" src="//cdn.datatables.net/1.10.11/js/jquery.dataTables.js"></script>
     </body>
 
 </html>

@@ -31,6 +31,16 @@
             background-color: #1f8fc3;
             border-radius: 6px;
           }
+          .boton-reporte{
+            text-decoration: none;
+            padding: 10px;
+            font-weight: 600;
+            font-size: 14px;
+            color: #ffffff;
+            background-color: #1f8fc3;
+            border-radius: 6px;
+            margin-left: 10px
+          }
           
 
           .boton-eliminar{
@@ -53,9 +63,9 @@
     <input type="checkbox" id="nav-toggle">
     <div class="sidebar">
         <div class="sidebar-brand">
-            <h2><span class="las la-clinic-medical"></span> <span>Centro de Salud San Diego</span></h2>
+            <h2><span class="las la-clinic-medical"></span> <span>Centro de Salud</span></h2>
         </div>
-        <br>
+        
         <!--Secciones-del-tablero-->
         <div class="sidebar-menu">
             <ul>
@@ -72,6 +82,16 @@
                     <span>Medicamentos</span></a>
                 </li>
                 <li>
+                    <a href="ingresos.php"><span class="las la-prescription-bottle-alt"></span>
+                    <span>Ingresos</span>
+                </a>
+                </li>
+                <li>
+                    <a href="egresos.php"><span class="la la-prescription-bottle"></span>
+                    <span>Egresos</span>
+                </a>
+                </li>
+                <li>
                     <a href="ubicacion.php" ><span class="las la-map"></span>
                     <span>Ubicación</span></a>
                 </li>
@@ -85,11 +105,6 @@
                     <span>Proveedor</span>
                 </a>
                 </li>
-                <li>
-                    <a href="reporte.php"><span class="las la-clipboard"></span>
-                    <span>Reportes</span></a>
-                </li>
-                
                 <li>
                     <a href="usuario.php" ><span class="las la-users"></span>
                     <span>Usuarios</span></a>
@@ -131,7 +146,8 @@
                 <div class="card-header">
                     <h3>Proveedores</h3>
                     <div class="encabezado">
-                    <a type="submit" href="proveedor_ingresar.php" name="" id="" class="boton-editar">Ingresar nuevo proveedor</a>
+                    <a type="submit" href="../reportes/reporte_proveedor.php" target="_blank" name="" id="" class="boton-reporte">Reporte</a>
+                    <a type="submit" href="proveedor_ingresar.php" name="" id="" class="boton-reporte">Ingresar nuevo proveedor</a>
                     </div> 
                 </div>
                 

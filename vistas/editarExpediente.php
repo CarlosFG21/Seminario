@@ -56,9 +56,9 @@
     <input type="checkbox" id="nav-toggle">
     <div class="sidebar">
         <div class="sidebar-brand">
-            <h2><span class="las la-clinic-medical"></span> <span>Centro de Salud San Diego</span></h2>
+            <h2><span class="las la-clinic-medical"></span> <span>Centro de Salud</span></h2>
         </div>
-        <br>
+        
         <!--Secciones-del-tablero-->
         <div class="sidebar-menu">
             <ul>
@@ -67,31 +67,37 @@
                     <span>Tablero</span></a>
                 </li>
                 <li>
-                    <a href="" class="active"><span class="las la-folder-open"></span>
+                    <a href="expediente.php" class="active"><span class="las la-folder-open"></span>
                     <span>Expedientes</span></a>
                 </li>
                 <li>
-                    <a href=""><span class="las la-medkit"></span>
+                    <a href="medicamento.php"><span class="las la-medkit"></span>
                     <span>Medicamentos</span></a>
                 </li>
                 <li>
-                    <a href=""><span class="las la-map"></span>
+                    <a href="ingresos.php"><span class="las la-prescription-bottle-alt"></span>
+                    <span>Ingresos</span>
+                </a>
+                </li>
+                <li>
+                    <a href="egresos.php"><span class="la la-prescription-bottle"></span>
+                    <span>Egresos</span>
+                </a>
+                </li>
+                <li>
+                    <a href="ubicacion.php"><span class="las la-map"></span>
                     <span>Ubicación</span>
                 </a>
                 </li>
                 <li>
-                    <a href=""><span class="las la-clinic-medical"></span>
+                    <a href="puesto_salud.php"><span class="las la-clinic-medical"></span>
                     <span>Puesto de salud</span>
                 </a>
                 </li>
                 <li>
-                    <a href=""><span class="las la-user-md"></span>
+                    <a href="proveedor.php"><span class="las la-user-md"></span>
                     <span>Proveedor</span>
                 </a>
-                </li>
-                <li>
-                    <a href=""><span class="las la-clipboard"></span>
-                    <span>Reportes</span></a>
                 </li>
                 <li>
                     <a href="usuario.php"><span class="las la-users"></span>
@@ -110,7 +116,7 @@
             </h2>
 
             <div class="user-wrapper">
-                <img src="../img/Avatar.png" width="40px" height="40px" alt="">
+                
                 <img src="../reportes/centro1.jpg" width="50px" height="50px" alt="">
                 <div>
                 <nav id="menu">
