@@ -7,6 +7,20 @@
     if (isset($_SESSION['nombre'])) {
 
 ?>
+<?php
+    include('../controlador/conexion.php');
+    $departamento = null;
+    $sql = "SELECT * FROM departamento where id_departamento = " . $_GET['id'];
+    $ejecutar = mysqli_query($conexion, $sql);
+    while($fila = mysqli_fetch_row($ejecutar)){
+        $departamento = $fila;
+        break;
+    }
+
+    if ( $departamento == null){
+        header('Location: departamento.php');
+    }
+?>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -102,21 +116,19 @@
         <div class="projects">
             <div class="card">
                 <div class="card-header">
-                <h3>Datos del municipio</h3>   
+                <h3>Datos del puesto de salud</h3>   
                 </div>
 
             <div class="card-body">
             <br>
-            <form name="" id="" method="POST" action="../controlador/BMunicipio.php"> 
+            <form name="" id="" method="POST" action="../controlador/BDepartamento.php"> 
            <p>
-           <label for="">Departamento</label>
-           <select class="input__text">
-           <option value="">Gualan</option>
-           </select>
+           <label for="">País</label>
+           <input type="text" class="input__text" placeholder="Guatemala"  readonly="readonly">
            </p>
            <p>
-           <label for="">Municipio</label>
-           <input name="txtdepartamento" type="text" class="input__text" placeholder="Ingrese un departamento"  pattern="^[a-zA-Záéíóú ]{1,30}" minlength="3" required>
+           <label for="">Departamento</label>
+           <input name="txtdepartamento" type="text" class="input__text" placeholder="Ingrese un departamento"  pattern="^[a-zA-Záéíóú ]{1,30}" minlength="3" value="<?=$departamento[1]?>" required>
            </p>
         <p>
         </p>    
@@ -124,8 +136,9 @@
         </p>
         <br>
         <div class="btn__group">
-				<a href="municipio.php" class="btn btn__danger">Regresar</a>
-				<input type="submit" name="registrar" value="Guardar" class="btn btn__primary">
+        <input type="hidden" name="txtid_departamento" value="<?= $departamento[0] ?>">
+				<a href="departamento.php" class="btn btn__danger">Regresar</a>
+				<input type="submit" name="actualizar" value="Guardar" class="btn btn__primary">
 			</div>
             </form>
             </div>

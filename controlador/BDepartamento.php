@@ -1,8 +1,6 @@
 <?php
 
-$nombred = "";
-$id = 0;
-$edit_state = false;
+
 
 if(isset($_REQUEST['registrar'])){
 include('conexion.php');
