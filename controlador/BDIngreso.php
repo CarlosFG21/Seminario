@@ -12,7 +12,15 @@ $cbProveedorPHP = $_POST['cbProveedorPHP'];
 $inserciones = 0;
 
 
-//HAGO EL PRIMER INSERT DE INGRESO
+
+ if (sizeof($filas) == 0){
+    
+    echo "<script>alert('No se puede ingresar sin detalles')</script>"; 
+ }else{
+
+
+
+    //HAGO EL PRIMER INSERT DE INGRESO
 $id_user = $_SESSION['id_usuario'];
 
 $sqlIngreso = "INSERT INTO ingreso (fecha_ingreso, id_proveedor, id_usuario) VALUES ('$fechaIngresoPHP', '$cbProveedorPHP', '$id_user')";
@@ -34,9 +42,10 @@ while($row = mysqli_fetch_row($ejecutarMax)){
     break;
 }
 
- if (count($filas) == 0){
-    echo "NO PUEDE INGRESAR SIN DETALLES";
- }else{
+
+
+
+
 
     
     for($i=0; $i < count($filas); $i++){

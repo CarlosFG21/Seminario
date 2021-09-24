@@ -5,7 +5,7 @@ include('conexion.php');
 
 $IdPHP = $_POST['IdPHP'];
 
-
+//esto se hace para devolver los campos del medicamento en el egresar
 $medic;
 $sqlMedic = "SELECT d.id_detalle_ing, m.nombre as nmedicamento, c.descripcion as Concentra, p.descripcion as Presenta, d.stock_actual,
 d.fecha_vencimiento, d.num_lote

@@ -216,7 +216,7 @@
             
             <p>
              <label for="">STOCK DISPONIBLE</label>
-             <input id="txtStockDisponible" name="txtStockDisponible" type="text" class="input__text" placeholder="Stock Disponible" value="">
+             <input id="txtStockDisponible" name="txtStockDisponible" type="text" class="input__text" placeholder="Stock Disponible" value="" readonly>
              </p>
             
            
@@ -256,9 +256,9 @@
 
 
         
-             <input id="txtId" name="txtId" type="text" class="input__text" placeholder="" value="0"  >
-             <input id="txtNombre" name="txtNombre" type="text" class="input__text" placeholder="" value=""  >
-             <input id="txtLote" name="txtLote" type="text" class="input__text" placeholder="" value=""  >
+             <input id="txtId" type="hidden" name="txtId" type="text" class="input__text" placeholder="" value="0"  >
+             <input id="txtNombre" type="hidden" name="txtNombre" type="text" class="input__text" placeholder="" value=""  >
+             <input id="txtLote" type="hidden" name="txtLote" type="text" class="input__text" placeholder="" value=""  >
             
 
 
