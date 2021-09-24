@@ -102,20 +102,18 @@
         <div class="projects">
             <div class="card">
                 <div class="card-header">
-                <h3>Datos del municipio</h3>   
+                <h3>Datos del departamento</h3>   
                 </div>
 
             <div class="card-body">
             <br>
-            <form name="" id="" method="POST" action="../controlador/BMunicipio.php"> 
+            <form name="" id="" method="POST" action="../controlador/BDepartamento.php"> 
            <p>
-           <label for="">Departamento</label>
-           <select class="input__text">
-           <option value="">Gualan</option>
-           </select>
+           <label for="">País</label>
+           <input type="text" class="input__text" placeholder="Guatemala"  readonly="readonly">
            </p>
            <p>
-           <label for="">Municipio</label>
+           <label for="">Departamento</label>
            <input name="txtdepartamento" type="text" class="input__text" placeholder="Ingrese un departamento"  pattern="^[a-zA-Záéíóú ]{1,30}" minlength="3" required>
            </p>
         <p>
@@ -124,7 +122,7 @@
         </p>
         <br>
         <div class="btn__group">
-				<a href="municipio.php" class="btn btn__danger">Regresar</a>
+				<a href="departamento.php" class="btn btn__danger">Regresar</a>
 				<input type="submit" name="registrar" value="Guardar" class="btn btn__primary">
 			</div>
             </form>

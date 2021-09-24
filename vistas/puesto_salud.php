@@ -29,7 +29,7 @@
             font-weight: 600;
             font-size: 14px;
             color: #ffffff;
-            background-color: rgb(3, 113, 163);
+            background-color: #1f8fc3;
             border-radius: 6px;
           }
           
@@ -51,14 +51,14 @@
 
 <body>
 
-    <input type="checkbox" id="nav-toggle">
-    <div class="sidebar">
-        <div class="sidebar-brand">
-            <h2><span class="las la-clinic-medical"></span> <span>Centro de Salud San Diego</span></h2>
-        </div>
-        <br>
-        <!--Secciones-del-tablero-->
-        <div class="sidebar-menu">
+<input type="checkbox" id="nav-toggle">
+<div class="sidebar">
+    <div class="sidebar-brand">
+        <h2><span class="las la-clinic-medical"></span> <span>Centro de Salud</span></h2>
+    </div>
+    <br>
+    <!--Secciones-del-tablero-->
+    <div class="sidebar-menu">
             <ul>
                 <li>
                     <a href="index.php" class=""><span class="las la-home"></span>
@@ -130,16 +130,14 @@
         <div class="projects">
             <div class="card">
                 <div class="card-header">
-                    <h3>Puesto de salud</h3>
+                <h3>Puesto de Salud</h3>
                     <div class="encabezado">
-                    <input type="text" id="myInput" onkeyup="myFunction()" placeholder="Buscar" class="input__text">
-                    <a type="submit" href="puesto_ingresar.php" name="" id="" class="boton">Ingresar nuevo puesto de salud</a>
+                    <a type="submit" href="puesto_ingresar.php" name="" id="" class="boton-editar">Ingresar nuevo Puesto de Salud</a>
                     </div> 
                 </div>
-                
                 <div class="card-body">
                     <div class="table-responsive">
-                        <table id="myTable" width="100%">
+                        <table id="tblusuario" width="100%">
                             <thead>
                                 <tr class="header">
                                     <th>ID</th>
@@ -169,7 +167,7 @@
                             </tbody>
                         </table>
                         
-                        <div id="pageNavPosition" class="pager-nav"></div>
+                        
                     </div>
                 </div>
 
@@ -177,8 +175,37 @@
         </div>
     </main>
     <script src="../js/proceso_eliminar.js"></script>
-    <script src="../js/buscador.js"></script>
-
+    <script src="https://code.jquery.com/jquery-3.6.0.js" integrity="sha256-H+K7U5CnXl1h5ywQfKtSj8PCmoN9aaq30gDh27Xc0jk=" crossorigin="anonymous"></script>
+    <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.10.25/css/jquery.dataTables.css">
+    <script type="text/javascript" charset="utf8" src="https://cdn.datatables.net/1.10.25/js/jquery.dataTables.js"></script>
+    <script type="text/javascript" charset="utf8" src="//cdn.datatables.net/1.10.11/js/jquery.dataTables.js"></script>
+    <script>
+        $(document).ready(function () {
+            $('#tblusuario').DataTable({
+                language: {
+                    "decimal": "",
+                    "emptyTable": "No hay información",
+                    "info": "Mostrando _START_ a _END_ de _TOTAL_ Entradas",
+                    "infoEmpty": "Mostrando 0 to 0 of 0 Entradas",
+                    "infoFiltered": "(Filtrado de _MAX_ total entradas)",
+                    "infoPostFix": "",
+                    "thousands": ",",
+                    "lengthMenu": "Mostrar _MENU_ registros",
+                    "loadingRecords": "Cargando...",
+                    "processing": "Procesando...",
+                    "search": "Buscar    ",
+                    "zeroRecords": "Sin resultados encontrados",
+                    "paginate": {
+                        "first": "Primero",
+                        "last": "Ultimo",
+                        "next": "Siguiente",
+                        "previous": "Anterior"
+                    }
+                },
+                
+            });
+        })
+    </script>
     </body>
 
 </html>
