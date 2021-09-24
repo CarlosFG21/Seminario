@@ -9,7 +9,15 @@ $cbPuestoSaludPHP = $_POST['cbPuestoSaludPHP'];
 // var_dump($filas);
 // var_dump($fechaIngresoPHP);
 // die();
-$inserciones = 0;
+
+
+ if (count($filas) == 0){
+    echo "<script>alert('NO PUEDE DAR EGRESO SIN DETALLES')</script>"; 
+    echo "NO SE PUEDE EGRESAR SIN DETALLES";
+ }else{
+
+
+    $inserciones = 0;
 
 
 //HAGO EL PRIMER INSERT DE INGRESO
@@ -33,10 +41,6 @@ while($row = mysqli_fetch_row($ejecutarMax)){
     
     break;
 }
-
- if (count($filas) == 0){
-    echo "<script>alert('NO PUEDE DAR EGRESO SIN DETALLES')</script>"; 
- }else{
 
     
     for($i=0; $i < count($filas); $i++){
