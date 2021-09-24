@@ -33,6 +33,17 @@
             background-color: rgb(3, 113, 163);
             border-radius: 6px;
           }
+
+          .boton-reporte{
+            text-decoration: none;
+            padding: 10px;
+            font-weight: 600;
+            font-size: 14px;
+            color: #ffffff;
+            background-color: #1f8fc3;
+            border-radius: 6px;
+            margin-left: 10px
+          }
           
 
           .boton-eliminar{
@@ -54,9 +65,9 @@
     <input type="checkbox" id="nav-toggle">
     <div class="sidebar">
         <div class="sidebar-brand">
-            <h2><span class="las la-clinic-medical"></span> <span>Centro de Salud San Diego</span></h2>
+            <h2><span class="las la-clinic-medical"></span> <span>Centro de Salud</span></h2>
         </div>
-        <br>
+        
         <!--Secciones-del-tablero-->
         <div class="sidebar-menu">
             <ul>
@@ -65,12 +76,22 @@
                     <span>Tablero</span></a>
                 </li>
                 <li>
-                    <a href="" class="active"><span class="las la-folder-open"></span>
+                    <a href=""><span class="las la-folder-open"></span>
                     <span>Expedientes</span></a>
                 </li>
                 <li>
                     <a href="medicamento.php"><span class="las la-medkit"></span>
                     <span>Medicamentos</span></a>
+                </li>
+                <li>
+                    <a href="ingresos.php" class="active"><span class="las la-prescription-bottle-alt"></span>
+                    <span>Ingresos</span>
+                </a>
+                </li>
+                <li>
+                    <a href="egresos.php"><span class="la la-prescription-bottle"></span>
+                    <span>Egresos</span>
+                </a>
                 </li>
                 <li>
                     <a href="ubicacion.php"><span class="las la-map"></span>
@@ -86,10 +107,6 @@
                     <a href="proveedor.php"><span class="las la-user-md"></span>
                     <span>Proveedor</span>
                 </a>
-                </li>
-                <li>
-                    <a href="reporte.php"><span class="las la-clipboard"></span>
-                    <span>Reportes</span></a>
                 </li>
                 
                 <li>
@@ -151,13 +168,13 @@
                         <div class="card-header">
                             <h3>Ingresos</h3>
                             <div class="encabezado">
-                            <input type="text"  id="myInput" onkeyup="todos()" placeholder="Buscar" class="input__text">
-                            <a type="submit" href="ingreso_medicamento_stock.php" name="" id="" class="boton">Nuevo ingreso</a>
+                            
+                            <a type="submit" href="ingreso_medicamento_stock.php" name="" id="" class="boton-reporte">Nuevo ingreso</a>
                             </div> 
                         </div>
                         <div class="card-body">
                             <div class="table-responsive">
-                                <table  id="myTable"  width="100%">
+                                <table  id="tblusuario"  width="100%">
                                     <thead>
                                         <tr>
                                             <th>ID_Ingreso</th>
@@ -213,7 +230,37 @@
     </main>
 
     <script src="../js/proceso_eliminarExpediente.js"></script>
-    <script src="../js/buscador_expediente_nombre.js"></script>
+    <script src="https://code.jquery.com/jquery-3.6.0.js" integrity="sha256-H+K7U5CnXl1h5ywQfKtSj8PCmoN9aaq30gDh27Xc0jk=" crossorigin="anonymous"></script>
+    <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.10.25/css/jquery.dataTables.css">
+    <script type="text/javascript" charset="utf8" src="https://cdn.datatables.net/1.10.25/js/jquery.dataTables.js"></script>
+    <script type="text/javascript" charset="utf8" src="//cdn.datatables.net/1.10.11/js/jquery.dataTables.js"></script>
+    <script>
+        $(document).ready(function () {
+            $('#tblusuario').DataTable({
+                language: {
+                    "decimal": "",
+                    "emptyTable": "No hay información",
+                    "info": "Mostrando _START_ a _END_ de _TOTAL_ Entradas",
+                    "infoEmpty": "Mostrando 0 to 0 of 0 Entradas",
+                    "infoFiltered": "(Filtrado de _MAX_ total entradas)",
+                    "infoPostFix": "",
+                    "thousands": ",",
+                    "lengthMenu": "Mostrar _MENU_ registros",
+                    "loadingRecords": "Cargando...",
+                    "processing": "Procesando...",
+                    "search": "Buscar ",
+                    "zeroRecords": "Sin resultados encontrados",
+                    "paginate": {
+                        "first": "Primero",
+                        "last": "Ultimo",
+                        "next": "Siguiente",
+                        "previous": "Anterior"
+                    }
+                },
+                
+            });
+        })
+    </script>
     
     
     </body>

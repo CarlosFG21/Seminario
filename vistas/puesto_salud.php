@@ -32,6 +32,17 @@
             background-color: #1f8fc3;
             border-radius: 6px;
           }
+
+          .boton-reporte{
+            text-decoration: none;
+            padding: 10px;
+            font-weight: 600;
+            font-size: 14px;
+            color: #ffffff;
+            background-color: #1f8fc3;
+            border-radius: 6px;
+            margin-left: 10px
+          }
           
 
           .boton-eliminar{
@@ -56,7 +67,7 @@
     <div class="sidebar-brand">
         <h2><span class="las la-clinic-medical"></span> <span>Centro de Salud</span></h2>
     </div>
-    <br>
+    
     <!--Secciones-del-tablero-->
     <div class="sidebar-menu">
             <ul>
@@ -73,6 +84,16 @@
                     <span>Medicamentos</span></a>
                 </li>
                 <li>
+                    <a href="ingresos.php"><span class="las la-prescription-bottle-alt"></span>
+                    <span>Ingresos</span>
+                </a>
+                </li>
+                <li>
+                    <a href="egresos.php"><span class="la la-prescription-bottle"></span>
+                    <span>Egresos</span>
+                </a>
+                </li>
+                <li>
                     <a href="ubicacion.php" ><span class="las la-map"></span>
                     <span>Ubicación</span>
                 </a>
@@ -86,10 +107,6 @@
                     <a href="proveedor.php"><span class="las la-user-md"></span>
                     <span>Proveedor</span>
                 </a>
-                </li>
-                <li>
-                    <a href="reporte.php"><span class="las la-clipboard"></span>
-                    <span>Reportes</span></a>
                 </li>
                 <li>
                     <a href="usuario.php" ><span class="las la-users"></span>
@@ -132,7 +149,8 @@
                 <div class="card-header">
                 <h3>Puesto de Salud</h3>
                     <div class="encabezado">
-                    <a type="submit" href="puesto_ingresar.php" name="" id="" class="boton-editar">Ingresar nuevo Puesto de Salud</a>
+                    <a type="submit" href="../reportes/reporte_puesto.php" target="_blank" name="" id="" class="boton-reporte">Reporte</a>
+                    <a type="submit" href="puesto_ingresar.php" name="" id="" class="boton-reporte">Ingresar nuevo Puesto de Salud</a>
                     </div> 
                 </div>
                 <div class="card-body">

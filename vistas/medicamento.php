@@ -1,3 +1,12 @@
+<?php 
+	
+	session_start();
+	$nombre = $_SESSION['nombre'];
+    $permiso = $_SESSION['permiso'];
+    
+    if (isset($_SESSION['nombre'])) {
+
+?>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -11,17 +20,38 @@
     <link rel="stylesheet" href="https://maxst.icons8.com/vue-static/landings/line-awesome/line-awesome/1.3.0/css/line-awesome.min.css">
     <link rel="stylesheet" href="../css/index.css">
     <link rel="stylesheet" href="../css/medicamento.css">
+    <link rel="stylesheet" href="../css/boton_navegacion.css">
     <style>
         .boton-editar{
-            color: #FFF;
-            background-color: blue;
-            padding: 5px;
+            text-decoration: none;
+            padding: 10px;
+            font-weight: 600;
+            font-size: 14px;
+            color: #ffffff;
+            background-color: #1f8fc3;
+            border-radius: 6px;
         }
 
+        .boton-reporte{
+            text-decoration: none;
+            padding: 10px;
+            font-weight: 600;
+            font-size: 14px;
+            color: #ffffff;
+            background-color: #1f8fc3;
+            border-radius: 6px;
+            margin-left: 10px
+          }
+
         .boton-eliminar{
-            color: #FFF;
-            background-color: red;
-            padding: 5px;
+            text-decoration: none;
+            padding: 10px;
+            font-weight: 600;
+            font-size: 14px;
+            color: #ffffff;
+            background-color: #ff0000;
+            border-radius: 6px;
+            
         }
     </style>
 </head>
@@ -31,9 +61,9 @@
     <input type="checkbox" id="nav-toggle">
     <div class="sidebar">
         <div class="sidebar-brand">
-            <h2><span class="las la-clinic-medical"></span> <span>Centro de Salud San Diego</span></h2>
+            <h2><span class="las la-clinic-medical"></span> <span>Centro de Salud</span></h2>
         </div>
-        <br>
+        
         <!--Secciones-del-tablero-->
         <div class="sidebar-menu">
             <ul>
@@ -50,6 +80,16 @@
                     <span>Medicamentos</span></a>
                 </li>
                 <li>
+                    <a href="ingresos.php"><span class="las la-prescription-bottle-alt"></span>
+                    <span>Ingresos</span>
+                </a>
+                </li>
+                <li>
+                    <a href="egresos.php"><span class="la la-prescription-bottle"></span>
+                    <span>Egresos</span>
+                </a>
+                </li>
+                <li>
                     <a href="ubicacion.php"><span class="las la-map"></span>
                     <span>Ubicación</span>
                 </a>
@@ -63,12 +103,7 @@
                     <a href="proveedor.php"><span class="las la-user-md"></span>
                     <span>Proveedor</span>
                 </a>
-                </li>
-                <li>
-                    <a href=""><span class="las la-clipboard"></span>
-                    <span>Reportes</span></a>
-                </li>
-                
+                </li>  
                 <li>
                     <a href="usuario.php"><span class="las la-users"></span>
                     <span>Usuarios</span></a>
@@ -86,10 +121,18 @@
             </h2>
 
             <div class="user-wrapper">
-                <img src="../img/Avatar.png" width="40px" height="40px" alt="">
-                <div>
-                    <h4>Administrador</h4>
-                    <small>Carlos Franco</small>
+            <img src="../reportes/centro1.jpg" width="50px" height="50px" alt="">
+            <div>
+            <nav id="menu">
+            <ul>
+           <li><a href=""><?php echo $nombre;?></a>
+           <ul>
+            <li><a href=""><?php echo $permiso;?></a></li>
+            <li><a href="../controlador/salir.php">Cerrar Sesion</a></li>
+            </ul>
+            </li>
+           </ul>
+        </nav> 
                 </div>
             </div>
         </header>
@@ -120,14 +163,14 @@
                         <div class="card-header">
                             <h3>Medicamento</h3>
                             <div class="encabezado">
-                            <input type="text" name="" id="" placeholder="Buscar" class="input__text">
-                            <a type="submit" href="medicamento_ingresar.php" name="" id="" class="boton">Ingresar nuevo medicamento</a>
+                            <a type="submit" href="../reportes/reporte_usuario.php" target="_blank" name="" id="" class="boton-reporte">Reporte</a>
+                            <a type="submit" href="medicamento_ingresar.php" name="" id="" class="boton-reporte">Ingresar nuevo medicamento</a>
                             </div> 
                         </div>
                         
                         <div class="card-body">
                             <div class="table-responsive">
-                                <table width="100%">
+                                <table id="tblusuario" width="100%">
                                     <thead>
                                         <tr>
                                             <td>ID</td>
@@ -170,6 +213,42 @@
     </main>
 
     <script src="../js/proceso_eliminar.js"></script>
+    <script src="https://code.jquery.com/jquery-3.6.0.js" integrity="sha256-H+K7U5CnXl1h5ywQfKtSj8PCmoN9aaq30gDh27Xc0jk=" crossorigin="anonymous"></script>
+    <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.10.25/css/jquery.dataTables.css">
+    <script type="text/javascript" charset="utf8" src="https://cdn.datatables.net/1.10.25/js/jquery.dataTables.js"></script>
+    <script type="text/javascript" charset="utf8" src="//cdn.datatables.net/1.10.11/js/jquery.dataTables.js"></script>
+    <script>
+        $(document).ready(function () {
+            $('#tblusuario').DataTable({
+                language: {
+                    "decimal": "",
+                    "emptyTable": "No hay información",
+                    "info": "Mostrando _START_ a _END_ de _TOTAL_ Entradas",
+                    "infoEmpty": "Mostrando 0 to 0 of 0 Entradas",
+                    "infoFiltered": "(Filtrado de _MAX_ total entradas)",
+                    "infoPostFix": "",
+                    "thousands": ",",
+                    "lengthMenu": "Mostrar _MENU_ registros",
+                    "loadingRecords": "Cargando...",
+                    "processing": "Procesando...",
+                    "search": "Buscar ",
+                    "zeroRecords": "Sin resultados encontrados",
+                    "paginate": {
+                        "first": "Primero",
+                        "last": "Ultimo",
+                        "next": "Siguiente",
+                        "previous": "Anterior"
+                    }
+                },
+                
+            });
+        })
+    </script>
     </body>
 
 </html>
+<?php
+	}else{
+		header('Location: login.php');
+	}
+?>
