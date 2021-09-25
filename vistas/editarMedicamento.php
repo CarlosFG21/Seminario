@@ -156,10 +156,7 @@
            <input name="txtDescripcion" type="text" class="input__text" placeholder="Ingresa una descripción del medicamento" value="<?= $medicamento[2] ?>">
            </p>
           
-        <p>
-          <label for="">Numero de lote</label>
-          <input name="txtLote" type="text" class="input__text" placeholder="Ingrese el numero de lote" value="<?= $medicamento[3] ?>">
-        </p>
+     
         
         <p>
           <label for="">Concentración</label>
@@ -168,9 +165,12 @@
           while($rowC = mysqli_fetch_array($ejecutarConcentracion)){
 
           
-
           ?>
-            <option value="<?php echo $rowC[0]; ?>"><?php echo $rowC[1]; ?></option>
+          
+
+            <option <?php if($_GET['id'] == $rowC[0]){?>selected <?php } ?> value="<?php echo $rowC[0];?>"><?php echo $rowC[1];?></option>
+
+
           <?php }  ?>
           </select>
         </p>
@@ -192,10 +192,7 @@
           </select>
         </p>
       
-        <p>
-          <label for="">Stock</label>
-          <input name="txtStock" type="text" class="input__text" placeholder="Ingrese el stock" value="<?= $medicamento[5] ?>">
-        </p>
+      
         <p>
         </p>    
         <p>

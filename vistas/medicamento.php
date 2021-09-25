@@ -186,7 +186,12 @@
                                     </thead>
                                     <?php
         include('../controlador/conexion.php');
-        $sql = "SELECT id_medicamento, nombre, descripcion, id_concentracion, id_presentacion FROM medicamento where estado=1";
+        $sql = "SELECT m.id_medicamento, m.nombre as Medicamento, m.descripcion, c.descripcion as Concentracion, p.descripcion as Presentacion
+        from medicamento m inner join concentracion c
+        on m.id_concentracion = c.id_concentracion
+        inner join presentacion p 
+        on m.id_presentacion = p.id_presentacion
+        where m.estado=1";
         $ejecutar = mysqli_query($conexion, $sql);
         echo '<tbody>';
         while($fila = mysqli_fetch_array($ejecutar)){
