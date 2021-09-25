@@ -204,19 +204,18 @@
             $estado;
             if ($fila[4]==1){
                 $estado = "INGRESADO";
+                echo '<tr>';
+                echo '<td><p align=center>'.$fila[0].'</p></td>';
+                echo '<td><p align=center>'.$fila[1].'</p></td>';
+                echo '<td><p align=center>'.$fila[2].'</p></td>';
+                echo '<td><p align=center>'.$fila[3].'</p></td>';
+                echo '<td><p align=center>'.$estado.'</p></td>';
+                echo "<td><a href='verDetalleIngreso.php?id=$fila[0]' class='boton-editar'>Ver</a>
+                <a href='../controlador/proceso_anularIngreso.php?id=$fila[0]' class='boton-eliminar'>Anular</a></td>";
+                echo '</tr>';
             }
 
-            echo '<tr>';
-            echo '<td><p align=center>'.$fila[0].'</p></td>';
-            echo '<td><p align=center>'.$fila[1].'</p></td>';
-            echo '<td><p align=center>'.$fila[2].'</p></td>';
-            echo '<td><p align=center>'.$fila[3].'</p></td>';
-            echo '<td><p align=center>'.$estado.'</p></td>';
-            echo "<td><a href='verDetalleIngreso.php?id=$fila[0]' class='boton-editar'>Ver</a>
-            <a href='../controlador/proceso_eliminarExpediente.php?id=$fila[0]' class='boton-eliminar'>Anular</a></td>";
-
-
-            echo '</tr>';
+           
         }
         ?>
                                     </tbody>

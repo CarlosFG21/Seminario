@@ -36,7 +36,8 @@
   inner join detalle_ingreso d
   on m.id_medicamento = d.id_medicamento
   inner join ingreso i
-  on d.id_ingreso = i.id_ingreso";
+  on d.id_ingreso = i.id_ingreso
+  where i.estado = 1 AND D.stock_actual > 0 ";
   $ejecutarMedicamento = mysqli_query($conexion, $sqlMedicamento);
   //cargar ultimo ID de expediente
 
