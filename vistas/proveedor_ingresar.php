@@ -6,6 +6,10 @@
     
     if (isset($_SESSION['nombre'])) {
 
+        if($permiso=="Usuario"){
+            header('Location: index.php');
+        }else{
+
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -144,6 +148,7 @@
 
 </html>
 <?php
+    }
 	}else{
 		header('Location: login.php');
 	}
