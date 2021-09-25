@@ -6,6 +6,10 @@
     
     if (isset($_SESSION['nombre'])) {
 
+        if($permiso=="Usuario"){
+            header('Location: index.php');
+        }else{   
+
 ?>
 <?php
 //departamento
@@ -138,12 +142,12 @@
                     <span>Medicamentos</span></a>
                 </li>
                 <li>
-                    <a href="ingresos.php" class="active"><span class="las la-prescription-bottle-alt"></span>
+                    <a href="ingresos.php"><span class="las la-prescription-bottle-alt"></span>
                     <span>Ingresos</span>
                 </a>
                 </li>
                 <li>
-                    <a href="egresos.php"><span class="la la-prescription-bottle"></span>
+                    <a href="egresos.php" class="active"><span class="la la-prescription-bottle"></span>
                     <span>Egresos</span>
                 </a>
                 </li>
@@ -373,6 +377,7 @@
 
 </html>
 <?php
+    }
 	}else{
 		header('Location: login.php');
 	}

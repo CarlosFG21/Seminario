@@ -6,6 +6,10 @@
     
     if (isset($_SESSION['nombre'])) {
 
+        if($permiso=="Usuario"){
+            header('Location: index.php');
+        }else{   
+
 ?>
 <?php
     include('../controlador/conexion.php');
@@ -159,6 +163,7 @@
 
 </html>
 <?php
+    }
 	}else{
 		header('Location: login.php');
 	}
