@@ -120,7 +120,7 @@
                     $row = mysqli_num_rows($sql_run);
                     echo '<h1>'.$row.'</h1>';
                     ?>
-                        <span>Menejo de usuarios</span>
+                        <span>Usuarios</span>
                     </div>
                     <div>
                         <span class="las la-users"></span>
@@ -136,7 +136,7 @@
                     $roww = mysqli_num_rows($sql_runn);
                     echo '<h1>'.$roww.'</h1>';
                     ?>
-                        <span>Menejo de expedientes</span>
+                        <span>Expedientes</span>
                     </div>
                     <div>
                         <span class="las la-folder-open"></span>
@@ -152,7 +152,7 @@
                     $rows = mysqli_num_rows($sql_runo);
                     echo '<h1>'.$rows.'</h1>';
                     ?>
-                        <span>Menejo de medicamentos</span>
+                        <span>Medicamentos</span>
                     </div>
                     <div>
                         <span class="las la-medkit"></span>
@@ -168,7 +168,7 @@
                     $roww = mysqli_num_rows($sql_runn);
                     echo '<h1>'.$roww.'</h1>';
                     ?>
-                        <span>Manejo de proveedores</span>
+                        <span>Proveedores</span>
                     </div>
                     <div>
                         <span class="las la-user-md"></span>
