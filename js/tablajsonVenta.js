@@ -18,6 +18,13 @@ jQuery(document).ready(function() {
 
         filas.push(fila);
       }); // fin de recorrer las filas de la tabla
+
+
+      if (filas.length == 1){
+        alert("No se puede ingresar sin detalles");
+      }
+         
+
         
       filas = filas.slice(0, filas.length -1, filas.length-1);
       console.log("Imprimiento detalles filas tabla");
@@ -33,6 +40,7 @@ jQuery(document).ready(function() {
         },
         success: function(data) { 
           //console.log(data);
+          location.href="../vistas/egresos.php";
         }
       });
     });
