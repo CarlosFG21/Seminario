@@ -12,6 +12,9 @@
 <html lang="en">
 
 <head>
+<script src="https://code.jquery.com/jquery-3.6.0.js" integrity="sha256-H+K7U5CnXl1h5ywQfKtSj8PCmoN9aaq30gDh27Xc0jk=" crossorigin="anonymous"></script>
+    <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.10.25/css/jquery.dataTables.css">
+    <script type="text/javascript" charset="utf8" src="https://cdn.datatables.net/1.10.25/js/jquery.dataTables.js"></script>
     <title>Centro de Salud</title>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -142,8 +145,14 @@
 
                 <div class="card-single">
                     <div>
-                        <h1>25</h1>
-                        <span>Manejo de medicamentos</span>
+                    <?php
+                    include('../controlador/conexion.php');
+                    $sqlu = "SELECT * FROM medicamento where estado=1";
+                    $sql_runo = mysqli_query($conexion,$sqlu);
+                    $rows = mysqli_num_rows($sql_runo);
+                    echo '<h1>'.$rows.'</h1>';
+                    ?>
+                        <span>Menejo de medicamentos</span>
                     </div>
                     <div>
                         <span class="las la-medkit"></span>
@@ -173,98 +182,58 @@
                         <div class="card-header">
                             <h3>Medicamentos</h3>
 
-                            <button>Ingresar nuevo medicamento <span class="las la-arrow-right">
-                            </span></button>
                         </div>
 
                         <div class="card-body">
                             <div class="table-responsive">
-                                <table width="100%">
+                                <table id="tblusuario"width="100%">
                                     <thead>
                                         <tr>
+                                            <td>ID</td>
                                             <td>Nombre</td>
-                                            <td>Descripcion</td>
-                                            <td>Estado</td>
+                                            <td>Lote</td>
+                                            <td>Stock</td>
+                                            <td>Fecha</td>
+                                            <td>Mensaje</td>
                                         </tr>
                                     </thead>
                                     <tbody>
-                                        <tr>
-                                            <td>Buprenorfina</td>
-                                            <td>Tableta sublingual</td>
-                                            <td>
-                                                <span class="status green"></span> Bueno
-                                            </td>
-                                        </tr>
-                                        <tr>
-                                            <td>Tramadol</td>
-                                            <td>Solución inyectable</td>
-                                            <td>
-                                                <span class="status red"></span> Vencido
-                                            </td>
-                                        </tr>
-                                        <tr>
-                                            <td>Oxicodona</td>
-                                            <td>Tableta de liberación</td>
-                                            <td>
-                                                <span class="status yellow"></span> Por Vencer
-                                            </td>
-                                        </tr>
-                                        <tr>
-                                            <td>Morfina</td>
-                                            <td>Tableta o cápsula</td>
-                                            <td>
-                                                <span class="status green"></span> Bueno
-                                            </td>
-                                        </tr>
-                                        <tr>
-                                            <td>Hidromorfona</td>
-                                            <td>Tableta</td>
-                                            <td>
-                                                <span class="status red"></span> Vencido
-                                            </td>
-                                        </tr>
-                                        <tr>
-                                            <td>Fentanilo</td>
-                                            <td>Parche</td>
-                                            <td>
-                                                <span class="status yellow"></span> Por Vencer
-                                            </td>
-                                        </tr>
-                                        <tr>
-                                            <td>Etofenamato</td>
-                                            <td>Solución inyectable</td>
-                                            <td>
-                                                <span class="status yellow"></span> Por Vencer
-                                            </td>
-                                        </tr>
-                                        <tr>
-                                            <td>Dextropropoxifeno </td>
-                                            <td>Cápsula o comprimido </td>
-                                            <td>
-                                                <span class="status green"></span> Bueno
-                                            </td>
-                                        </tr>
-                                        <tr>
-                                            <td>Clonixinato de lisina</td>
-                                            <td>Solución inyectable</td>
-                                            <td>
-                                                <span class="status red"></span> Vencido
-                                            </td>
-                                        </tr>
-                                        <tr>
-                                            <td>Capsaicina</td>
-                                            <td>Crema</td>
-                                            <td>
-                                                <span class="status yellow"></span> Por Vencer
-                                            </td>
-                                        </tr>
-                                        <tr>
-                                            <td>Tramadol-paracetamol</td>
-                                            <td>Tableta</td>
-                                            <td>
-                                                <span class="status yellow"></span> Por Vencer
-                                            </td>
-                                        </tr>
+                                        <?php 
+                                        include('../controlador/conexion.php');
+                                        $sql = "SELECT a.id_medicamento, a.nombre, b.num_lote, b.stock_actual,b.fecha_vencimiento FROM medicamento as a INNER JOIN detalle_ingreso as b ON a.id_medicamento = b.id_medicamento";
+                                        $ejecutar = mysqli_query($conexion, $sql);
+                                       
+                                        while($fila = mysqli_fetch_array($ejecutar)){
+                                        ?>
+                                            <tr>
+                                            <td><?php echo $fila['id_medicamento'] ?></td>
+                                            <td><?php echo $fila['nombre'] ?></td>
+                                            <td><?php echo $fila['num_lote'] ?></td>
+                                            <td><?php echo $fila['stock_actual'] ?></td>
+                                            <td><?php echo $fila['fecha_vencimiento'] ?></td>
+                                            <td><?php 
+                                                     $datetime1 = date_create(date('Y-m-d'));    
+                                                     $datetime2 = date_create($fila['fecha_vencimiento']);  
+                                                     $dias= $diff = $datetime1->diff($datetime2);
+                                                     $dias = $datetime1->diff($datetime2)->format('%r%a');
+
+                                                     if ($dias <= 0) {
+                                                        echo '<span class="status red"></span> Vencido ';
+                                                    } elseif ($dias <= 15) {
+                                                        echo '<span class="status orange"></span> Por vencer';
+                                                    } elseif($dias <= 30) {
+                                                        echo '<span class="status yellow"></span> Precaución';
+                                                    }else{
+                                                        echo '<span class="status green"></span> Activo';
+                                                    }
+                                            ?></td>
+
+                                            </tr>
+                                        <?php
+                                        }
+                                        ?>
+                                        
+                                        
                                     </tbody>
                                 </table>
                             </div>
@@ -273,6 +242,34 @@
                     </div>
                 </div>
         </main>
+        <script>
+        $(document).ready(function () {
+            $('#tblusuario').DataTable({
+                language: {
+                    "decimal": "",
+                    "emptyTable": "No hay información",
+                    "info": "Mostrando _START_ a _END_ de _TOTAL_ Entradas",
+                    "infoEmpty": "Mostrando 0 to 0 of 0 Entradas",
+                    "infoFiltered": "(Filtrado de _MAX_ total entradas)",
+                    "infoPostFix": "",
+                    "thousands": ",",
+                    "lengthMenu": "Mostrar _MENU_ registros",
+                    "loadingRecords": "Cargando...",
+                    "processing": "Procesando...",
+                    "search": "Buscar ",
+                    "zeroRecords": "Sin resultados encontrados",
+                    "paginate": {
+                        "first": "Primero",
+                        "last": "Ultimo",
+                        "next": "Siguiente",
+                        "previous": "Anterior"
+                    }
+                },
+                
+            });
+        })
+    </script>
+    <script type="text/javascript" charset="utf8" src="//cdn.datatables.net/1.10.11/js/jquery.dataTables.js"></script>
 
         </div>
 

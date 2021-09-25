@@ -167,7 +167,11 @@
                             <h3>Expedientes</h3>
                             <div class="encabezado">
                             <a type="submit" href="../reportes/reporte_expediente.php" target="_blank" name="" id="" class="boton-reporte">Reporte</a>
+                            
+                            
                             <a type="submit" href="expediente_ingresar.php" name="" id="" class="boton-reporte">Ingresar nuevo expediente</a>
+                            
+                            
                             </div> 
                         </div>
                         <div class="card-body">
@@ -198,9 +202,10 @@
             echo '<td><p align=center>'.$fila[4].'</p></td>';
             echo '<td><p align=center>'.$fila[5].'</p></td>';
             echo '<td><p align=center>'.$fila[6].'</p></td>';
+            
             echo "<td><a href='editarExpediente.php?id=$fila[0]' class='boton-editar'>Editar</a>
             <a href='../controlador/proceso_eliminarExpediente.php?id=$fila[0]' class='boton-eliminar'>Eliminar</a></td>";
-
+            
 
             echo '</tr>';
         }

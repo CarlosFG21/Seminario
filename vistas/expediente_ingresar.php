@@ -4,7 +4,9 @@
 	$nombre = $_SESSION['nombre'];
     $permiso = $_SESSION['permiso'];
     
-    if (isset($_SESSION['nombre'])) {
+    if (isset($_SESSION['nombre'])) { 
+
+    
 
 ?>
 <?php
@@ -249,7 +251,10 @@ $expediente[0] = $expediente[0] + 1;
 
 </html>
 <?php
+    
 	}else{
 		header('Location: login.php');
-	}
+    }
+    
+
 ?>

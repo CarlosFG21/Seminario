@@ -163,7 +163,9 @@
                         <div class="card-header">
                             <h3>Medicamento</h3>
                             <div class="encabezado">
-                            <a type="submit" href="../reportes/reporte_usuario.php" target="_blank" name="" id="" class="boton-reporte">Reporte</a>
+                            
+                            <a type="submit" href="../reportes/reporte_medicamento.php" target="_blank" name="" id="" class="boton-reporte">Reporte</a>
+                            <a type="submit" href="stockMedicamentos.php"  name="" id="" class="boton-reporte">Consultar Stock</a>
                             <a type="submit" href="medicamento_ingresar.php" name="" id="" class="boton-reporte">Ingresar nuevo medicamento</a>
                             </div> 
                         </div>
