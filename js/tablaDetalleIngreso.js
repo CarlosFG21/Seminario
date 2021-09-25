@@ -95,27 +95,52 @@ function newRowTable()
 //	var subtotal=parseFloat(cantidad)*parseFloat(precio);
 //	var impuesto=parseFloat(subtotal)*0.15;
 //	var total_n=parseFloat(subtotal)+parseFloat(impuesto);
-
 	var name_table=document.getElementById("transactionTable");
 
-    var row = name_table.insertRow(0+1);
-    var cell1 = row.insertCell(0);
-    var cell2 = row.insertCell(1);
-    var cell3 = row.insertCell(2);
-    var cell4 = row.insertCell(3);
-    var cell5 = row.insertCell(4);
-    var cell6 = row.insertCell(5);
-   
+	var fechaIngreso=document.getElementById("txtFechaIngreso").value;
+
+	if (lote == "" || fechaVencimiento =="" || fechaIngreso ==""){
+		alert("Debe rellenar las fechas de ingreso y vencimiento, y el lote del medicamento");
+	}else{
+
+		if(cantidad > 0 ){
+
+			var row = name_table.insertRow(0+1);
+			var cell1 = row.insertCell(0);
+			var cell2 = row.insertCell(1);
+			var cell3 = row.insertCell(2);
+			var cell4 = row.insertCell(3);
+			var cell5 = row.insertCell(4);
+			var cell6 = row.insertCell(5);
+		   
+			
+			cell1.innerHTML = '<p name="cbMedicamento_p[]" class="non-margin">'+cbMedicamento+'</p>';
+			cell2.innerHTML = '<p name="txtMedicamento_p[]" class="non-margin">'+txtMedicamento+'</p>';
+			cell3.innerHTML = '<p name="fechaVencimiento_p[]" class="non-margin">'+fechaVencimiento+'</p>';
+			cell4.innerHTML = '<p name="lote_p[]" class="non-margin">'+lote+'</p>';
+			cell5.innerHTML = '<p name="cantidad_p[]" class="non-margin">'+cantidad+'</p>';
+			cell6.innerHTML = '<button class="fa-eraser">Quitar</button>';
+		
+		
+			document.getElementById("txtCantidad").value = "0";
+			
+			
+		
+			}else{
+				alert("La cantidad debe ser mayor que el número ingresado");
+			}
+		
 
 
 
+	}
+
+	
+	
+
+
+	
     
-    cell1.innerHTML = '<p name="cbMedicamento_p[]" class="non-margin">'+cbMedicamento+'</p>';
-    cell2.innerHTML = '<p name="txtMedicamento_p[]" class="non-margin">'+txtMedicamento+'</p>';
-    cell3.innerHTML = '<p name="fechaVencimiento_p[]" class="non-margin">'+fechaVencimiento+'</p>';
-    cell4.innerHTML = '<p name="lote_p[]" class="non-margin">'+lote+'</p>';
-    cell5.innerHTML = '<p name="cantidad_p[]" class="non-margin">'+cantidad+'</p>';
-    cell6.innerHTML = '<button class="fa-eraser">Quitar</button>';
     
     
     //cell7.innerHTML = '<span class="icon fa-edit"></span><input type="button" class="icon fa-eraser">Eliminar</input>';

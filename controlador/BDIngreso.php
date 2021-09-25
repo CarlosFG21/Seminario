@@ -14,8 +14,9 @@ $inserciones = 0;
 
 
  if (sizeof($filas) == 0){
-    
-    echo "<script>alert('No se puede ingresar sin detalles')</script>"; 
+    //echo '<script language="javascript">alert("Error de autentificacion");window.location.href="ingreso_medicamento_stock.php"</script>';
+    //echo "<script>alert('No se puede ingresar sin detalles')</script>"; 
+    //echo '<script language="javascript">alert("No se puede ingresar sin detalles");</script>';
  }else{
 
 
@@ -25,7 +26,7 @@ $id_user = $_SESSION['id_usuario'];
 
 $sqlIngreso = "INSERT INTO ingreso (fecha_ingreso, id_proveedor, id_usuario) VALUES ('$fechaIngresoPHP', '$cbProveedorPHP', '$id_user')";
  if ($conexion->query($sqlIngreso) === true) {            
-    //header("Location: ../vistas/medicamento.php");
+   
     echo "Datos insertados...INGRESO NORMAL";
 } else{
     die("Error algo salio mal INGRESO: " . $conexion->error);
@@ -74,7 +75,7 @@ while($row = mysqli_fetch_row($ejecutarMax)){
            '$cantidad_ingreso'
        )";
    
-//    var_dump($sql); die();
+
        
       if ($conexion->query($sql) === true) {            
          // header("Location: ../vistas/expediente.php");
@@ -85,6 +86,8 @@ while($row = mysqli_fetch_row($ejecutarMax)){
       }
    
    }
+
+  // header("Location: ../vistas/ingresos.php");
 
    
 
@@ -131,6 +134,8 @@ foreach ($filas as $fila) {
 
 */
 }
+
+  
 
 echo "Se insertaron $inserciones registros";
 

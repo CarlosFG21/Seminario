@@ -89,19 +89,37 @@ function newRowTable()
 
 	var name_table=document.getElementById("transactionTable");
 
-    var row = name_table.insertRow(0+1);
-    var cell1 = row.insertCell(0);
-    var cell2 = row.insertCell(1);
-    var cell3 = row.insertCell(2);
-    var cell4 = row.insertCell(3);
-    
+	var fechaEgreso=document.getElementById("txtFechaEgreso").value;
+
+	if(fechaEgreso==""){
+		alert("Debe rellenar la fecha de egreso");
+	}else{
+
+		if(cantidad > 0){
+
+			var row = name_table.insertRow(0+1);
+			var cell1 = row.insertCell(0);
+			var cell2 = row.insertCell(1);
+			var cell3 = row.insertCell(2);
+			var cell4 = row.insertCell(3);
+			
+		
+		
+		
+			cell1.innerHTML = '<p name="cbMedicamento_p[]" class="non-margin">'+cbMedicamento+'</p>';
+			cell2.innerHTML = '<p name="txtMedicamento_p[]" class="non-margin">'+txtMedicamento+'</p>';
+			cell3.innerHTML = '<p name="cantidad_p[]" class="non-margin">'+cantidad+'</p>';
+			cell4.innerHTML = '<button class="fa-eraser">Quitar</button>';
+	
+		}else{
+			alert("La cantidad debe ser mayor");
+		}
+	
+
+	}
 
 
-
-    cell1.innerHTML = '<p name="cbMedicamento_p[]" class="non-margin">'+cbMedicamento+'</p>';
-    cell2.innerHTML = '<p name="txtMedicamento_p[]" class="non-margin">'+txtMedicamento+'</p>';
-    cell3.innerHTML = '<p name="cantidad_p[]" class="non-margin">'+cantidad+'</p>';
-    cell4.innerHTML = '<button class="fa-eraser">Quitar</button>';
+   
     
     
     //cell7.innerHTML = '<span class="icon fa-edit"></span><input type="button" class="icon fa-eraser">Eliminar</input>';
