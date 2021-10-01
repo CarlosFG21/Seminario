@@ -94,10 +94,13 @@ function newRowTable()
 	var fechaEgreso=document.getElementById("txtFechaEgreso").value;
 
 	var cbMedicamento = document.getElementById("cbMedicamento").value;
-	
+	var cbLote = document.getElementById("cbLote").value;
+	var cbLoteIndex = document.getElementById("cbLote").selectedIndex;
 
-	if(fechaEgreso =="" || cbMedicamento ==""){
-		alert("Debe rellenar la fecha de egreso o seleccionar un medicamento");
+
+
+	if(fechaEgreso =="" || cbMedicamento =="" || cbLoteIndex == 0){
+		alert("Debe rellenar la fecha de egreso, seleccionar el medicamento y lote");
 	}else{
 
 		if(cantidad > 0 ){
