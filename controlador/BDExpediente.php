@@ -19,16 +19,23 @@ if (isset($_REQUEST['registrarExpediente'])) {
     $id_user = $_SESSION['id_usuario'];
     
 
+    if(strlen($nombre)==0 || strlen($apellido)==0 ){
+        echo "<script>alert('Debe escribir el nombre, apellido y seleccionar un municipio')</script>"; 
+     }else{
 
         $sql = "INSERT INTO expediente (correlativo_exp, dpi, nombre, apellido, fecha_nacimiento, telefono, correo, direccion, id_municipio, id_usuario)
-         VALUES ('$expediente', '$dpi', '$nombre', '$apellido', '$fecha', '$telefono', '$correo', '$direccion', '$municipio', '$id_user')";
-        if ($conexion->query($sql) === true) {            
-            header("Location: ../vistas/expediente.php");
-            echo "Datos insertados...";
-        } else{
-            die("Error algo salio mal: " . $conexion->error);
-        }
-        $conexion->close();
+        VALUES ('$expediente', '$dpi', '$nombre', '$apellido', '$fecha', '$telefono', '$correo', '$direccion', '$municipio', '$id_user')";
+       if ($conexion->query($sql) === true) {            
+           header("Location: ../vistas/expediente.php");
+           echo "Datos insertados...";
+       } else{
+           die("Error algo salio mal: " . $conexion->error);
+       }
+       $conexion->close();
+
+     }
+
+       
     
 }
 
