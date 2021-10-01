@@ -350,13 +350,13 @@ group by di.id_medicamento, m.nombre
 
 
         
-             <input id="txtId" type="" name="txtId" type="text" class="input__text" placeholder="" value="0"  >
+             <input id="txtId" type="hidden" name="txtId" type="text" class="input__text" placeholder="" value="0"  >
              <input id="txtNombre" type="hidden" name="txtNombre" type="text" class="input__text" placeholder="" value=""  >
              <input id="txtLote" type="hidden" name="txtLote" type="text" class="input__text" placeholder="" value=""  >
             
 
 
-				<a href="medicamento.php" class="btn btn__danger">Regresar</a>
+				<a href="egresos.php" class="btn btn__danger">Regresar</a>
 				<input id="add_row" type="submit" name="add_row" value="Añadir" class="btn btn__primary">
 
                 <input id="enviar" name="enviar" type="button"  class="btn btn__primary" value="EGRESO" onclick="">
