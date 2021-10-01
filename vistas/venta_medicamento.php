@@ -29,19 +29,15 @@
 //departamento
   require('../controlador/conexion.php');
 
-  $sqlMedicamento = "SELECT d.id_detalle_ing, m.nombre, c.descripcion as Concentra, p.descripcion as Presenta, d.stock_actual,
-  d.fecha_vencimiento, d.num_lote
-  
-  from
-  medicamento m inner join concentracion c
-  on m.id_concentracion = c.id_concentracion
-  inner join presentacion p
-  on m.id_presentacion = p.id_presentacion
-  inner join detalle_ingreso d
-  on m.id_medicamento = d.id_medicamento
-  inner join ingreso i
-  on d.id_ingreso = i.id_ingreso
-  where i.estado = 1 AND D.stock_actual > 0 ";
+  $sqlMedicamento = "select di.id_detalle_ing, di.id_medicamento, m.nombre, di.stock_actual, di.estado, sum(di.stock_actual) as STOCK
+from detalle_ingreso di inner join medicamento m
+on di.id_medicamento = m.id_medicamento
+inner join ingreso i 
+on di.id_ingreso = i.id_ingreso
+where i.estado = 1
+
+group by di.id_medicamento, m.nombre
+ ";
   $ejecutarMedicamento = mysqli_query($conexion, $sqlMedicamento);
   //cargar ultimo ID de expediente
 
@@ -60,6 +56,11 @@
 
 <head>
     <script src="//ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+   
+<link rel="stylesheet" href="https://ajax.googleapis.com/ajax/libs/jqueryui/1.12.1/themes/smoothness/jquery-ui.css">
+<script src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.12.1/jquery-ui.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/chosen/1.8.5/chosen.jquery.min.js"></script>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/chosen/1.8.5/chosen.min.css" >
     
   
  
@@ -75,18 +76,67 @@
     <link rel="stylesheet" href="../css/boton_navegacion.css">
 
 
-    <script language="javascript">
-			$(document).ready(function(){
-				$("#cbMedicamento").change(function () { 		
-					$("#cbMedicamento option:selected").each(function () {
-						id_medicamento = $(this).val();
-						$.post("../controlador/getStockMedicamento.php", { id_medicamento: id_medicamento }, function(data){
-							$("#txtStockDisponible").html(data);
-						});            
-					});
-				})
-			});
-		</script>
+
+    
+
+
+
+<script>
+     $(document).ready(function(){
+    $("#cbMedicamento").change(function () { 	
+
+        document.getElementById("txtId").value = "";
+
+              document.getElementById("txtStockDisponible").value = "";
+              document.getElementById("txtFechaVencimiento").value = "";
+              document.getElementById("txtConcentracion").value = "";
+              document.getElementById("txtPresentacion").value = "";
+
+              document.getElementById("txtNombre").value = "";
+              document.getElementById("txtLote").value = "";
+        	
+        $("#cbMedicamento option:selected").each(function () {
+            id_medicamento = $(this).val();
+            
+            $.post("../controlador/getLote.php", { id_medicamento: id_medicamento }, function(data){
+                $("#cbLote").html(data);
+            });            
+        });
+    })
+});
+
+
+</script>
+
+
+<script>
+     $(document).ready(function(){
+    $("#cbLote").change(function () { 	
+
+       var index =  document.getElementById("cbLote").selectedIndex;
+
+        if (index == 0){
+            document.getElementById("txtId").value = "";
+
+        document.getElementById("txtStockDisponible").value = "";
+        document.getElementById("txtFechaVencimiento").value = "";
+        document.getElementById("txtConcentracion").value = "";
+        document.getElementById("txtPresentacion").value = "";
+
+        document.getElementById("txtNombre").value = "";
+        document.getElementById("txtLote").value = "";
+
+        }
+
+       
+        	
+       
+    })
+});
+
+
+</script>
+
 
 
 
@@ -228,16 +278,31 @@
             </select>
             </p>
 
-
+                
             <p>
-            <label for="">Medicamento</label>
-             <select id="cbMedicamento" class="input__text" name="cbMedicamento" required>
+              
+
+                <label for="">Medicamento</label>
+             <select id="cbMedicamento" class="chosen" name="cbMedicamento"  required>
              <option value="" disabled="disabled" selected>Seleccione</option>
              <?php
                  while($row = mysqli_fetch_array($ejecutarMedicamento)){
              ?>
-            <option value="<?php echo $row[0]; ?>"><?php echo $row[1] . ' - ' . $row[6]; ?></option>
+            <option value="<?php echo $row[1]; ?>"><?php echo $row[2] . ' - ' . $row[5]; ?></option>
              <?php }  ?>   
+            </select>
+
+
+               
+           
+            </p>
+
+
+            <p>
+            <label for="">Lote</label>
+             <select id="cbLote" class="input__text" name="cbLote"  required>
+             <option value="" disabled="disabled" selected>Seleccione</option>
+            
             </select>
             </p>
 
@@ -285,7 +350,7 @@
 
 
         
-             <input id="txtId" type="hidden" name="txtId" type="text" class="input__text" placeholder="" value="0"  >
+             <input id="txtId" type="" name="txtId" type="text" class="input__text" placeholder="" value="0"  >
              <input id="txtNombre" type="hidden" name="txtNombre" type="text" class="input__text" placeholder="" value=""  >
              <input id="txtLote" type="hidden" name="txtLote" type="text" class="input__text" placeholder="" value=""  >
             
@@ -367,13 +432,22 @@
     <script src="../js/tablaDetalleVenta.js"></script>
     <script src="../js/recorrerTabla.js"></script>
     <script src="../js/tablajsonVenta.js"></script>
+    <!--  --> 
     <script src="../js/eventoMedicamentoEgreso.js"></script>
+    
+    
+  
 
     
 
 
     
     </body>
+
+    <script type="text/javascript">
+    $(".chosen").chosen();
+
+    </script>
 
 </html>
 <?php

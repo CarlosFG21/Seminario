@@ -1,9 +1,9 @@
 
  $(document).ready(function(){
-    $("#cbMedicamento").change(function () { 	
+    $("#cbLote").change(function () { 	
         console.log("llego aqui");	
        
-        let e = document.getElementById("cbMedicamento");
+        let e = document.getElementById("cbLote");
         let value = e.options[e.selectedIndex].value;
 
         document.getElementById("txtStockDisponible").value = value;
