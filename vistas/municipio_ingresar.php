@@ -11,6 +11,19 @@
         }else{   
 
 ?>
+
+<?php
+//departamento
+  require('../controlador/conexion.php');
+
+  $sql = "select id_departamento, nombre FROM departamento ORDER BY nombre ASC";
+  $ejecutar = mysqli_query($conexion, $sql);
+
+  //cargar ultimo ID de expediente
+
+
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -118,16 +131,22 @@
 
             <div class="card-body">
             <br>
-            <form name="" id="" method="POST" action="../controlador/BMunicipio.php"> 
+            <form name="" id="" method="POST" action="../controlador/BDMunicipio.php"> 
            <p>
            <label for="">Departamento</label>
-           <select class="input__text">
-           <option value="">Gualan</option>
-           </select>
+          <select class="input__text" name="cbDepartamento" id="cbDepartamento" required>
+          <option value="value1">Seleccione</option>
+
+          <?php
+          while($row = mysqli_fetch_array($ejecutar)){
+          ?>
+            <option value="<?php echo $row[0]; ?>"><?php echo $row[1]; ?></option>
+          <?php }  ?>
+          </select>
            </p>
            <p>
            <label for="">Municipio</label>
-           <input name="txtdepartamento" type="text" class="input__text" placeholder="Ingrese un departamento"  pattern="^[a-zA-Záéíóú ]{1,30}" minlength="3" required>
+           <input name="txtmunicipio" type="text" class="input__text" placeholder="Ingrese un departamento"  pattern="^[a-zA-Záéíóú ]{1,30}" minlength="3" required>
            </p>
         <p>
         </p>    

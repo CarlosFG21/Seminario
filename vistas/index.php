@@ -194,7 +194,7 @@
                                             <td>Lote</td>
                                             <td>Stock</td>
                                             <td>Fecha</td>
-                                            <td>Mensaje</td>
+                                            <td>Alerta</td>
                                         </tr>
                                     </thead>
                                     <tbody>
@@ -216,15 +216,16 @@
                                                      $datetime2 = date_create($fila['fecha_vencimiento']);  
                                                      $dias= $diff = $datetime1->diff($datetime2);
                                                      $dias = $datetime1->diff($datetime2)->format('%r%a');
-
-                                                     if ($dias <= 0) {
-                                                        echo '<span class="status red"></span> Vencido ';
-                                                    } elseif ($dias <= 15) {
-                                                        echo '<span class="status orange"></span> Por vencer';
-                                                    } elseif($dias <= 30) {
-                                                        echo '<span class="status yellow"></span> Precaución';
-                                                    }else{
-                                                        echo '<span class="status green"></span> Activo';
+                                                    if($dias <= 0){
+                                                        echo '<span class="status red"></span>';
+                                                        echo '<span class="status red"></span>';
+                                                    }      
+                                                    elseif ($dias <= 183) {
+                                                        echo '<span class="status red"></span>';
+                                                    } elseif ($dias <= 365) {
+                                                        echo '<span class="status yellow"></span>';
+                                                    } else{
+                                                        echo '<span class="status green"></span> ';
                                                     }
                                             ?></td>
 

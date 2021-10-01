@@ -11,6 +11,32 @@
         }else{   
 
 ?>
+<?php
+    include('../controlador/conexion.php');
+    $municipio = null;
+    $sql = "SELECT * FROM municipio where id_municipio = " . $_GET['id'];
+    $ejecutar = mysqli_query($conexion, $sql);
+    while($fila = mysqli_fetch_row($ejecutar)){
+        $municipio = $fila;
+        break;
+    }
+
+    if ( $municipio == null){
+        header('Location: municipio.php');
+    }
+?>
+
+<?php
+//departamento
+  require('../controlador/conexion.php');
+
+  $sql = "select id_departamento, nombre FROM departamento ORDER BY nombre ASC";
+  $ejecutar = mysqli_query($conexion, $sql);
+
+  //cargar ultimo ID de expediente
+
+
+?>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -118,16 +144,22 @@
 
             <div class="card-body">
             <br>
-            <form name="" id="" method="POST" action="../controlador/BMunicipio.php"> 
+            <form name="" id="" method="POST" action="../controlador/BDMunicipio.php"> 
            <p>
            <label for="">Departamento</label>
-           <select class="input__text">
-           <option value="">Gualan</option>
-           </select>
+          <select class="input__text" name="cbDepartamento" id="cbDepartamento" required>
+          
+
+          <?php
+          while($row = mysqli_fetch_array($ejecutar)){
+          ?>
+            <option value="<?php echo $row[0]; ?>"><?php echo $row[1]; ?></option>
+          <?php }  ?>
+          </select>
            </p>
            <p>
            <label for="">Municipio</label>
-           <input name="txtdepartamento" type="text" class="input__text" placeholder="Ingrese un departamento"  pattern="^[a-zA-Záéíóú ]{1,30}" minlength="3" required>
+           <input name="txtmunicipio" type="text" class="input__text" value="<?= $municipio[1] ?>" placeholder="Ingrese un departamento"  pattern="^[a-zA-Záéíóú ]{1,30}" minlength="3" required>
            </p>
         <p>
         </p>    
@@ -135,8 +167,9 @@
         </p>
         <br>
         <div class="btn__group">
+        <input type="hidden" name="txtid_municipio" value="<?= $municipio[0] ?>">
 				<a href="municipio.php" class="btn btn__danger">Regresar</a>
-				<input type="submit" name="registrar" value="Guardar" class="btn btn__primary">
+				<input type="submit" name="actualizar" value="Guardar" class="btn btn__primary">
 			</div>
             </form>
             </div>
