@@ -9,8 +9,8 @@
 
     $ejecutar = mysqli_query($conexion, $queryM);
 
-    $html = "<option value='0'>Seleccione municipio</option>";
-    echo $html;
+   // $html = "<option value='0'>Seleccione municipio</option>";
+   // echo $html;
 
     while($row = mysqli_fetch_array($ejecutar)){
  

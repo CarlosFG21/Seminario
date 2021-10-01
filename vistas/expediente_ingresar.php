@@ -96,7 +96,7 @@ $expediente[0] = $expediente[0] + 1;
                     <span>Tablero</span></a>
                 </li>
                 <li>
-                    <a href="expdiente.php" class="active"><span class="las la-folder-open"></span>
+                    <a href="expediente.php" class="active"><span class="las la-folder-open"></span>
                     <span>Expedientes</span></a>
                 </li>
                 <li>
@@ -188,7 +188,7 @@ $expediente[0] = $expediente[0] + 1;
            </p>
         <p>
           <label for="">Fecha de nacimiento</label>
-          <input name="txtFecha" type="date" class="input__text" required>
+          <input name="txtFecha" type="date" class="input__text" >
         </p>
         <p>
           <label for="">Telefono</label>
@@ -200,8 +200,8 @@ $expediente[0] = $expediente[0] + 1;
         </p>
         <p>
           <label for="">Departamento</label>
-          <select class="input__text" name="cbDepartamento" id="cbDepartamento" required>
-          <option value="value1">Seleccione</option>
+          <select class="input__text" name="cbDepartamento" id="cbDepartamento" >
+          <option value="" disabled="disabled" selected>Seleccione</option>
 
           <?php
           while($row = mysqli_fetch_array($ejecutar)){
@@ -218,8 +218,8 @@ $expediente[0] = $expediente[0] + 1;
         </p>
         <p>
           <label for="">Municipio</label>
-          <select class="input__text" name="cbMunicipio" id="cbMunicipio" required>
-          <option value="value1">Seleccione</option>
+          <select class="input__text" name="cbMunicipio" id="cbMunicipio" required >
+          <option value="" disabled="disabled" selected>Seleccione</option>
           </select>
         </p>
         <p>
