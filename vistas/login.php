@@ -15,11 +15,11 @@
                     <h2 class="title">Bienvenido</h2>
                     <div class="input-field">
                         <i class="fas fa-user"></i>
-                        <input type="text" placeholder="Usuario" name="nickname"/>
+                        <input type="text" placeholder="Usuario" name="nickname" required/>
                     </div>
                     <div class="input-field">
                         <i class="fas fa-lock"></i>
-                        <input type="password" placeholder="Contraseña" name="contrasena"/>
+                        <input type="password" placeholder="Contraseña" name="contrasena" required/>
                     </div>
                     <input type="submit" value="Acceder" class="btn solid" />
                     <p class="social-text">!Accede ahora!</p>
