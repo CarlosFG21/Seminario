@@ -55,7 +55,7 @@
                     <span>Tablero</span></a>
                 </li>
                 <li>
-                    <a href="expdiente.php" class=""><span class="las la-folder-open"></span>
+                    <a href="expediente.php" class=""><span class="las la-folder-open"></span>
                     <span>Expedientes</span></a>
                 </li>
                 <li>

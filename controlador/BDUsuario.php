@@ -8,6 +8,17 @@ if (isset($_REQUEST['registrar'])) {
     $permiso = $_POST['cbPermiso'];
     $contrasena = $_POST['txtContrasena'];
     $contrasena_h = password_hash($contrasena, PASSWORD_BCRYPT);
+
+    $sqll="SELECT nickname FROM usuario where nickname='$nickname'";
+    $sql_runn = mysqli_query($conexion,$sqll);
+    $row = mysqli_num_rows($sql_runn);
+    
+    if($row>0){
+ 
+        ?><script> location.href = "../vistas/usuario_ingresar.php";
+        alert('Usuario ya registrado');</script><?php
+
+    }else{
     if ($nombre=="" || $apellido=="" || $nickname=="" || $permiso=="" || $contrasena=="" || !preg_match("/^(?!-+)[a-zA-Z0-9-ñáéíóú.,\s]+[a-zA-Z\s]*$/", $nombre) ||
     !preg_match("/^(?!-+)[a-zA-Z0-9-ñáéíóú.,\s]+[a-zA-Z\s]*$/", $apellido) || !preg_match("/^(?!-+)[a-zA-Z0-9-ñáéíóú.,\s]+[a-zA-Z0-9.,_-\s]*$/", $nickname) ||
     !preg_match("/^(?!-+)[a-zA-Z0-9-ñáéíóú.,\s]+[a-zA-Z0-9.#$,_-\s]*$/", $contrasena)){
@@ -24,7 +35,7 @@ if (isset($_REQUEST['registrar'])) {
             die("Error algo salio mal: " . $conexion->error);
         }
         $conexion->close();
-    }  
+    }  }
 }
 
 if (isset($_REQUEST['cancelar'])) {
