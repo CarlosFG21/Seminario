@@ -9,7 +9,7 @@
 
 	//echo json_encode(array('nick' => $nickname, 'clave' => $clave));
 
-	$sql = "SELECT * FROM usuario WHERE nickname= '$nickname'";
+	$sql = "SELECT * FROM usuario WHERE nickname= '$nickname' and estado=1";
 	$resultado = $conexion->query($sql);
 
 	$fila = $resultado->fetch_assoc();

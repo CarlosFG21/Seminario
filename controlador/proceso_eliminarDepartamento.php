@@ -3,7 +3,14 @@ include ('conexion.php');
     
     //$id = $_REQUEST['id_expediente'];
     $id= $_GET['id'];
-    $sql ="UPDATE departamento SET estado=0 WHERE id_departamento='$id'";
+    $sql ="UPDATE
+    departamento
+    INNER JOIN
+    municipio
+    ON
+    municipio.id_departamento = departamento.id_departamento
+    SET
+    departamento.estado = 0, municipio.estado = 0  WHERE departamento.id_departamento='$id' and departamento.estado=1";
    $resultadoEliminar = mysqli_query($conexion,$sql);
 
 

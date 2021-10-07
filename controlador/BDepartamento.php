@@ -6,7 +6,16 @@ if(isset($_REQUEST['registrar'])){
 include('conexion.php');
 $nombre = $_POST['txtdepartamento'];
 
+$sqll="SELECT nombre FROM departamento where nombre='$nombre'";
+    $sql_runn = mysqli_query($conexion,$sqll);
+    $row = mysqli_num_rows($sql_runn);
+    
+    if($row>0){
+ 
+        ?><script> location.href = "../vistas/departamento_ingresar.php";
+        alert('Departamento ya registrado');</script><?php
 
+    }else{
 if($nombre=="" || !preg_match("/^(?!-+)[a-zA-Z0-9-ñáéíóú\s]+[a-zA-Z0-9\s]*$/", $nombre) || strlen($nombre)<3){
 
     header("Location: ../vistas/departamento.php");
@@ -23,7 +32,7 @@ if($nombre=="" || !preg_match("/^(?!-+)[a-zA-Z0-9-ñáéíóú\s]+[a-zA-Z0-9\s]*
     }
     $conexion->close();
 
-}
+}}
 }
 
 if(isset($_REQUEST['actualizar'])){
