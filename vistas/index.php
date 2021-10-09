@@ -239,13 +239,184 @@
                                 </table>
                             </div>
                         </div>
+                    </div>
+                </div>
+                <br>
+                <div class="recent-grid">
+                <div class="projects">
+                    <div class="card">
+                        <div class="card-header">
+                            <h3>Medicamentos Vencidos</h3>
 
+                        </div>
+
+                        <div class="card-body">
+                            <div class="table-responsive">
+                                <table id="tblusuario1"width="100%">
+                                    <thead>
+                                        <tr>
+                                            <td>ID</td>
+                                            <td>Nombre</td>
+                                            <td>Lote</td>
+                                            <td>Stock</td>
+                                            <td>Fecha</td>
+                                            <td>Alerta</td>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <?php 
+                                        include('../controlador/conexion.php');
+                                        $sql = "SELECT a.id_medicamento, a.nombre, b.num_lote, b.stock_actual,b.fecha_vencimiento FROM medicamento as a INNER JOIN detalle_ingreso as b ON a.id_medicamento = b.id_medicamento WHERE b.estado=0";
+                                        $ejecutar = mysqli_query($conexion, $sql);
+                                       
+                                        while($fila = mysqli_fetch_array($ejecutar)){
+                                        ?>
+                                            <tr>
+                                            <td><?php echo $fila['id_medicamento'] ?></td>
+                                            <td><?php echo $fila['nombre'] ?></td>
+                                            <td><?php echo $fila['num_lote'] ?></td>
+                                            <td><?php echo $fila['stock_actual'] ?></td>
+                                            <td><?php echo $fila['fecha_vencimiento'] ?></td>
+                                            <td><?php 
+                                                     $datetime1 = date_create(date('Y-m-d'));    
+                                                     $datetime2 = date_create($fila['fecha_vencimiento']);  
+                                                     $dias= $diff = $datetime1->diff($datetime2);
+                                                     $dias = $datetime1->diff($datetime2)->format('%r%a');
+                                                    if($dias <= 0){
+                                                        echo '<span class="status red"></span>';
+                                                        echo '<span class="status red"></span>';
+                                                    }      
+                                            ?></td>
+
+                                            </tr>
+                                        <?php
+                                        }
+                                        ?>
+                                        
+                                        
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <br>
+                <div class="recent-grid">
+                <div class="projects">
+                    <div class="card">
+                        <div class="card-header">
+                            <h3>Medicamentos Vencidos</h3>
+
+                        </div>
+
+                        <div class="card-body">
+                            <div class="table-responsive">
+                                <table id="tblusuario2"width="100%">
+                                    <thead>
+                                        <tr>
+                                            <td>ID</td>
+                                            <td>Nombre</td>
+                                            <td>Lote</td>
+                                            <td>Stock</td>
+                                            <td>Fecha</td>
+                                            <td>Alerta</td>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <?php 
+                                        include('../controlador/conexion.php');
+                                        $sql = "SELECT a.id_medicamento, a.nombre, b.num_lote, b.stock_actual,b.fecha_vencimiento FROM medicamento as a INNER JOIN detalle_ingreso as b ON a.id_medicamento = b.id_medicamento WHERE b.estado=0";
+                                        $ejecutar = mysqli_query($conexion, $sql);
+                                       
+                                        while($fila = mysqli_fetch_array($ejecutar)){
+                                        ?>
+                                            <tr>
+                                            <td><?php echo $fila['id_medicamento'] ?></td>
+                                            <td><?php echo $fila['nombre'] ?></td>
+                                            <td><?php echo $fila['num_lote'] ?></td>
+                                            <td><?php echo $fila['stock_actual'] ?></td>
+                                            <td><?php echo $fila['fecha_vencimiento'] ?></td>
+                                            <td><?php 
+                                                     $datetime1 = date_create(date('Y-m-d'));    
+                                                     $datetime2 = date_create($fila['fecha_vencimiento']);  
+                                                     $dias= $diff = $datetime1->diff($datetime2);
+                                                     $dias = $datetime1->diff($datetime2)->format('%r%a');
+                                                    if($dias <= 0){
+                                                        echo '<span class="status red"></span>';
+                                                        echo '<span class="status red"></span>';
+                                                    }      
+                                            ?></td>
+
+                                            </tr>
+                                        <?php
+                                        }
+                                        ?>
+                                        
+                                        
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
                     </div>
                 </div>
         </main>
         <script>
         $(document).ready(function () {
             $('#tblusuario').DataTable({
+                language: {
+                    "decimal": "",
+                    "emptyTable": "No hay información",
+                    "info": "Mostrando _START_ a _END_ de _TOTAL_ Entradas",
+                    "infoEmpty": "Mostrando 0 to 0 of 0 Entradas",
+                    "infoFiltered": "(Filtrado de _MAX_ total entradas)",
+                    "infoPostFix": "",
+                    "thousands": ",",
+                    "lengthMenu": "Mostrar _MENU_ registros",
+                    "loadingRecords": "Cargando...",
+                    "processing": "Procesando...",
+                    "search": "Buscar ",
+                    "zeroRecords": "Sin resultados encontrados",
+                    "paginate": {
+                        "first": "Primero",
+                        "last": "Ultimo",
+                        "next": "Siguiente",
+                        "previous": "Anterior"
+                    }
+                },
+                
+            });
+        })
+    </script>
+    <script>
+        $(document).ready(function () {
+            $('#tblusuario1').DataTable({
+                language: {
+                    "decimal": "",
+                    "emptyTable": "No hay información",
+                    "info": "Mostrando _START_ a _END_ de _TOTAL_ Entradas",
+                    "infoEmpty": "Mostrando 0 to 0 of 0 Entradas",
+                    "infoFiltered": "(Filtrado de _MAX_ total entradas)",
+                    "infoPostFix": "",
+                    "thousands": ",",
+                    "lengthMenu": "Mostrar _MENU_ registros",
+                    "loadingRecords": "Cargando...",
+                    "processing": "Procesando...",
+                    "search": "Buscar ",
+                    "zeroRecords": "Sin resultados encontrados",
+                    "paginate": {
+                        "first": "Primero",
+                        "last": "Ultimo",
+                        "next": "Siguiente",
+                        "previous": "Anterior"
+                    }
+                },
+                
+            });
+        })
+    </script>
+     <script>
+        $(document).ready(function () {
+            $('#tblusuario2').DataTable({
                 language: {
                     "decimal": "",
                     "emptyTable": "No hay información",
