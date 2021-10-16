@@ -199,11 +199,11 @@
                                     </thead>
                                     <tbody>
                                         <?php 
-                                        include('../controlador/conexion.php');
+                                        include('../controlador/conexion.php');//Se manda a llamar el archivo conexion en donde se conecta a la base de datos
                                         $sql = "SELECT a.id_medicamento, a.nombre, b.num_lote, b.stock_actual,b.fecha_vencimiento FROM medicamento as a INNER JOIN detalle_ingreso as b ON a.id_medicamento = b.id_medicamento";
-                                        $ejecutar = mysqli_query($conexion, $sql);
+                                        $ejecutar = mysqli_query($conexion, $sql);//Se efectua una consulta para mostrar los datos del medicamento
                                        
-                                        while($fila = mysqli_fetch_array($ejecutar)){
+                                        while($fila = mysqli_fetch_array($ejecutar)){//se utiliza la condicional while para recorrer un array a su vez tambien se imprimen los datos en html
                                         ?>
                                             <tr>
                                             <td><?php echo $fila['id_medicamento'] ?></td>
@@ -212,20 +212,20 @@
                                             <td><?php echo $fila['stock_actual'] ?></td>
                                             <td><?php echo $fila['fecha_vencimiento'] ?></td>
                                             <td><?php 
-                                                     $datetime1 = date_create(date('Y-m-d'));    
-                                                     $datetime2 = date_create($fila['fecha_vencimiento']);  
-                                                     $dias= $diff = $datetime1->diff($datetime2);
-                                                     $dias = $datetime1->diff($datetime2)->format('%r%a');
+                                                     $datetime1 = date_create(date('Y-m-d'));//Se declar una variable para capturar la fecha del sistema    
+                                                     $datetime2 = date_create($fila['fecha_vencimiento']);//Se declara otra variable vara capturar la fecha del medicamento  
+                                                     $dias= $diff = $datetime1->diff($datetime2);//se declar otra variable para calcular y obtner la diferencia de dias
+                                                     $dias = $datetime1->diff($datetime2)->format('%r%a');//Se utiliza una condiciona para agregar un color al medicamento dependiendo los dias que tiene de diferencia con la fecha del sistema
                                                     if($dias <= 0){
                                                         echo '<span class="status red"></span>';
-                                                        echo '<span class="status red"></span>';
+                                                        echo '<span class="status red"></span>';//Se muestra un punto de color rojo
                                                     }      
                                                     elseif ($dias <= 183) {
-                                                        echo '<span class="status red"></span>';
+                                                        echo '<span class="status red"></span>';//Se muestra un punto de color rojo
                                                     } elseif ($dias <= 365) {
-                                                        echo '<span class="status yellow"></span>';
+                                                        echo '<span class="status yellow"></span>';//Se muestra un punto de color amarillo
                                                     } else{
-                                                        echo '<span class="status green"></span> ';
+                                                        echo '<span class="status green"></span> ';//Se muestra un punto de color verde
                                                     }
                                             ?></td>
 
@@ -324,24 +324,24 @@
                                     </thead>
                                     <tbody>
                                         <?php 
-                                        include('../controlador/conexion.php');
+                                        include('../controlador/conexion.php');//Se manda a llamar el archivo conexion en donde se conecta a la base de datos
                                         $sql = "SELECT a.id_medicamento, a.nombre, b.num_lote, b.stock_actual,b.fecha_vencimiento FROM medicamento as a INNER JOIN detalle_ingreso as b ON a.id_medicamento = b.id_medicamento WHERE b.estado=0";
-                                        $ejecutar = mysqli_query($conexion, $sql);
+                                        $ejecutar = mysqli_query($conexion, $sql);//Se efectua una consulta para mostrar los datos del medicamento
                                        
-                                        while($fila = mysqli_fetch_array($ejecutar)){
+                                        while($fila = mysqli_fetch_array($ejecutar)){ //se utiliza la condicional while para recorrer un array a su vez tambien se imprimen los datos en html
                                         ?>
-                                            <tr>
+                                            <tr> 
                                             <td><?php echo $fila['id_medicamento'] ?></td>
                                             <td><?php echo $fila['nombre'] ?></td>
                                             <td><?php echo $fila['num_lote'] ?></td>
                                             <td><?php echo $fila['stock_actual'] ?></td>
                                             <td><?php echo $fila['fecha_vencimiento'] ?></td>
                                             <td><?php 
-                                                     $datetime1 = date_create(date('Y-m-d'));    
-                                                     $datetime2 = date_create($fila['fecha_vencimiento']);  
-                                                     $dias= $diff = $datetime1->diff($datetime2);
-                                                     $dias = $datetime1->diff($datetime2)->format('%r%a');
-                                                    if($dias <= 0){
+                                                     $datetime1 = date_create(date('Y-m-d')); //Se declar una variable para capturar la fecha del sistema
+                                                     $datetime2 = date_create($fila['fecha_vencimiento']);  //Se declara otra variable vara capturar la fecha del medicamento
+                                                     $dias= $diff = $datetime1->diff($datetime2);//se declar otra variable para calcular y obtner la diferencia de dias
+                                                     $dias = $datetime1->diff($datetime2)->format('%r%a');//se guarda la diferencia de dias
+                                                    if($dias <= 0){//Se utiliza una condiciona para agregar un color al medicamento dependiendo los dias que tiene de diferencia con la fecha del sistema
                                                         echo '<span class="status red"></span>';
                                                         echo '<span class="status red"></span>';
                                                     }      

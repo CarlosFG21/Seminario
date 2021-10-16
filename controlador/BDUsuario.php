@@ -1,35 +1,35 @@
 <?php
 
-if (isset($_REQUEST['registrar'])) {
-    include('conexion.php');
+if (isset($_REQUEST['registrar'])) { //Se utiliza un condicional y la funcion isset para comprobacion de si una variable se encuentra null
+    include('conexion.php'); //Se incluye la conexion con la base de datos
     $nombre = $_POST['txtNombre'];
     $apellido = $_POST['txtApellido'];
     $nickname = $_POST['txtUsuario'];
     $permiso = $_POST['cbPermiso'];
-    $contrasena = $_POST['txtContrasena'];
-    $contrasena_h = password_hash($contrasena, PASSWORD_BCRYPT);
+    $contrasena = $_POST['txtContrasena'];//Se hace la verificacion de todas la variables que se reciben del html
+    $contrasena_h = password_hash($contrasena, PASSWORD_BCRYPT);//Se utiliza la funcion password_hash para la incripacion de la contraseña
 
-    $sqll="SELECT nickname FROM usuario where nickname='$nickname'";
+    $sqll="SELECT nickname FROM usuario where nickname='$nickname'";//Se realiza una consulta a la base de datos para verificar si el usuario ya existe
     $sql_runn = mysqli_query($conexion,$sqll);
     $row = mysqli_num_rows($sql_runn);
     
     if($row>0){
  
-        ?><script> location.href = "../vistas/usuario_ingresar.php";
+        ?><script> location.href = "../vistas/usuario_ingresar.php";//En caso de que exista se redirige al formulario ingresar usuario
         alert('Usuario ya registrado');</script><?php
 
-    }else{
+    }else{//De caso contrario si no existe se efectuan las validaciones de no campos vacion y caracteres especiales
     if ($nombre=="" || $apellido=="" || $nickname=="" || $permiso=="" || $contrasena=="" || !preg_match("/^(?!-+)[a-zA-Z0-9-ñáéíóú.,\s]+[a-zA-Z\s]*$/", $nombre) ||
     !preg_match("/^(?!-+)[a-zA-Z0-9-ñáéíóú.,\s]+[a-zA-Z\s]*$/", $apellido) || !preg_match("/^(?!-+)[a-zA-Z0-9-ñáéíóú.,\s]+[a-zA-Z0-9.,_-\s]*$/", $nickname) ||
     !preg_match("/^(?!-+)[a-zA-Z0-9-ñáéíóú.,\s]+[a-zA-Z0-9.#$,_-\s]*$/", $contrasena)){
 
-        header("Location: ../vistas/usuario_ingresar.php");
+        header("Location: ../vistas/usuario_ingresar.php");//Si en caso se encuentra un campo vacion o un caracter especial, se redirige al usuari ingresar
 
     }else {
-
+        //De caso contrario se efectua un captura de los datos y se realiza una inserccion a la base de datos
         $sql = "INSERT INTO usuario (nombre, apellido, nickname, permiso, contrasena) VALUES ('$nombre', '$apellido', '$nickname', '$permiso', '$contrasena_h')";
         if ($conexion->query($sql) === true) {            
-            header("Location: ../vistas/usuario.php");
+            header("Location: ../vistas/usuario.php");//Al momento de realizar la insercion se redirige a la vista de mostrar usuario
             echo "Datos insertados...";
         } else{
             die("Error algo salio mal: " . $conexion->error);
@@ -42,30 +42,30 @@ if (isset($_REQUEST['cancelar'])) {
     header("Location: ../vistas/usuario.php");
 }
 
-if (isset($_REQUEST['actualizar'])) {
+if (isset($_REQUEST['actualizar'])) {//Se utiliza un condicional y la funcion isset para comprobacion de si una variable se encuentra null
 
-    include('conexion.php');
+    include('conexion.php');//Se incluye la conexion con la base de datos
 
     $id = $_REQUEST['txtId_usuario'];
     $nombre = $_POST['txtNombre'];
     $apellido = $_POST['txtApellido'];
     $nickname = $_POST['txtUsuario'];
     $permiso = $_POST['cbPermiso'];
-    $contrasena = $_POST['txtContrasena'];
+    $contrasena = $_POST['txtContrasena'];//Se hace la verificacion de todas la variables que se reciben del html
     $contrasena_h = password_hash($contrasena, PASSWORD_BCRYPT);
-
+    //se efectuan las validaciones de no campos y caracteres especiales
     if ($nombre=="" || $apellido=="" || $nickname=="" || $permiso=="" || $contrasena=="" || !preg_match("/^(?!-+)[a-zA-Z0-9-ñáéíóú.,\s]+[a-zA-Z\s]*$/", $nombre) ||
     !preg_match("/^(?!-+)[a-zA-Z0-9-ñáéíóú.,\s]+[a-zA-Z\s]*$/", $apellido) || !preg_match("/^(?!-+)[a-zA-Z0-9-ñáéíóú.,\s]+[a-zA-Z0-9.,_-\s]*$/", $nickname) ||
     !preg_match("/^(?!-+)[a-zA-Z0-9-ñáéíóú.,\s]+[a-zA-Z0-9.#$,_-\s]*$/", $contrasena)){
 
-        header("Location: ../vistas/usuario_ingresar.php");
+        header("Location: ../vistas/usuario_ingresar.php");//Si encaso se ingres un caracter especial o un campo vacion se lansa un mensaje y se redirige de nuevo al ingresar usuario
 
     }else {
-
+    //Se verifica lasvariables y se realiza el update a la base de datos 
     $sql = "UPDATE usuario SET nombre='$nombre', apellido='$apellido', nickname='$nickname', permiso='$permiso' WHERE id_usuario='$id'";
     
     if ($conexion->query($sql) === true) {            
-        header("Location: ../vistas/usuario.php");
+        header("Location: ../vistas/usuario.php");//Al momento de realizar el update se redirige a la vista de usuario 
         echo "Datos Actualizados...";
     } else{
         die("Error algo salio mal: " . $conexion->error);
