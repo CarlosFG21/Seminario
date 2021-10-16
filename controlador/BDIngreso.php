@@ -2,6 +2,12 @@
 
 session_start();
 include('conexion.php');
+//Para ingresar un medicamento lo que se hace es recorrer una variable $filas que viene de la tabla detalle de ingreso
+//esa tabla viene de html que fue enviada desde javascript para realizar esta función
+//viene en formato JSON, y la debemos decodificar
+//es lo que hace las variables de abajo
+//La variable fechaIngresoPHP y cbProveedorPHP las obtenemos de javascript y las mandamos por medio de AJAX 
+
 $filas = json_decode($_POST['valores'], true);
 $fechaIngresoPHP = $_POST['fechaIngresoPHP'];
 $cbProveedorPHP = $_POST['cbProveedorPHP'];
@@ -9,9 +15,9 @@ $cbProveedorPHP = $_POST['cbProveedorPHP'];
 // var_dump($filas);
 // var_dump($fechaIngresoPHP);
 // die();
-$inserciones = 0;
+$inserciones = 0; //esta variable solo es para imprimir cuantas inserciones se hicieron en print console
 
-
+//SE HACE LA VALIDACION PARA SABER SI VAN DETALLES, ESTA VALIDACION ES UN PLUS DE SEGURIDAD
 
  if (sizeof($filas) == 0){
     //echo '<script language="javascript">alert("Error de autentificacion");window.location.href="ingreso_medicamento_stock.php"</script>';
@@ -20,10 +26,9 @@ $inserciones = 0;
  }else{
 
 
-
     //HAGO EL PRIMER INSERT DE INGRESO
-$id_user = $_SESSION['id_usuario'];
-
+$id_user = $_SESSION['id_usuario']; //siempre se obtiene el ID del usuario
+//SE HACE PRIMERO EL INSERT DE UN INGRESO, PARA LUEGO OBTENER SU ID Y DESPUES HACER CADA DETALLE DE INGRESO
 $sqlIngreso = "INSERT INTO ingreso (fecha_ingreso, id_proveedor, id_usuario) VALUES ('$fechaIngresoPHP', '$cbProveedorPHP', '$id_user')";
  if ($conexion->query($sqlIngreso) === true) {            
    
@@ -33,7 +38,7 @@ $sqlIngreso = "INSERT INTO ingreso (fecha_ingreso, id_proveedor, id_usuario) VAL
 }
 
 
-//ENCONTRAMOS EL ID DEL ULTIMO INSERT
+//ENCONTRAMOS EL ID DEL ULTIMO INSERT DE INGRESO PARA LUEGO OCUPARLO EN CADA DETALLE 
 $maxId = null;
 $sqlMax = "SELECT MAX(id_ingreso) max_id_ingreso FROM ingreso";
 $ejecutarMax = mysqli_query($conexion, $sqlMax);
@@ -48,15 +53,17 @@ while($row = mysqli_fetch_row($ejecutarMax)){
 
 
 
-    
+    //HACEMOS EL FOR PARA INGRESAR CADA DETALLE DE INGRESO CON SU DIFERENTE FILA EN EL ARRAY
     for($i=0; $i < count($filas); $i++){
 
+        //SE RECORRE CADA ELEMENTO DEL ARRAY
        $cantidad_ingreso  = $filas[$i]['cantidad_ingreso'];
        $fecha_vencimiento   = $filas[$i]['fecha_vencimiento'];
        $id_ingreso = $maxId[0];
        $id_medicamento = $filas[$i]['id_medicamento'];
        $num_lote = $filas[$i]['num_lote'];
-   
+       
+        //SE HACE UN INSERT DE CADA DETALLE
        $sql = "INSERT INTO detalle_ingreso (
            cantidad_ingreso,
            fecha_vencimiento,
