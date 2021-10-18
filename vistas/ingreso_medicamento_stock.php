@@ -102,11 +102,11 @@
                     <span>Tablero</span></a>
                 </li>
                 <li>
-                    <a href="" class=""><span class="las la-folder-open"></span>
+                    <a href="expediente.php" class=""><span class="las la-folder-open"></span>
                     <span>Expedientes</span></a>
                 </li>
                 <li>
-                    <a href="" ><span class="las la-medkit"></span>
+                    <a href="medicamento.php" ><span class="las la-medkit"></span>
                     <span>Medicamentos</span></a>
                 </li>
                 <li>
@@ -234,7 +234,7 @@
         </p>
         <br>
         <div class="btn__group">
-				<a href="medicamento.php" class="btn btn__danger">Regresar</a>
+				<a href="ingresos.php" class="btn btn__danger">Regresar</a>
 				<input id="add_row" type="submit" name="add_row" value="Añadir" class="btn btn__primary">
 
                 <input id="enviar" name="enviar" type="button" class="btn btn__primary" value="Finalizar Transacción" onclick="">
@@ -306,7 +306,8 @@
             </div>
             </div>
     </main>
-
+    <script>var today = new Date().toISOString().split('T')[0];
+    document.getElementsByName("txtFechaVencimiento")[0].setAttribute('min', today);</script>
     <script src="../js/tablaDetalleIngreso.js"></script>
     <script src="../js/recorrerTabla.js"></script>
     <script src="../js/tablajson.js"></script>
