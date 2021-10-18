@@ -123,7 +123,7 @@
            <input type="text" class="input__text" placeholder="Guatemala"  readonly="readonly">
            </p>
            <p>
-           <label for="">Departamento</label>
+           <label for="">Departamento*</label>
            <input name="txtdepartamento" type="text" class="input__text" placeholder="Ingrese un departamento"  pattern="^[a-zA-Záéíóú ]{1,30}" minlength="3" required>
            </p>
         <p>

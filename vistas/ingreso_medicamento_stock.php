@@ -234,7 +234,7 @@
         </p>
         <br>
         <div class="btn__group">
-				<a href="medicamento.php" class="btn btn__danger">Regresar</a>
+				<a href="ingresos.php" class="btn btn__danger">Regresar</a>
 				<input id="add_row" type="submit" name="add_row" value="Añadir" class="btn btn__primary">
 
                 <input id="enviar" name="enviar" type="button" class="btn btn__primary" value="Finalizar Transacción" onclick="">
@@ -310,7 +310,10 @@
     <script src="../js/tablaDetalleIngreso.js"></script>
     <script src="../js/recorrerTabla.js"></script>
     <script src="../js/tablajson.js"></script>
-
+    <script>
+    var today = new Date().toISOString().split('T')[0];
+    document.getElementsByName("txtFechaVencimiento")[0].setAttribute('min', today);
+    </script>
 
     
     </body>

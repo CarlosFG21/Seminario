@@ -246,7 +246,10 @@ $expediente[0] = $expediente[0] + 1;
             </div>
             </div>
     </main>
-
+     <script>
+     var today = new Date().toISOString().split('T')[0];
+    document.getElementsByName("txtFecha")[0].setAttribute('max', today);
+     </script>
     </body>
 
 </html>

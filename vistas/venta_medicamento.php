@@ -435,7 +435,8 @@ group by di.id_medicamento, m.nombre
     <!--  --> 
     <script src="../js/eventoMedicamentoEgreso.js"></script>
     
-    
+    <script>var today = new Date().toISOString().split('T')[0];
+    document.getElementsByName("txtFechaEgreso")[0].setAttribute('max', today);</script>
   
 
     

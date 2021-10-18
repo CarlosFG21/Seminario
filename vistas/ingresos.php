@@ -80,7 +80,7 @@
                     <span>Tablero</span></a>
                 </li>
                 <li>
-                    <a href=""><span class="las la-folder-open"></span>
+                    <a href="expediente.php"><span class="las la-folder-open"></span>
                     <span>Expedientes</span></a>
                 </li>
                 <li>

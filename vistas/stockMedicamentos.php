@@ -58,6 +58,17 @@
             border-radius: 6px;
             
           }
+
+          .boton-regresar{
+            text-decoration: none;
+            padding: 10px;
+            font-weight: 600;
+            font-size: 14px;
+            color: #ffffff;
+            background-color: #ff0000;
+            border-radius: 6px;
+            
+          }
           
     </style>
 </head>
@@ -169,7 +180,7 @@
                         <div class="card-header">
                             <h3>Stock de medicamentos</h3>
                             <div class="encabezado">
-                            
+                            <a href="medicamento.php" class="boton-regresar">Regresar</a>
                             <a type="submit" href="../reportes/reporte_stock_medicamento.php" target="_blank" name="" id="" class="boton-reporte">Reporte</a>
                             </div> 
                         </div>
