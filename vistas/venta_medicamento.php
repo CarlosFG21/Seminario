@@ -428,7 +428,8 @@ group by di.id_medicamento, m.nombre
             </div>
             </div>
     </main>
-
+    <script>var today = new Date().toISOString().split('T')[0];
+    document.getElementsByName("txtFechaEgreso")[0].setAttribute('min', today);</script>
     <script src="../js/tablaDetalleVenta.js"></script>
     <script src="../js/recorrerTabla.js"></script>
     <script src="../js/tablajsonVenta.js"></script>

@@ -58,6 +58,17 @@
             border-radius: 6px;
             
           }
+
+          .boton-regresar{
+            text-decoration: none;
+            padding: 10px;
+            font-weight: 600;
+            font-size: 14px;
+            color: #ffffff;
+            background-color: #ff0000;
+            border-radius: 6px;
+            
+          }
           
     </style>
     
@@ -153,7 +164,7 @@
                 <div class="card-header">
                 <h3>Departamento</h3>
                     <div class="encabezado">
-                    
+                    <a href="ubicacion.php" class="boton-regresar">Regresar</a>
                     <a type="submit" href="departamento_ingresar.php" name="" id="" class="boton-reporte">Ingresar nuevo departamento</a>
                     </div> 
                 </div>

@@ -46,6 +46,31 @@
             background-color: #ff0000;
             border-radius: 6px;
             
+            
+          }
+
+          .boton-regresar{
+            text-decoration: none;
+            padding: 10px;
+            font-weight: 600;
+            font-size: 14px;
+            color: #ffffff;
+            background-color:#ff0000;
+            border-radius: 6px;
+            margin-left: 10px
+            
+          }
+
+          .boton-ingreso{
+            text-decoration: none;
+            padding: 10px;
+            font-weight: 600;
+            font-size: 14px;
+            color: #ffffff;
+            background-color:#1f8fc3;
+            border-radius: 6px;
+            margin-left: 10px
+            
           }
           
     </style>
@@ -141,7 +166,8 @@
                 <div class="card-header">
                 <h3>Municipio</h3>
                     <div class="encabezado">
-                    <a type="submit" href="municipio_ingresar.php" name="" id="" class="boton-editar">Ingresar nuevo municipio</a>
+                    <a href="ubicacion.php" class="boton-regresar">Regresar</a>
+                    <a type="submit" href="municipio_ingresar.php" name="" id="" class="boton-ingreso">Ingresar nuevo municipio</a>
                     </div> 
                 </div>
                 <div class="card-body">

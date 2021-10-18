@@ -133,7 +133,7 @@
             <br>
             <form name="" id="" method="POST" action="../controlador/BDMunicipio.php"> 
            <p>
-           <label for="">Departamento</label>
+           <label for="">Departamento*</label>
           <select class="input__text" name="cbDepartamento" id="cbDepartamento" required>
           <option value="value1">Seleccione</option>
 
@@ -145,7 +145,7 @@
           </select>
            </p>
            <p>
-           <label for="">Municipio</label>
+           <label for="">Municipio*</label>
            <input name="txtmunicipio" type="text" class="input__text" placeholder="Ingrese un departamento"  pattern="^[a-zA-Záéíóú ]{1,30}" minlength="3" required>
            </p>
         <p>
