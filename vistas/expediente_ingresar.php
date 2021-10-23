@@ -175,15 +175,15 @@ $expediente[0] = $expediente[0] + 1;
 
             <form name="" id="" method="POST" action="../controlador/BDExpediente.php"> 
             <p>
-            <label for="">DPI</label>
+            <label for="">DPI*</label>
             <input name="txtDpi" type="number" class="input__text" placeholder="Ingrese Documento Personal de Identificación">
             </p>
            <p>
-           <label for="">Nombres</label>
+           <label for="">Nombres*</label>
            <input name="txtNombres" type="text" class="input__text" placeholder="Ingrese los nombres" required>
            </p>
            <p>
-           <label for="">Apellidos</label>
+           <label for="">Apellidos*</label>
            <input name="txtApellidos" type="text" class="input__text" placeholder="Ingrese los apellidos" required>
            </p>
         <p>
@@ -192,7 +192,7 @@ $expediente[0] = $expediente[0] + 1;
         </p>
         <p>
           <label for="">Telefono</label>
-          <input name="txtTelefono" type="tel" class="input__text" placeholder="Ingrese número de teléfono">
+          <input name="txtTelefono" type="tel" class="input__text" minlength="8" maxlength="8" placeholder="Ingrese número de teléfono">
         </p>
         <p>
           <label for="">Correo</label>

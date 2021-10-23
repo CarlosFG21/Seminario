@@ -179,12 +179,12 @@
             <br>
             <form id="transactionForm" name="transactionForm" id="" method="POST" action="#"> 
             <p>
-            <label for="">Fecha de ingreso</label>
+            <label for="">Fecha de ingreso*</label>
             <input id="txtFechaIngreso" name="txtFechaIngreso" type="date" class="input__text" placeholder="Ingrese el nombre del medicamento" required>
             </p>
 
            <p>
-            <label for="">Proveedor</label>
+            <label for="">Proveedor*</label>
              <select id="cbProveedor" class="input__text" name="cbProveedorS" required>
 
              <?php
@@ -197,7 +197,7 @@
 
 
             <p>
-            <label for="">Medicamento</label>
+            <label for="">Medicamento*</label>
              <select id="cbMedicamento" class="input__text" name="cbMedicamento" required>
              <?php
                  while($row = mysqli_fetch_array($ejecutarMedicamento)){
@@ -208,17 +208,17 @@
             </p>
 
             <p>
-            <label for="">Fecha de vencimiento</label>
+            <label for="">Fecha de vencimiento*</label>
             <input id="txtFechaVencimiento" name="txtFechaVencimiento" type="date" class="input__text" placeholder="" required>
             </p>
 
             <p>
-             <label for="">Número de Lote</label>
+             <label for="">Número de Lote*</label>
             <input id="txtLote" name="txtLote" type="text" class="input__text" placeholder="Numero de Lote" value="">
             </p>
            
              <p>
-             <label for="">Cantidad a ingresar</label>
+             <label for="">Cantidad a ingresar*</label>
              <input id="txtCantidad" name="txtCantidad" type="number" class="input__text" placeholder="Ingrese cantidad a ingresar" value="" required>
              </p>
 
