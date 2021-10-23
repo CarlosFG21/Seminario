@@ -262,12 +262,12 @@ group by di.id_medicamento, m.nombre
             <br>
             <form id="transactionForm" name="transactionForm" id="" method="POST" action="#"> 
             <p>
-            <label for="">Fecha de egreso</label>
+            <label for="">Fecha de egreso*</label>
             <input id="txtFechaEgreso" name="txtFechaEgreso" type="date" class="input__text"  required>
             </p>
 
            <p>
-            <label for="">Puesto de salud</label>
+            <label for="">Puesto de salud*</label>
              <select id="cbPuestoSalud" class="input__text" name="cbPuestoSalud" onChange="mostrar()" required>
 
              <?php
@@ -282,7 +282,7 @@ group by di.id_medicamento, m.nombre
             <p>
               
 
-                <label for="">Medicamento</label>
+                <label for="">Medicamento*</label>
              <select id="cbMedicamento" class="chosen" name="cbMedicamento"  required>
              <option value="" disabled="disabled" selected>Seleccione</option>
              <?php
@@ -299,7 +299,7 @@ group by di.id_medicamento, m.nombre
 
 
             <p>
-            <label for="">Lote</label>
+            <label for="">Lote*</label>
              <select id="cbLote" class="input__text" name="cbLote"  required>
              <option value="" disabled="disabled" selected>Seleccione</option>
             
@@ -309,29 +309,29 @@ group by di.id_medicamento, m.nombre
 
             
             <p>
-             <label for="">STOCK DISPONIBLE</label>
+             <label for="">STOCK DISPONIBLE*</label>
              <input id="txtStockDisponible" name="txtStockDisponible" type="text" class="input__text" placeholder="Stock Disponible" value="" readonly>
              </p>
             
            
            
              <p>
-             <label for="">Concentracion</label>
+             <label for="">Concentracion*</label>
              <input id="txtConcentracion" name="txtConcentracion" type="text" class="input__text" placeholder="Concentracion" value="" readonly>
              </p>
 
              <p>
-             <label for="">Presentacion</label>
+             <label for="">Presentacion*</label>
              <input id="txtPresentacion" name="txtCantidadEgreso" type="text" class="input__text" placeholder="Presentacion" value="" readonly >
              </p>
 
              <p>
-             <label for="">Fecha de vencimiento</label>
+             <label for="">Fecha de vencimiento*</label>
              <input id="txtFechaVencimiento" name="txtFechaVencimiento" type="text" class="input__text" placeholder="Fecha de Vencimiento" value="" readonly >
              </p>
 
              <p>
-             <label for="">Cantidad Egresar</label>
+             <label for="">Cantidad Egresar*</label>
              <input id="txtCantidadEgreso" name="txtCantidadEgreso" type="number" class="input__text" placeholder="Ingrese cantidad a egresar" value="0"  >
              </p>
 

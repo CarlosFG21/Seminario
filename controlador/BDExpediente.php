@@ -20,6 +20,17 @@ if (isset($_REQUEST['registrarExpediente'])) {
 
     //para que funcione el crud para mientras
     $id_user = $_SESSION['id_usuario'];
+
+    $sqll="SELECT dpi FROM expediente where dpi='$dpi'";//Se realiza una consulta a la base de datos para verificar si el usuario ya existe
+    $sql_runn = mysqli_query($conexion,$sqll);
+    $row = mysqli_num_rows($sql_runn);
+
+    if($row>0){
+ 
+        ?><script> location.href = "../vistas/expediente_ingresar.php";//En caso de que exista se redirige al formulario ingresar usuario
+        alert('DPI ya registrado');</script><?php
+
+    }else{
     
     //Se hace la validacion para saber si el nombre y el apellido van vacios, si es así no guardará
     if(strlen($nombre)==0 || strlen($apellido)==0 ){
@@ -40,7 +51,7 @@ if (isset($_REQUEST['registrarExpediente'])) {
        $conexion->close();
 
      }
-
+    }
        
     
 }
